@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+PICTURE=/home/mat/Pictures/background/antennae_4k.png
+# SCREENSHOT="scrot -z $PICTURE"
+
+# BLUR="5x4"
+# BLUR="20x20"
+
+# $SCREENSHOT
+# convert $PICTURE -blur $BLUR $PICTURE
+i3lock -i $PICTURE
+# rm $PICTURE

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+source ./scripts/utils
+
+echo "Settig up git..."
+draw_line
+
+echo "Configure git..."
+git config --global user.name "$1"
+git config --global user.email "$2"
+git config --global pull.rebase true
+
+echo "Generate and use SSH key..."
+ssh-keygen -t ed25519 -C "$2" -f ~/.ssh/id_ed25519 -q -N ""
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+echo "Public key:"
+draw_line
+cat ~/.ssh/id_ed25519.pub
+draw_line
+echo "Copy the above public key"

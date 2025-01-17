@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source ./scripts/utils
+
+is_root
+
+echo "Installing packages"
+draw_line
+
+pacman -Sy --noconfirm --quiet $(cat ./packages.txt | tr '\n' ' ')

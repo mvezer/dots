@@ -1,0 +1,24 @@
+#!/bin/bash
+
+source ./scripts/utils
+
+is_root
+
+echo "Setting up snapper"
+draw_line
+
+if snapper -c root get-config; then
+  echo "Snapper config exists, exiting"
+  exit
+fi
+
+echo "Creating config"
+snapper -c root create-config /
+
+/etc/grub.d/41_snapshots-btrfs
+grub-mkconfig -o /boot/grub/grub.cfg
+
+systemctl start grub-btrfsd
+systemctl enable grub-btrfsd
+
+is_service_running grub-btrfsd

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+source ./scripts/utils
+
+pacman -Sy --noconfirm --quiet figlet
+
+headline "Settig up $(hostname)"
+
+./scripts/install-packages
+./scripts/bluetooth
+./scripts/setup-snapper
+

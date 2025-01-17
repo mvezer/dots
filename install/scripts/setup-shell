@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source ./scripts/utils
+
+is_root
+
+chsh -s /usr/bin/zsh mat

@@ -1,0 +1,18 @@
+lunarvim/.config/lvim/lazy-lock.json
+vifm/.config/vifm/vifminfo.json
+bin/.local/share
+bin/.local/state
+bin/.local/bin/nvr
+bin/.local/lib/python3.10/site-packages
+bin/.local/bin/godot
+bin/.local/bin/vieb
+nvim/.config/nvim/cd-project.nvim.json
+nvim/.config/nvim/lazy-lock.json
+bin/.local/bin/config.json
+zed/.config/zed/embeddings/semantic-index-db.0.mdb/lock.mdb
+zed/.config/zed/conversations/Query about functionality - 1.zed.json
+zed/.config/zed/embeddings/semantic-index-db.0.mdb/lock.mdb
+zed/.config/zed/prompts/prompts-library-db.0.mdb/lock.mdb
+zed/.config/zed/conversations
+zed/.config/zed/embeddings/semantic-index-db.0.mdb/lock.mdb
+zed/.config/zed/prompts/prompts-library-db.0.mdb

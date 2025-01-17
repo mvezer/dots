@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source ./scripts/utils
+
+./scripts/aur-install
+./scripts/tmux-setup
+# ./scripts/setup-git "Matyas Vezer" "vezer.m@gmail.com"

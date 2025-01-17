@@ -1,0 +1,4 @@
+{
+  "Lua.hint.enable": false,
+  "sumneko-lua.enableNvimLuaDev": true
+}

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source ./scripts/utils
+
+headline "Install AUR packages"
+
+yay -S floorp-bin zapzap  thorium-browser-bin
