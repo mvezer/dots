@@ -57,10 +57,10 @@ zinit cdreplay -q
 zmodload zsh/zprof
 eval "$(zoxide init --cmd cd zsh)"
 # aliases
-alias ll="exa --icons -al --time-style=long-iso --git --no-user --no-permissions"
-alias l="exa --icons -al --time-style=long-iso --git --no-user --no-permissions"
+alias ll="eza --icons -al --time-style=long-iso --git --no-user --no-permissions"
+alias l="eza --icons -al --time-style=long-iso --git --no-user --no-permissions"
 alias t="tmux attach -t default || tmux new -s default"
-alias tree="exa -al -T --no-time --no-user --no-permissions -I node_modules $argv"
+alias tree="eza -al -T --no-time --no-user --no-permissions -I node_modules $argv"
 alias ws="cd $WORKSPACE"
 alias cfg="cd ~/.config"
 alias nxt="cd $WORKSPACE/next-level"
