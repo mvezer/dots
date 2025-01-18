@@ -1,0 +1,11 @@
+#!/bin/bash
+
+source ./scripts/utils
+
+echo "Installing AUR packages..."
+
+must_not_be_root
+
+echo "installing shit..."
+
+yay -Sy --noconfirm --quiet $(cat ./aur-packages.txt | tr '\n' ' ')

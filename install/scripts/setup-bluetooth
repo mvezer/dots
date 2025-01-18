@@ -2,9 +2,9 @@
 
 source ./scripts/utils
 
-is_root
-echo "Setting up bluetooth"
-draw_line
+echo "Setting up bluetooth..."
+
+must_be_root
 
 systemctl start bluetooth
 systemctl enable bluetooth

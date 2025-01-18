@@ -1,0 +1,10 @@
+
+#!/bin/bash
+
+source ./scripts/utils
+
+echo "Patching sudoers..."
+
+must_be_root
+
+echo "Defaults pwfeedback" | sudo EDIT='tee -a' visudo

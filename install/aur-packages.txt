@@ -1,0 +1,4 @@
+chili-sddm-theme
+floorp-bin
+thorium-browser-bin
+zapzap

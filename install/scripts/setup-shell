@@ -2,6 +2,8 @@
 
 source ./scripts/utils
 
-is_root
+echo "Set the default shell to zsh..."
+
+must_be_root
 
 chsh -s /usr/bin/zsh mat

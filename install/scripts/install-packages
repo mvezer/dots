@@ -2,9 +2,8 @@
 
 source ./scripts/utils
 
-is_root
+echo "Installing packages..."
 
-echo "Installing packages"
-draw_line
+must_be_root
 
 pacman -Sy --noconfirm --quiet $(cat ./packages.txt | tr '\n' ' ')

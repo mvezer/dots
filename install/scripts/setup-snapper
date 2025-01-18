@@ -2,17 +2,15 @@
 
 source ./scripts/utils
 
-is_root
+echo "Setting up snapper..."
 
-echo "Setting up snapper"
-draw_line
+must_be_root
 
 if snapper -c root get-config; then
   echo "Snapper config exists, exiting"
   exit
 fi
 
-echo "Creating config"
 snapper -c root create-config /
 
 /etc/grub.d/41_snapshots-btrfs
