@@ -7,6 +7,7 @@ bitwarden
 bitwarden-cli
 blueberry
 btop
+chili-sddm-theme
 copyq
 curl
 discord
@@ -45,6 +46,7 @@ polybar
 ripgrep
 rofi
 sddm
+shutter
 snap-pac
 snapper
 stow
