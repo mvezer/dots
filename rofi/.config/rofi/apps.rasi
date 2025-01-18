@@ -1,11 +1,11 @@
 configuration {
-  show-icons: false;
-  display-drun: "drun";
+  show-icons: true;
+  display-drun: "app launcher";
   disable-history: false;
 }
 
 * {
-  font: "JetBrains Mono SemiBold 12";
+  font: "Hack Nerd Font Mono 12";
   background: #141b1e;
   foreground: #dadada;
   primary: #67b0e8;
@@ -25,7 +25,7 @@ inputbar {
   padding: 48px 16px;
   text-color: @foreground;
   background-color: transparent;
-  background-image: url("~/.config/rofi/images/lighthouse.png", width);
+  background-image: url("~/.config/rofi/images/apps.png", width);
   children: [ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
 
