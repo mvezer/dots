@@ -1,0 +1,2 @@
+selector-args "-config ~/.config/rofi/passwords.rasi -p passwords"
+clear-after 5

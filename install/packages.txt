@@ -42,8 +42,10 @@ noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
 npm
+rbw
 ripgrep
 rofi
+rofi-rbw
 sddm
 shutter
 snap-pac

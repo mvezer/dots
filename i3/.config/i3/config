@@ -152,9 +152,6 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
-## App shortcuts
-bindsym $mod+b exec --no-startup-id /usr/bin/thorium-browser
-bindsym $mod+x exec --no-startup-id /usr/bin/thunar
 # bindsym Print exec --no-startup-id scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
 # Define names for default workspaces for which we configure key bindings later on.
@@ -367,7 +364,10 @@ bar {
     }
 }
 
+## App shortcuts
 # bindsym $mod+space exec --no-startup-id rofi -modi drun -show drun -config ~/.config/rofi/apps.rasi
 bindsym $mod+space exec --no-startup-id ~/.config/i3/scripts/app-launcher
-bindsym $mod+p exec --no-startup-id ~/.config/i3/scripts/screen-config
-
+bindsym $mod+c exec --no-startup-id ~/.config/i3/scripts/screen-config
+bindsym $mod+b exec --no-startup-id /usr/bin/thorium-browser
+bindsym $mod+x exec --no-startup-id /usr/bin/thunar
+bindsym $mod+p exec --no-startup-id /usr/bin/rofi-rbw
