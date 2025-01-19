@@ -224,9 +224,7 @@ local wk_config = {
 		desc = "Open terminal in a floating window",
 		mode = { "n", "i", "t" },
 	},
-	{ "<c-m>", function()
-			Snacks.notifier.show_history()
-		end, desc = "Shows recent messages" },
+	{ "<c-m>", cmd("NoiceAll"), desc = "Shows recent messages" },
 	{ "<c-t>", cmd("ToggleMarkdownTodo"), desc = "Toggle markdown todo" },
 	{ "Q", "q" }, -- to prevent accidential recording (https://github.com/hrsh7th/nvim-cmp/issues/1692)
 	{ "q", "<nop>" },

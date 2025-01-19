@@ -223,6 +223,17 @@ local plugin_specs = {
   {
     "alexghergh/nvim-tmux-navigation",
     opts = {}
+  },
+
+  -- noice (https://github.com/folke/noice.nvim)
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    config = require("config.noice")
   }
 }
 

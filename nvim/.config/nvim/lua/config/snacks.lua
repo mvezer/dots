@@ -15,11 +15,12 @@ return function ()
     },
     input = { enabled = true },
     lazygit = { enabled = true },
-    notifier = {
-      enabled = true,
-      level = vim.log.levels.TRACE,
-      timeout = 3000
-    },
+    -- deactivate the notifier in favor of Falke's noice
+    -- notifier = {
+    --   enabled = true,
+    --   level = vim.log.levels.TRACE,
+    --   timeout = 3000
+    -- },
     notify = { enabled = true },
     quickfile = { enabled = true },
     scroll = { enabled = true },
