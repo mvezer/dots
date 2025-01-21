@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ./scripts/utils
+
 echo "Setup TPM for tmux..."
 
 must_not_be_root

@@ -12,4 +12,5 @@ echo "============================================================="
 
 runuser -u mat ./scripts/install-aur-packages
 runuser -u mat ./scripts/setup-tmux
+runuser -u mat ./scripts/setup-theme
 # runuser -u mat ./scripts/setup-git "Matyas Vezer" "vezer.m@gmail.com"

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source ./scripts/utils
+
+echo "Setting up wallpaper... (it might take a while)"
+
+must_not_be_root
+
+git clone https://github.com/mvezer/wallpapers.git ~/Pictures/wallpapers
+feh -bg-center ~/Pictures/wallpaper/Lofi-Cafe2.png

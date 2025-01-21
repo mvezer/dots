@@ -1,5 +1,6 @@
 chili-sddm-theme
 floorp-bin
+lazydocker-bin
 quark-player-bin
 thorium-browser-bin
 zapzap
