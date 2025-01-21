@@ -1,4 +1,5 @@
 chili-sddm-theme
 floorp-bin
+quark-player-bin
 thorium-browser-bin
 zapzap
