@@ -276,6 +276,6 @@ bar {
 ## App shortcuts
 bindsym $mod+space exec --no-startup-id ~/.config/i3/scripts/app-launcher
 bindsym $mod+c exec --no-startup-id ~/.config/i3/scripts/screen-config
-bindsym $mod+b exec --no-startup-id /usr/bin/thorium-browser
-bindsym $mod+x exec --no-startup-id /usr/bin/thunar
+bindsym $mod+b exec --no-startup-id /usr/bin/qutebrowser
+bindsym $mod+x exec --no-startup-id /usr/bin/pcmanfm
 bindsym $mod+p exec --no-startup-id /usr/bin/rofi-rbw
