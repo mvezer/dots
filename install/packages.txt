@@ -45,6 +45,7 @@ npm
 picom
 rbw
 ripgrep
+ristretto
 rofi
 rofi-rbw
 sddm
