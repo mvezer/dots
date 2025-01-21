@@ -8,17 +8,10 @@ local wk_config = {
 	{ "<leader>/", cmd("FuzzyFind"), desc = "Fuzzily search in current buffer" },
 	{
 		"<leader>e",
-		function()
-			require("oil").toggle_float(vim.fn.expand("%:p:h"))
-		end,
+    function ()
+      require("mini.files").open()
+    end,
 		desc = "Opens yazi in the directory of the current buffer",
-	},
-	{
-		"<leader>E",
-		function()
-			require("oil").toggle_float(vim.fn.getcwd())
-		end,
-		desc = "Opens yazi in the current directory",
 	},
 	{ "<leader>C", cmd("e $HOME/.config/nvim/lua"), desc = "Edit config" },
 	{ "<leader>f", group = "Format" },

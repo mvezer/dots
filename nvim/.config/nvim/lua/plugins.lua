@@ -70,12 +70,11 @@ local plugin_specs = {
 		config = require("config.nvim-rooter"),
 	},
 
-	--- oil (https://github.com/stevearc/oil.nvim)
-	{
-		"stevearc/oil.nvim",
-		dependencies = { { "echasnovski/mini.icons", opts = {} } },
-		config = require("config.oil"),
-	},
+  {
+    "echasnovski/mini.nvim",
+    version = false,
+    config = require("config.mini-files"),
+  },
 
 	--- snacks (https://github.com/folke/snacks.nvim)
 	{
