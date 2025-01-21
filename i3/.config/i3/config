@@ -4,22 +4,10 @@ font pango: Hack Nerd Font Mono 10
 set $mod Mod4
 set $alt Mod1
 
-# default i3 tiling mode:
 workspace_layout default
 
-# Each window will be fullscreen and tabbed top to bottom.
-#workspace_layout stacking
-
-# Each new window will open fullscreen as a tab (left to right)
-#workspace_layout tabbed
-
-#border indicator on windows:
 default_border pixel 0
 
-# thin borders
-hide_edge_borders both
-
-# Set inner/outer gaps
 gaps inner 4
 gaps outer 4
 
@@ -167,17 +155,9 @@ set $ws8 "8:[t]"
 set $ws9 "9"
 set $ws10 "10"
 
-# use workspaces on different displays:
-# where you have to replace VGA-0/HDMI-0 with the names for your displays
-# you can get from xrandr command
-#workspace $ws1 output VGA-0
-#workspace $ws2 output VGA-0
-#workspace $ws3 output HDMI-0
-#workspace $ws4 output HDMI-0
-#workspace $ws5 output HDMI-0
-
 # bind program to workspace and focus to them on startup:
 assign [class="alacritty"] $ws1
+assign [class="ghostty"] $ws1
 # assign [class="(?i)brave"] $ws2
 # assign [class="Thunar"] $ws3
 # assign [class="thunderbird"] $ws4
@@ -194,19 +174,11 @@ exec_always --no-startup-id picom
 
 #get auth work with polkit-gnome
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# systray
 exec --no-startup-id dex --autostart --environment i3
 
-# start welcome app
-#exec --no-startup-id sh /usr/share/endeavouros/scripts/welcome --startdelay=3 
-
-# num lock activated
-#exec --no-startup-id numlockx on
-
-# configure multiple keyboard layouts and hotkey to switch (Alt+CAPSLOCK in this example)
-# exec --no-startup-id setxkbmap -layout 'de,us' -variant altgr-intl,qwerty -option 'grp:alt_shift_toggle'
-# exec --no-startup-id setxkbmap -layout us -option grp:alt_space_toggle
 exec --no-startup-id copyq --start-server
-# exec --no-startup-id xautolock -time 30
 
 # start conky:
 #exec_always --no-startup-id conky
@@ -218,7 +190,7 @@ exec --no-startup-id copyq --start-server
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
 # exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/wallpapers/Fantasy-Mountain.png
-exec --no-startup-id ~/.config/i3/scripts/wallpaper
+# exec --no-startup-id ~/.config/i3/scripts/wallpaper
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
@@ -231,13 +203,6 @@ exec --no-startup-id xset s 480 dpms 600 600 600
 #exec --no-startup-id xautolock -time 60 -locker "systemctl suspend"
 
 
-# xscreensaver
-# https://www.jwz.org/xscreensaver
-#exec --no-startup-id xscreensaver --no-splash
-
-# Desktop notifications
-# dunst config used ~/.config/dunst/dunstrc
-# set alternative config if needed:
 exec --no-startup-id /usr/bin/dunst --config ~/.config/dunst/dunstrc
 # may need to run dbus-launch explicitly: 
 #exec --no-startup-id dbus-launch /usr/bin/dunst
@@ -249,25 +214,6 @@ exec --no-startup-id /usr/bin/dunst --config ~/.config/dunst/dunstrc
 # https://github.com/nwg-piotr/autotiling
 # `yay -S autotiling ;) (it is in AUR)
 #exec_always --no-startup-id autotiling
-
-###############
-# system tray #
-###############
-# if you do not use dex: exec --no-startup-id dex --autostart --environment i3
-# you need to have tray apps started manually one by one:
-
-# start blueberry app for managing bluetooth devices from tray:
-#exec --no-startup-id blueberry-tray
-
-# networkmanager-applet
-#exec --no-startup-id nm-applet
-
-# clipman-applet
-#exec --no-startup-id xfce4-clipman
-
-##################
-# floating rules #
-##################
 
 # set floating (nontiling) for apps needing it
 for_window [class="Yad" instance="yad"] floating enable
@@ -284,21 +230,7 @@ for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enabl
 for_window [class="Pamac-manager"] floating enable
 for_window [window_role="About"] floating enable
 
-# set border of floating window
-# for_window [class="urxvt"] border pixel 1
-
-# set size of floating window
-#for_window [window_role="(?i)GtkFileChooserDialog"] resize set 640 480 #to set size of file choose dialog
-#for_window [class=".*"] resize set 640 480 #to change size of all floating windows 
-
-# set position of floating window
-#for_window [class=".*"] move position center
-
-# type-of-window appearance
-# for_window [instance = "__focused__"] border pixel 1
-#another method
 for_window [class="^.*"] border pixel 0
-# a repeat of the floating is 5 pixel border
 for_window [floating] border pixel 0
 
 ######################################
@@ -328,33 +260,18 @@ client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
 client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
 client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
 
-############################################
-# bar settings (input comes from i3blocks) #
-############################################
 
-# Start i3bar to display a workspace bar
-# (plus the system information i3status finds out, if available)
 bar {
   font pango: Noto Sans Regular 10
-# font pango: JetBrains Mono Nerd Font Mono 10
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
-# position bottom
     position top
-# i3bar_command i3bar --transparency 0.5
-# it could be that you have no primary display set: set one (xrandr --output <output> --primary)
-# reference: https://i3wm.org/docs/userguide.html#_tray_output
-#tray_output primary
     tray_padding 6
 
-# When strip_workspace_numbers is set to yes,
-# any workspace that has a name of the form
-# “[n][:][NAME]” will display only the name.
     strip_workspace_numbers yes
-##strip_workspace_name no
 
     colors {
       separator          $purple
-        background         $darkgrey
+        background         $black
         statusline         $white
 #                          		border 		        bg		txt		indicator
         focused_workspace	$mediumgrey	   	$grey		$darkgrey	$purple
@@ -365,7 +282,6 @@ bar {
 }
 
 ## App shortcuts
-# bindsym $mod+space exec --no-startup-id rofi -modi drun -show drun -config ~/.config/rofi/apps.rasi
 bindsym $mod+space exec --no-startup-id ~/.config/i3/scripts/app-launcher
 bindsym $mod+c exec --no-startup-id ~/.config/i3/scripts/screen-config
 bindsym $mod+b exec --no-startup-id /usr/bin/thorium-browser
