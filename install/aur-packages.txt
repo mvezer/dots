@@ -1,6 +1,8 @@
 chili-sddm-theme
 floorp-bin
+i3-rounded-border-patch
 lazydocker-bin
 quark-player-bin
 thorium-browser-bin
+xdg-utils-handlr
 zapzap

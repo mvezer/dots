@@ -6,6 +6,7 @@ bat
 bitwarden
 bitwarden-cli
 blueberry
+bluez-utils
 btop
 chili-sddm-theme
 copyq
@@ -25,6 +26,7 @@ git-delta
 glow
 go
 grub-btrfs
+handlr-regex
 i3-wm
 i3bar
 i3blocks
@@ -38,6 +40,7 @@ lua
 lua53
 luajit
 luarocks
+mpv
 neovim
 nodejs
 noto-fonts
