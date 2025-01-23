@@ -39,6 +39,10 @@ bindsym $mod+$alt+s move window to workspace $ws7
 bindsym $mod+$alt+7 move window to workspace $ws7
 bindsym $mod+$alt+t move window to workspace $ws8
 bindsym $mod+$alt+8 move window to workspace $ws8
+bindsym $mod+$alt+g move window to workspace $ws9
+bindsym $mod+$alt+9 move window to workspace $ws9
+bindsym $mod+$alt+m move window to workspace $ws10
+bindsym $mod+$alt+0 move window to workspace $ws10
 
 # switch to workspace
 bindsym $mod+n    workspace  $ws1
@@ -57,6 +61,10 @@ bindsym $mod+s    workspace  $ws7
 bindsym $mod+7    workspace  $ws7
 bindsym $mod+t    workspace  $ws8
 bindsym $mod+8    workspace  $ws8
+bindsym $mod+g    workspace  $ws9
+bindsym $mod+9    workspace  $ws9
+bindsym $mod+m    workspace  $ws10
+bindsym $mod+0    workspace  $ws10
 
 # bindsym $mod+w mode "resize"
 
@@ -67,7 +75,7 @@ bindsym $mod+Return exec --no-startup-id ghostty
 bindsym $mod+q kill
 
 # exit-menu
-# bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
+bindsym $mod+Shift+x exec --no-startup-id ~/.config/i3/scripts/powermenu
 
 # Lock the system
 # lock with a picture:
@@ -158,13 +166,15 @@ set $ws10 "10"
 # bind program to workspace and focus to them on startup:
 assign [class="alacritty"] $ws1
 assign [class="ghostty"] $ws1
+assign [class="qutebrowser"] $ws2
 # assign [class="(?i)brave"] $ws2
 # assign [class="Thunar"] $ws3
 # assign [class="thunderbird"] $ws4
 # assign [class="TelegramDesktop"] $ws5
 
 # automatic set focus new window if it opens on another workspace than the current:
-for_window [class=alacritty] focus
+for_window [class=ghostty] focus
+for_window [class=qutebrowser] focus
 # for_window [class=(?i)brave] focus
 # for_window [class=Thunar] focus
 # for_window [class=Thunderbird] focus
@@ -222,60 +232,66 @@ for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enabl
 for_window [class="Pamac-manager"] floating enable
 for_window [window_role="About"] floating enable
 
-for_window [class="^.*"] border pixel 0
-for_window [floating] border pixel 0
+for_window [class="^.*"] border pixel 2
+for_window [floating] border pixel 2
 
-######################################
-# color settings for bar and windows #
-######################################
+# kanagawa color theme <3
+set $black          #16161d
+set $dark_grey      #1e1f28
+set $medium_grey    #2a2a37
+set $medium_lighter #363646
+set $light_grey     #54546d
+set $white          #dcd7ba
+set $warm_grey      #727169
+set $dark_blue      #223249
+set $medium_blue    #2d4f67
+set $light_purple   #938aa9
+set $purple         #957fb8
+set $light_blue     #7e9cd8
+set $teal           #7aa89f
+set $pink           #d27e99
+set $baby_blue      #7fb4ca
+set $red            #e82424
+set $green          #98bb6c
+set $salmon_pink    #e46876
+set $peach          #ffa066
+set $dark_teal      #6a9589
+set $sand           #e6c384
+set $light_brown    #c0a36e
+set $magenta        #ff5d62
+set $pastel_blue    #9cabca
+set $dark_blue      #658594
 
-# Define colors variables:
-set $darkbluetrans	#08052be6
-set $darkblue		#08052b
-set $lightblue		#5294e2
-set $urgentred		#e53935
-set $white		#ffffff
-set $black		#000000
-# set $purple		#e345ff
-set $purple		#a292a3
-set $darkgrey		#383c4a
-set $grey		#b0b5bd
-set $mediumgrey		#8b8b8b
-set $yellowbrown	#e1b700
-
-# define colors for windows:
-#class		        	border		bground		text		indicator	child_border
-client.focused		    	$purple   $purple   $purple    $purple    $purple
-#
-# client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$mediumgrey
-client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
-client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
-client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
-
+#class                  border		    bground		      text		    indicator     child_border
+client.focused		    	$red          $medium_grey    $light_grey $pink         $pastel_blue
+client.unfocused	    	$dark_grey	  $medium_grey	  $light_grey	$medium_grey	$dark_grey
+client.focused_inactive $dark_grey	  $medium_grey	  $light_grey	$medium_grey	$light_grey
+client.urgent		    	  $red	        $red	          $white		  $sand	        $light_brown
 
 bar {
   font pango: Noto Sans Regular 10
-    status_command i3blocks -c ~/.config/i3/i3blocks.conf
-    position top
-    tray_padding 6
+  status_command i3blocks -c ~/.config/i3/i3blocks.conf
+  position top
+  tray_padding 6
 
-    strip_workspace_numbers yes
+  strip_workspace_numbers yes
 
-    colors {
-      separator          $purple
-        background         $black
-        statusline         $white
-#                          		border 		        bg		txt		indicator
-        focused_workspace	$mediumgrey	   	$grey		$darkgrey	$purple
-        active_workspace	$lightblue      	$mediumgrey	$darkgrey	$purple
-        inactive_workspace	$darkgrey   		$darkgrey	$grey		$purple
-        urgent_workspace	$urgentred	    	$urgentred	$white		$purple
-    }
+  colors {
+    separator   $medium_grey
+    background  $black
+    statusline  $white
+    #                   border      bg		      txt     indicator
+    focused_workspace	  $dark_grey 	$green		  $black  $light_brown
+    active_workspace	  $dark_grey 	$dark_grey	$white	$light_brown
+    inactive_workspace	$dark_grey	$dark_grey	$white	$light_brown
+    urgent_workspace	  $red 	      $red	      $black	$light_brown
+  }
 }
 
 ## App shortcuts
 bindsym $mod+space exec --no-startup-id ~/.config/i3/scripts/app-launcher
 bindsym $mod+c exec --no-startup-id ~/.config/i3/scripts/screen-config
+bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/show-power-menu
 bindsym $mod+b exec --no-startup-id /usr/bin/qutebrowser
 bindsym $mod+x exec --no-startup-id /usr/bin/pcmanfm
 bindsym $mod+p exec --no-startup-id /usr/bin/rofi-rbw

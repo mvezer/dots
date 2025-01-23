@@ -1,0 +1,1 @@
+rofi -show menu -modi "menu:~/.config/i3/scripts/power-menu" -config ~/.config/rofi/powermenu.rasi

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rofi -modi drun -show drun -p "app launcher" -config ~/.config/rofi/apps.rasi
+rofi -modi drun -show drun -config ~/.config/rofi/app-launcher.rasi
