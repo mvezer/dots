@@ -39,8 +39,8 @@ return function ()
     sections = {
       lualine_a = { "mode" },
       lualine_b = { "branch", "diff", "diagnostics" },
-      -- lualine_c = { filename_plus_project, require("recorder").recordingStatus },
-      lualine_c = { filename_plus_project },
+      lualine_c = { filename_plus_project, require("recorder").recordingStatus },
+      -- lualine_c = { filename_plus_project },
       -- lualine_x = { "fileformat", "filetype" },
       lualine_x = { copilot_autosuggestion, autoformat, "g:coc_status" },
       lualine_y = { "filetype" },

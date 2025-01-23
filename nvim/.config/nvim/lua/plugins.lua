@@ -62,18 +62,17 @@ local plugin_specs = {
 		config = require("config.marks"),
 	},
 
-	--- nvim-rooter (https://github.com/notjedi/nvim-rooter.lua)
-	{
-		"notjedi/nvim-rooter.lua",
-		lazy = true,
-		event = "BufReadPre",
-		config = require("config.nvim-rooter"),
-	},
-
+  -- neo-tree (https://github.com/nvim-neo-tree/neo-tree.nvim)
   {
-    "echasnovski/mini.nvim",
-    version = false,
-    config = require("config.mini-files"),
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    },
+    config = require("config.neotree")
   },
 
 	--- snacks (https://github.com/folke/snacks.nvim)
@@ -124,7 +123,6 @@ local plugin_specs = {
 				},
 				opts = {},
 			},
-			-- { "fannheyward/telescope-coc.nvim" }
 		},
 		config = require("config.telescope"),
 	},
@@ -202,6 +200,12 @@ local plugin_specs = {
 		event = "BufWritePre",
 		config = require("config.conform"),
 	},
+
+  -- nvim-recorder (https://github.com/chrisgrieser/nvim-recorder)
+  {
+    "chrisgrieser/nvim-recorder",
+    opts = {},
+  },
 
 	--- ufo (https://github.com/kevinhwang91/nvim-ufo)
 	{

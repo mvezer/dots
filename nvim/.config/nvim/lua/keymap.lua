@@ -6,13 +6,7 @@ local wk = require("which-key")
 local Snacks = require("snacks")
 local wk_config = {
 	{ "<leader>/", cmd("FuzzyFind"), desc = "Fuzzily search in current buffer" },
-	{
-		"<leader>e",
-    function ()
-      require("mini.files").open()
-    end,
-		desc = "Opens yazi in the directory of the current buffer",
-	},
+	{ "<leader>e", cmd("Neotree toggle"), desc = "Toggles the file explorer window" },
 	{ "<leader>C", cmd("e $HOME/.config/nvim/lua"), desc = "Edit config" },
 	{ "<leader>f", group = "Format" },
 	{ "<leader>fF", cmd("Format"), desc = "Format with conform" },
@@ -219,8 +213,8 @@ local wk_config = {
 	},
 	{ "<c-m>", cmd("NoiceAll"), desc = "Shows recent messages" },
 	{ "<c-t>", cmd("ToggleMarkdownTodo"), desc = "Toggle markdown todo" },
-	{ "Q", "q" }, -- to prevent accidential recording (https://github.com/hrsh7th/nvim-cmp/issues/1692)
-	{ "q", "<nop>" },
+	-- { "Q", "q" }, -- to prevent accidential recording (https://github.com/hrsh7th/nvim-cmp/issues/1692)
+	-- { "q", "<nop>" },
 
 	--------------------------------------------- flash ---------------------------------------------
 	{
