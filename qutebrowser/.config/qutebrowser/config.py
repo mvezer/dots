@@ -13,6 +13,19 @@
 # Change the argument to True to still load settings configured via autoconfig.yml
 config.load_autoconfig(False)
 
+# Load a restored tab as soon as it takes focus.
+# Type: Bool
+c.session.lazy_restore = True
+
+# Always restore open sites when qutebrowser is reopened. Without this
+# option set, `:wq` (`:quit --save`) needs to be used to save open tabs
+# (and restore them), while quitting qutebrowser in any other way will
+# not save/restore the session. By default, this will save to the
+# session which was last loaded. This behavior can be customized via the
+# `session.default_name` setting.
+# Type: Bool
+c.auto_save.session = True
+
 # Which cookies to accept. With QtWebEngine, this setting also controls
 # other features with tracking capabilities similar to those of cookies;
 # including IndexedDB, DOM storage, filesystem API, service workers, and
@@ -175,12 +188,33 @@ c.tabs.position = 'left'
 #   - never: Always hide the tab bar.
 #   - multiple: Hide the tab bar if only one tab is open.
 #   - switching: Show the tab bar when switching tabs.
-c.tabs.show = 'switching'
+c.tabs.show = 'always'
 
 # Width (in pixels or as percentage of the window) of the tab bar if
 # it's vertical.
 # Type: PercOrInt
 c.tabs.width = '10%'
+
+# Search engines which can be used via the address bar.  Maps a search
+# engine name (such as `DEFAULT`, or `ddg`) to a URL with a `{}`
+# placeholder. The placeholder will be replaced by the search term, use
+# `{{` and `}}` for literal `{`/`}` braces.  The following further
+# placeholds are defined to configure how special characters in the
+# search terms are replaced by safe characters (called 'quoting'):  *
+# `{}` and `{semiquoted}` quote everything except slashes; this is the
+# most   sensible choice for almost all search engines (for the search
+# term   `slash/and&amp` this placeholder expands to `slash/and%26amp`).
+# * `{quoted}` quotes all characters (for `slash/and&amp` this
+# placeholder   expands to `slash%2Fand%26amp`). * `{unquoted}` quotes
+# nothing (for `slash/and&amp` this placeholder   expands to
+# `slash/and&amp`). * `{0}` means the same as `{}`, but can be used
+# multiple times.  The search engine named `DEFAULT` is used when
+# `url.auto_search` is turned on and something else than a URL was
+# entered to be opened. Other search engines can be used by prepending
+# the search engine name to the search term, e.g. `:open google
+# qutebrowser`.
+# Type: Dict
+c.url.searchengines = {'DEFAULT': 'https://google.com/search?hl=en&q={}', '!a': 'https://www.amazon.com/s?k={}', '!d': 'https://duckduckgo.com/?ia=web&q={}', '!dd': 'https://thefreedictionary.com/{}', '!e': 'https://www.ebay.com/sch/i.html?_nkw={}', '!fb': 'https://www.facebook.com/s.php?q={}', '!gh': 'https://github.com/search?o=desc&q={}&s=stars', '!gist': 'https://gist.github.com/search?q={}', '!gi': 'https://www.google.com/search?tbm=isch&q={}&tbs=imgo:1', '!gn': 'https://news.google.com/search?q={}', '!ig': 'https://www.instagram.com/explore/tags/{}', '!m': 'https://www.google.com/maps/search/{}', '!p': 'https://pry.sh/{}', '!r': 'https://www.reddit.com/search?q={}', '!sd': 'https://slickdeals.net/newsearch.php?q={}&searcharea=deals&searchin=first', '!t': 'https://www.thesaurus.com/browse/{}', '!tw': 'https://twitter.com/search?q={}', '!w': 'https://en.wikipedia.org/wiki/{}', '!yelp': 'https://www.yelp.com/search?find_desc={}', '!yt': 'https://www.youtube.com/results?search_query={}'}
 
 # Render all web contents using a dark theme. On QtWebEngine < 6.7, this
 # setting requires a restart and does not support URL patterns, only the
