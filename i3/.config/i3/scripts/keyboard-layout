@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [[ "${BLOCK_BUTTON}" -eq 1 ]]; then
+  ~/.config/i3/scripts/keyboard-layout-menu
+fi
+
 KBD=$(/usr/bin/xkblayout-state print '%s')
 echo $KBD
 

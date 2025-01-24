@@ -91,9 +91,6 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to update i3)
 bindsym $mod+Shift+r restart
 
-# Backlight control
-#bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +10 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
-#bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -10 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 # Backlight setting using dunst osc
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_up
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_down
@@ -180,6 +177,8 @@ for_window [class=qutebrowser] focus
 # for_window [class=Thunderbird] focus
 # for_window [class=TelegramDesktop] focus
 
+# autostart
+
 exec_always --no-startup-id picom
 
 #get auth work with polkit-gnome
@@ -190,17 +189,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 exec --no-startup-id copyq --start-server
 
-# start conky:
-#exec_always --no-startup-id conky
-
-# start a script to setup displays
-# uncomment the next line, use arandr to setup displays and save the file as monitor:
-# exec --no-startup-id ~/.screenlayout/monitor.sh
-
-# set wallpaper
-# exec --no-startup-id sleep 2 && nitrogen --restore
-# exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/wallpapers/Fantasy-Mountain.png
-# exec --no-startup-id ~/.config/i3/scripts/wallpaper
+exec_always --no-startup-id autorandr -c
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
@@ -292,6 +281,7 @@ bar {
 bindsym $mod+space exec --no-startup-id ~/.config/i3/scripts/app-launcher
 bindsym $mod+c exec --no-startup-id ~/.config/i3/scripts/screen-config
 bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/show-power-menu
+bindsym $mod+k exec --no-startup-id ~/.config/i3/scripts/keyboard-layout-menu
 bindsym $mod+b exec --no-startup-id /usr/bin/qutebrowser
 bindsym $mod+x exec --no-startup-id /usr/bin/pcmanfm
 bindsym $mod+p exec --no-startup-id /usr/bin/rofi-rbw

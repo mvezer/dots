@@ -1,0 +1,9 @@
+#!/bin/bash
+
+available_layouts=$'us
+de'
+
+layout=$(echo "$available_layouts" | rofi -dpi 1 -dmenu -p "select keyboard layout" -config ~/.config/rofi/keyboard-layouts.rasi)
+if [ -n "$layout" ]; then
+  setxkbmap $layout
+fi
