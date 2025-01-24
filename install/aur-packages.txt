@@ -1,4 +1,5 @@
 chili-sddm-theme
+eos-qogir-icons
 floorp-bin
 i3-rounded-border-patch
 lazydocker-bin

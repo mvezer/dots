@@ -1,0 +1,17 @@
+#!/bin/bash
+
+source ./scripts/utils
+
+echo "Setting up handlr (xdg-open) mime types..."
+
+must_not_be_root
+
+DEFAULT_BROWSER="org.qutebrowser.qutebrowser.desktop"
+DEFAULT_IMAGE_VIEWER="org.xfce.ristretto.desktop"
+
+handlr set image/jpeg $DEFAULT_IMAGE_VIEWER
+handlr set image/png $DEFAULT_IMAGE_VIEWER
+handlr set image/webp $DEFAULT_IMAGE_VIEWER
+handlr set image/gif $DEFAULT_IMAGE_VIEWER
+handlr set x-scheme-handler/http $DEFAULT_BROWSER
+handlr set x-scheme-handler/https $DEFAULT_BROWSER
