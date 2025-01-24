@@ -3,6 +3,7 @@ eval "$(starship init zsh)"
 # env vars
 export SECRETS="$HOME/.secrets"
 export EDITOR="nvim"
+export BROWSER="qutebrowser"
 export ZSH_INCLUDES="$HOME/.zsh_includes"
 export WORKSPACE="$HOME/workspace"
 export VOLTA_HOME="$HOME/.volta"
