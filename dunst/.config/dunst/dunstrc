@@ -2,11 +2,38 @@
 # https://github.com/endeavouros-team/endeavouros-i3wm-setup
 # See dunst(5) for all configuration options
 
+
+# set $black          #16161d
+# set $dark_grey      #1e1f28
+# set $medium_grey    #2a2a37
+# set $medium_lighter #363646
+# set $light_grey     #54546d
+# set $white          #dcd7ba
+# set $warm_grey      #727169
+# set $dark_blue      #223249
+# set $medium_blue    #2d4f67
+# set $light_purple   #938aa9
+# set $purple         #957fb8
+# set $light_blue     #7e9cd8
+# set $teal           #7aa89f
+# set $pink           #d27e99
+# set $baby_blue      #7fb4ca
+# set $red            #e82424
+# set $green          #98bb6c
+# set $salmon_pink    #e46876
+# set $peach          #ffa066
+# set $dark_teal      #6a9589
+# set $sand           #e6c384
+# set $light_brown    #c0a36e
+# set $magenta        #ff5d62
+# set $pastel_blue    #9cabca
+# set $dark_blue      #658594
+
 [global]
     ### Display ###
-    monitor = 2
+    # monitor = 2
 
-    follow = none
+    follow = keyboard
 
     ### Geometry ###
     width = 300
@@ -41,8 +68,8 @@
     padding = 8
     horizontal_padding = 8
     text_icon_padding = 0
-    frame_width = 1
-    frame_color = "#7f3fbf"
+    frame_width = 2
+    frame_color = "#e6c384"
     gap_size = 0
     separator_color = auto
     sort = yes
@@ -95,7 +122,7 @@
 
 
 [urgency_low]
-    background = "#28143c"
+    background = "#16161d"
     foreground = "#ffffff"
     timeout = 5
     icon = /usr/share/icons/Qogir/16/status/package-installed-outdated.svg
