@@ -48,6 +48,7 @@ noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
 npm
+obsidian
 pcmanfm
 picom
 rbw
@@ -61,6 +62,7 @@ snap-pac
 snapper
 stern
 stow
+syncthing
 the_silver_searcher
 tldr
 tmux
