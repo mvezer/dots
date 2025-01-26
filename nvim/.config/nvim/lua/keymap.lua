@@ -13,7 +13,7 @@ local wk_config = {
 	{ "<leader>ff", cmd("FormatToggle"), desc = "Toggle autoformatting" },
 	{ "<leader>m", cmd("TSJToggle"), desc = "Toggle split/join" },
 
-	--------------------------------------------- buffers & grapple ---------------------------------------------
+	--------------------------------------------- buffers ---------------------------------------------------
 	{ "<leader>b", group = "Buffer" },
 	{
 		"<leader>ba",
@@ -32,6 +32,7 @@ local wk_config = {
 	{ "<leader>by", cmd("%y"), desc = "[Y]ank the entire buffer" },
 	{ "<leader>bY", cmd("let @+ = expand('%:p')"), desc = "[Y]ank the full filepath" },
 	{ "<leader>bd", cmd("Cdc"), desc = "Cd the current buffers dir" },
+  { "<leader>bb", cmd("Neotree buffers toggle"), desc = "Show all open buffers" },
 	{
 		"<c-x>",
 		function()
@@ -100,10 +101,8 @@ local wk_config = {
 
 	--------------------------------------------- notes ---------------------------------------------
 	{ "<leader>n", group = "Notes" },
-	{ "<leader>ns", cmd("SaveNotes"), desc = "Commits and pushes all note changes" },
-	{ "<leader>nl", cmd("LoadNotes"), desc = "Pulls notes" },
-	{ "<leader>nf", cmd("AddFrontmatter"), desc = "Adds the markdown frontmatter to the beginning of the buffer" },
-	{ "<leader>nn", cmd("OpenLastEditedNote"), desc = "Opens the last edited note" },
+	{ "<leader>ns", cmd("ObsidianSearch"), desc = "Searches notes" },
+	{ "<leader>nn", cmd("ObsidianNewWithFileName"), desc = "Creates a new note" },
 
 	--------------------------------------  AI stuff: Copilot & ChatGPT -------------------------------------
 	{ "<leader>a", group = "AI functionality" },

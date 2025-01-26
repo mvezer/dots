@@ -170,6 +170,7 @@ local plugin_specs = {
 				--- blink.cmp (https://github.com/Saghen/blink.cmp)
 				"saghen/blink.cmp",
 				version = "v0.*",
+        dependencies = { "saghen/blink.compat", lazy = true, verson = false },
 				config = require("config.blink"),
 			},
 		},
@@ -237,8 +238,29 @@ local plugin_specs = {
       "rcarriga/nvim-notify",
     },
     config = require("config.noice")
+  },
+
+  -- obsidian
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*",  -- recommended, use latest release instead of latest commit
+    lazy = false,
+    -- ft = "markdown",
+    -- replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+    -- event = {
+      --   -- if you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+      --   -- e.g. "bufreadpre " .. vim.fn.expand "~" .. "/my-vault/*.md"
+      --   -- refer to `:h file-pattern` for more examples
+      --   "bufreadpre path/to/my-vault/*.md",
+      --   "bufnewfile path/to/my-vault/*.md",
+      -- },
+      dependencies = {
+        -- required.
+        "nvim-lua/plenary.nvim",
+      },
+      config = require("config.obsidian")
+    }
   }
-}
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
