@@ -190,6 +190,7 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id copyq --start-server
 
 exec_always --no-startup-id autorandr -c
+exec_always --no-startup-id ~/.fehbg
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
