@@ -2,4 +2,4 @@
 
 # sets the wallpaper
 
-feh --bg-center ~/Pictures/wallpapers/Lofi-Cafe2.png
+feh --bg-center $(cat ~/.wallpaper)
