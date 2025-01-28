@@ -1,4 +1,3 @@
-alacritty
 arandr
 autorandr
 base-devel
@@ -6,12 +5,15 @@ bat
 bitwarden
 bitwarden-cli
 blueberry
+bluez
 bluez-utils
 btop
-chili-sddm-theme
+btrfs-progs
 copyq
 curl
+debugedit
 discord
+dmenu
 docker
 dunst
 eza
@@ -28,7 +30,6 @@ go
 grub-btrfs
 handlr-regex
 i3-wm
-i3bar
 i3blocks
 i3lock
 i3status
@@ -40,6 +41,7 @@ lua
 lua53
 luajit
 luarocks
+man-db
 mpv
 neovim
 nodejs
@@ -62,6 +64,7 @@ snap-pac
 snapper
 stern
 stow
+stow
 syncthing
 the_silver_searcher
 tldr
@@ -75,6 +78,9 @@ vim
 wget
 xautolock
 xclip
+xf86-input-libinput
+xorg-server
+xorg-xinit
 yazi
 zoxide
 zsh
