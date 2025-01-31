@@ -1,0 +1,21 @@
+#!/bin/bash
+
+pushd
+cd ~/.dotfiles
+rm -rf ~/.config/autorandr; stow autorandr
+rm -rf ~/.config/bin; stow bin
+rm -rf ~/.config/dunst; stow dunst
+rm -rf ~/.config/fastfetch; stow fastfetch
+rm -rf ~/.config/ghostty; stow ghostty
+rm -rf ~/.config/i3; stow i3
+rm -rf ~/.config/lazygit; stow lazygit
+rm -rf ~/.config/nvim; stow nvim
+rm -rf ~/.config/picom; stow picom
+rm -rf ~/.config/qutebrowser; stow qutebrowser
+rm -rf ~/.config/rofi; stow rofi
+rm -rf ~/.config/rofi-rbw.rc; stow rofi
+rm -rf ~/starship.toml; stow starship
+rm -rf ~/.config/tmux; stow tmux
+rm -rf ~/.config/yazi; stow yazi
+rm -rf ~/.zshrc; stow zsh
+popd

@@ -8,4 +8,4 @@ must_not_be_root
 
 echo "installing shit..."
 
-yay -Sy --noconfirm --quiet $(cat ./aur-packages.txt | tr '\n' ' ')
+yay -S $(cat ./aur-packages.txt | tr '\n' ' ')
