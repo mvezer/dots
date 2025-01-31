@@ -3,3 +3,4 @@ bin/.local/state
 bin/.local/bin/nvr
 nvim/.config/nvim/lazy-lock.json
 bin/.local/bin/config.json
+qutebrowser/.config/qutebrowser/quickmarks
