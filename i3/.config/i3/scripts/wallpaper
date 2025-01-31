@@ -2,4 +2,4 @@
 
 # sets the wallpaper
 
-feh --bg-center $(cat ~/.wallpaper)
+feh --bg-fill $(cat ~/.wallpaper)
