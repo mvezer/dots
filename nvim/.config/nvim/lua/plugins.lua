@@ -50,10 +50,16 @@ local plugin_specs = {
 	},
 
   --- render markdown (https://github.com/MeanderingProgrammer/render-markdown.nvim)
+  -- {
+  --   'MeanderingProgrammer/render-markdown.nvim',
+  --   dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+  --   opts = {},
+  -- },
+  -- markview (https://github.com/OXY2DEV/markview.nvim?tab=readme-ov-file#-installation)
   {
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-    opts = {},
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+    config = require("config.markview")
   },
 
 	--- marks (https://github.com/chentoast/marks.nvim)

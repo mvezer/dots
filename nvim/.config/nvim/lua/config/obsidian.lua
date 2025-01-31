@@ -3,7 +3,7 @@ return function()
     workspaces = {
       {
         name = "all-the-things",
-        path = "~/obsidiian-notes/all-the-things"
+        path = "~/notes"
       }
     }
   })
