@@ -1,5 +1,5 @@
 [font]
-size=8.0
+size=12.0
 
 [font.normal]
 family = "JetBrainsMono Nerd Font Mono"
@@ -13,9 +13,19 @@ shape = "Block"
 [general]
 live_config_reload = true
 import = [
-    "~/.config/alacritty/themes/themes/kanagawa_dragon.toml"
+    "~/.config/alacritty/themes/kanagawa_dragon.toml"
 ]
 
-# we don't need window title
 [window]
 decorations = "none"
+option_as_alt = "Both"
+
+[terminal.shell]
+program = "/opt/homebrew/bin/tmux"
+args = [
+  "new-session",
+  "-A",
+  "-D",
+  "-s",
+  "default"
+]
