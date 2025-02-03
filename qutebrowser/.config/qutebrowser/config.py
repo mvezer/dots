@@ -151,9 +151,17 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # Type: Bool
 config.set('content.local_content_can_access_remote_urls', True, 'file:///home/mat/.local/share/qutebrowser/userscripts/*')
 
+# Allow locally loaded documents to access remote URLs.
+# Type: Bool
+config.set('content.local_content_can_access_remote_urls', True, 'file:///Users/matyas.vezer/Library/Application%20Support/qutebrowser/userscripts/*')
+
 # Allow locally loaded documents to access other local URLs.
 # Type: Bool
 config.set('content.local_content_can_access_file_urls', False, 'file:///home/mat/.local/share/qutebrowser/userscripts/*')
+
+# Allow locally loaded documents to access other local URLs.
+# Type: Bool
+config.set('content.local_content_can_access_file_urls', False, 'file:///Users/matyas.vezer/Library/Application%20Support/qutebrowser/userscripts/*')
 
 # Allow websites to show notifications.
 # Type: BoolAsk
@@ -162,6 +170,15 @@ config.set('content.local_content_can_access_file_urls', False, 'file:///home/ma
 #   - false
 #   - ask
 config.set('content.notifications.enabled', False, 'https://www.youtube.com')
+
+# Allow websites to register protocol handlers via
+# `navigator.registerProtocolHandler`.
+# Type: BoolAsk
+# Valid values:
+#   - true
+#   - false
+#   - ask
+config.set('content.register_protocol_handler', True, 'https://mail.google.com?extsrc=mailto&url=%25s')
 
 # Editor (and arguments) to use for the `edit-*` commands. The following
 # placeholders are defined:  * `{file}`: Filename of the file to be
@@ -224,7 +241,7 @@ c.url.searchengines = {'DEFAULT': 'https://google.com/search?hl=en&q={}', '!a': 
 # `colors.webpage.darkmode.policy.images` to `never`.  - "With selective
 # image inversion": qutebrowser default settings.
 # Type: Bool
-c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = False
 
 # Bindings for normal mode
 config.bind('<Alt+Down>', 'tab-next')
