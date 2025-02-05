@@ -32,6 +32,9 @@ return function ()
     --   notify = true,
     -- },
     words = { enabled = false },
-    zen = { enabled = true }
+    zen = { enabled = true },
+    picker = {
+      enabled = true
+    }
   })
 end

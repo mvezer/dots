@@ -5,8 +5,17 @@ end
 local wk = require("which-key")
 local Snacks = require("snacks")
 local wk_config = {
-	{ "<leader>/", cmd("FuzzyFind"), desc = "Fuzzily search in current buffer" },
-	{ "<leader>e", cmd("Neotree toggle"), desc = "Toggles the file explorer window" },
+	{ "<leader>/", function () Snacks.picker.lines() end, desc = "Fuzzily search in current buffer" },
+	-- { "<leader>e", cmd("Neotree toggle"), desc = "Toggles the file explorer window" },
+	{ "<leader>e", function ()
+    Snacks.picker.explorer({
+      finder = "explorer",
+      layout = {
+        layout = { position = "left" },
+        preview = true
+      }
+    })
+  end, desc = "Toggles the file explorer window" },
 	{ "<leader>C", cmd("e $HOME/.config/nvim/lua"), desc = "Edit config" },
 	{ "<leader>f", group = "Format" },
 	{ "<leader>fF", cmd("Format"), desc = "Format with conform" },
@@ -53,26 +62,38 @@ local wk_config = {
 
 	--------------------------------------------- search stuff ---------------------------------------------
 	{ "<leader>s", group = "Search" },
-	{ "<leader>sg", cmd("Telescope git_files"), desc = "Search [g]it files" },
-	{ "<leader>sf", cmd("Telescope find_files"), desc = "Search [f]iles" },
-	{ "<leader>sh", cmd("Telescope help_tags"), desc = "Search [h]elp tags" },
-	{
-		"<leader>sw",
-		function()
-			require("telescope.builtin").grep_string({ cwd = vim.fn.getcwd() })
-		end,
-		desc = "Search [w]ord under the cursor",
-	},
-	{ "<leader>st", cmd("Telescope live_grep"), desc = "Search [t]ext" },
-	{ "<leader>sd", cmd("Telescope diagnostics"), desc = "Search [d]iagnostics" },
-	{ "<leader>sy", cmd("Telescope neoclip"), desc = "Search [y]anks (neoclip)" },
-	{ "<leader>sr", cmd("Telescope oldfiles"), desc = "Search [r]ecently opened files" },
-	{ "<leader>sR", cmd("Telescope registers"), desc = "Search [R]egisters" },
-	-- { "<leader>sn", cmd("ObsidianSearch"), desc = "Search Obsidian [n]otes" },
-	{ "<leader>su", cmd("Telescope undo"), desc = "Search undo list" },
-	{ "<leader>sb", cmd("Telescope buffers"), desc = "Search [b]uffers" },
-	{ "<leader>ss", cmd("Telescope git_files"), desc = "Search files in git repo" },
-	{ "<leader>sm", cmd("Telescope marks"), desc = "Search marks" },
+	{ "<leader>sg", function() Snacks.picker.git_files() end, desc = "Search [g]it files" },
+	{ "<leader>sh", function () Snacks.picker.help() end, desc = "Search [h]elp tags" },
+	{ "<leader>sb", function () Snacks.picker.buffers() end, desc = "Search [b]buffers" },
+	{ "<leader>sr", function () Snacks.picker.recent() end, desc = "Search [r]ecent files" },
+	{ "<leader>sf", function () Snacks.picker.files() end, desc = "Search [f]iles" },
+	{ "<leader>sw", function () Snacks.picker.grep_word() end, desc = "Search [w]ord", mode = { "n", "x" } },
+	{ "<leader>st", function () Snacks.picker.grep() end, desc = "Search [t]ext" },
+	{ "<leader>sj", function () Snacks.picker.jumps() end, desc = "Search [j]umps" },
+	{ "<leader>su", function () Snacks.picker.undo() end, desc = "Search [u]ndo" },
+	{ "<leader>sm", function () Snacks.picker.marks() end, desc = "Search [m]arks" },
+	{ "<leader>sM", function () Snacks.picker.man() end, desc = "Search ma[n] pages" },
+	{ "<leader>:", function () Snacks.picker.command_history() end, desc = "Command history" },
+	-- { "<leader>sg", cmd("Telescope git_files"), desc = "Search [g]it files" },
+	-- { "<leader>sf", cmd("Telescope find_files"), desc = "Search [f]iles" },
+	-- { "<leader>sh", cmd("Telescope help_tags"), desc = "Search [h]elp tags" },
+	-- {
+	-- 	"<leader>sw",
+	-- 	function()
+	-- 		require("telescope.builtin").grep_string({ cwd = vim.fn.getcwd() })
+	-- 	end,
+	-- 	desc = "Search [w]ord under the cursor",
+	-- },
+	-- { "<leader>st", cmd("Telescope live_grep"), desc = "Search [t]ext" },
+	-- { "<leader>sd", cmd("Telescope diagnostics"), desc = "Search [d]iagnostics" },
+	-- { "<leader>sy", cmd("Telescope neoclip"), desc = "Search [y]anks (neoclip)" },
+	-- { "<leader>sr", cmd("Telescope oldfiles"), desc = "Search [r]ecently opened files" },
+	-- { "<leader>sR", cmd("Telescope registers"), desc = "Search [R]egisters" },
+	-- { "<leader>sn", cmd("ObsidianSearch"), desc = "Search Obsidian [n]otes" }, -- NO shit
+	-- { "<leader>su", cmd("Telescope undo"), desc = "Search undo list" },
+	-- { "<leader>sb", cmd("Telescope buffers"), desc = "Search [b]uffers" },
+	-- { "<leader>ss", cmd("Telescope git_files"), desc = "Search files in git repo" },
+	-- { "<leader>sm", cmd("Telescope marks"), desc = "Search marks" },
 
 	--------------------------------------------- git ---------------------------------------------
 	{ "<leader>g", group = "Git" },
@@ -161,11 +182,11 @@ local wk_config = {
 	{ "p", "P", desc = "Use P instead p in visual mode, to keep the contents of the register", mode = { "v" } },
 
 	--------------------------------------------- windows ---------------------------------------------
-	{ "<c-v>", cmd(":vsplit"), desc = "Split [v]ertically" },
-	{ "<c-down>", cmd("NvimTmuxNavigateDown"), desc = "Go to window down" },
-	{ "<c-up>", cmd("NvimTmuxNavigateUp"), desc = "Go to window up" },
-	{ "<c-right>", cmd("NvimTmuxNavigateRight"), desc = "Go to window right" },
-	{ "<c-left>", cmd("NvimTmuxNavigateLeft"), desc = "Go to window left" },
+	{ "<c-v>", cmd("vsplit"), desc = "Split [v]ertically" },
+	{ "<C-down>", cmd("ZellijNavigateDown"), desc = "Go to window down" },
+	{ "<C-up>",  cmd("ZellijNavigateUp"), desc = "Go to window up" },
+	{ "<C-right>", cmd("ZellijNavigateRightTab"), desc = "Go to window right" },
+	{ "<C-left>", cmd("ZellijNavigateLeftTab"), desc = "Go to window left" },
 
 	--------------------------------------------- marks ---------------------------------------------
 	{ "mm", "<Plug>(Marks-toggle)", desc = "Toggle mark" },

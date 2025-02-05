@@ -19,13 +19,15 @@ import = [
 [window]
 decorations = "none"
 option_as_alt = "Both"
+opacity = 0.8
+blur = true
 
-[terminal.shell]
-program = "/opt/homebrew/bin/tmux"
-args = [
-  "new-session",
-  "-A",
-  "-D",
-  "-s",
-  "default"
-]
+# [terminal.shell]
+# program = "/opt/homebrew/bin/tmux"
+# args = [
+#   "new-session",
+#   "-A",
+#   "-D",
+#   "-s",
+#   "default"
+# ]
