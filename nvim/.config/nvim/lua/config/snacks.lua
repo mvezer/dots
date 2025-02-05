@@ -34,7 +34,14 @@ return function ()
     words = { enabled = false },
     zen = { enabled = true },
     picker = {
-      enabled = true
+      enabled = true,
+      hidden = true,
+      sources = {
+        explorer = {
+          focus = "input",
+          auto_close = true
+        }
+      }
     }
   })
 end

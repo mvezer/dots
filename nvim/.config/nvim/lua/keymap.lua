@@ -7,15 +7,7 @@ local Snacks = require("snacks")
 local wk_config = {
 	{ "<leader>/", function () Snacks.picker.lines() end, desc = "Fuzzily search in current buffer" },
 	-- { "<leader>e", cmd("Neotree toggle"), desc = "Toggles the file explorer window" },
-	{ "<leader>e", function ()
-    Snacks.picker.explorer({
-      finder = "explorer",
-      layout = {
-        layout = { position = "left" },
-        preview = true
-      }
-    })
-  end, desc = "Toggles the file explorer window" },
+	{ "<leader>e", function () Snacks.picker.explorer() end, desc = "Toggles the file explorer window" },
 	{ "<leader>C", cmd("e $HOME/.config/nvim/lua"), desc = "Edit config" },
 	{ "<leader>f", group = "Format" },
 	{ "<leader>fF", cmd("Format"), desc = "Format with conform" },
@@ -183,10 +175,12 @@ local wk_config = {
 
 	--------------------------------------------- windows ---------------------------------------------
 	{ "<c-v>", cmd("vsplit"), desc = "Split [v]ertically" },
-	{ "<C-down>", cmd("ZellijNavigateDown"), desc = "Go to window down" },
-	{ "<C-up>",  cmd("ZellijNavigateUp"), desc = "Go to window up" },
-	{ "<C-right>", cmd("ZellijNavigateRightTab"), desc = "Go to window right" },
-	{ "<C-left>", cmd("ZellijNavigateLeftTab"), desc = "Go to window left" },
+  { "<c-right>", "<c-w>l", desc = "To the right split!" },
+  { "<c-left>", "<c-w>h", desc = "To the left split!" },
+	-- { "<c-down>", cmd("ZellijNavigateDown"), desc = "Go to window down", noremap = true },
+	-- { "<c-up>",  cmd("ZellijNavigateUp"), desc = "Go to window up", noremap = true },
+	-- { "<c-right>", cmd("ZellijNavigateRightTab"), desc = "Go to window right", noremap = true, silent = true },
+	-- { "<c-left>", cmd("ZellijNavigateLeftTab"), desc = "Go to window left", noremap = true },
 
 	--------------------------------------------- marks ---------------------------------------------
 	{ "mm", "<Plug>(Marks-toggle)", desc = "Toggle mark" },
