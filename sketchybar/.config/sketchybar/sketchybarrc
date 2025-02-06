@@ -26,8 +26,8 @@ sketchybar --bar  position=top \
 default=(
   padding_left=5
   padding_right=5
-  icon.font="Hack Nerd Font:Bold:14.0"
-  label.font="Hack Nerd Font:Bold:12.0"
+  icon.font="Hack Nerd Font:Regular:14.0"
+  label.font="Hack Nerd Font:Regular:12.0"
   icon.color=0xffffffff
   label.color=0xffffffff
   icon.padding_left=4
@@ -65,11 +65,15 @@ sketchybar --default "${default[@]}"
 # We add some regular items to the left side of the bar, where
 # only the properties deviating from the current defaults need to be set
 
-sketchybar --add item chevron left \
-           --set chevron icon= label.drawing=off \
-           --add item front_app left \
-           --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
-           --subscribe front_app front_app_switched
+sketchybar  --add item chevron left \
+            --set chevron icon=󰀵 label.drawing=off \
+            --set chevron icon.font.size=18 \
+            --set chevron icon.color=0xff9cabca
+            # --set font.size=18
+           # --set chevron icon= label.drawing=off \
+           # --add item front_app left \
+           # --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
+           # --subscribe front_app front_app_switched
 
 ##### Adding Right Items #####
 # In the same way as the left items we can add items to the right side.
@@ -93,21 +97,35 @@ sketchybar --add item clock right \
 
 sketchybar --add event aerospace_workspace_change
 
-# aerospace things
-labels=("nope" "" "󰖟" "󰭹" "o" "a" "r" "s" "t" "g")
+############################################################
+# aerospace
+############################################################
+
+# workspace labels (starts with an empty string because the bash arrays are
+# zero-indexed, but the aerospace workspaces are one-indexed
+labels=("" "" "󰖟" "󰭹" "" "a" "r" "s" "t" "g")
 
 for sid in $(aerospace list-workspaces --all); do
   label=${labels["$sid"]}
   sketchybar --add item space.$sid left \
       --subscribe space.$sid aerospace_workspace_change \
       --set space.$sid \
-      background.color=0x4000ff00 \
+      background.color=0xff98bb6c \
       background.corner_radius=3 \
       background.height=20 \
       background.drawing=off \
+      background.padding_left=0 \
+      background.padding_right=0 \
+      label.color=0xffffffff \
+      label.highlight_color=0x99000000 \
+      icon.padding_left=0 \
+      icon.padding_right=0 \
       label="$label" \
       click_script="aerospace workspace $sid" \
       script="$CONFIG_DIR/plugins/aerospace.sh $sid"
 done
+
+############################################################
+
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
