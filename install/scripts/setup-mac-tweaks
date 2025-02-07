@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source ./scripts/utils
+
+echo "Applying tweaks..."
+
+must_not_be_root
+
+# add a quit menu item to finder
+defaults write com.apple.Finder QuitMenuItem 1; killall Finder

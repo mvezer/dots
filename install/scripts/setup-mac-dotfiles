@@ -1,0 +1,27 @@
+#!/bin/bash
+
+source ./scripts/utils
+
+echo "Setting up dotfiles..."
+
+must_not_be_root
+
+DOTFILES_DIR="~/.dotfiles"
+
+git clone https://github.com/mvezer/dots $DOTFILES_DIR
+
+pushd $DOTFILES_DIR
+
+rm -rf ~/.config/aerospace; stow aerospace
+rm -rf ~/.config/alacritty; stow alacritty
+stow bin
+rm -rf ~/.hammerspoon; stow hammerspoon
+rm -rf lazygit; stow lazygit
+rm -rf nvim; stow nvim
+rm -rf qutebrowser; stow qutebrowser
+rm -rf sketchybar; stow sketchybar
+rm -rf starship; stow starship
+rm ~/.tmux.conf; stow tmux
+rm -rf ~/.zshrc; rm -rf ~/.zsh_includes; stow zsh
+popd
+

@@ -4,14 +4,25 @@ echo "============================================================="
 echo "Settig up $(hostname)"
 echo "============================================================="
 
-./scripts/install-packages
-./scripts/setup-bluetooth
-./scripts/setup-snapper
-./scripts/setup-shell
-./scripts/patch-sudoers
+if [ $(uname -o) == "Darwin" ]; then
+  # mac setup
+  ./scripts/install-brew-packages
+  ./scripts/setup-tmux
+  ./scripts/setup-mac-dotfiles
+  ./scripts/setup-mac-tweaks
+  git clone https://github.com/mvezer/wallpapers ~/Pictures/wallpapers
+else
+  # arch setup
+  ./scripts/install-packages
+  ./scripts/setup-bluetooth
+  ./scripts/setup-snapper
+  ./scripts/setup-shell
+  ./scripts/patch-sudoers
 
-runuser -u mat ./scripts/install-aur-packages
-runuser -u mat ./scripts/setup-tmux
-runuser -u mat ./scripts/setup-theme
-runuser -u mat ./scripts/setup-xdg
-# runuser -u mat ./scripts/setup-git "Matyas Vezer" "vezer.m@gmail.com"
+  runuser -u mat ./scripts/install-aur-packages
+  runuser -u mat ./scripts/setup-tmux
+  runuser -u mat ./scripts/setup-theme
+  runuser -u mat ./scripts/setup-xdg
+  # runuser -u mat ./scripts/setup-git "Matyas Vezer" "vezer.m@gmail.com"
+fi
+

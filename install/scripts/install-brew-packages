@@ -1,0 +1,14 @@
+#!/bin/bash
+
+source ./scripts/utils
+
+echo "Installing homebrew packages..."
+
+must_not_be_root
+
+if ! command -v brew 2>&1 >/dev/null; then
+  echo "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+for i in $(cat ./brew-packages.txt); do; brew install "$i"; done
