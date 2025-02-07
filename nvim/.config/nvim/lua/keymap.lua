@@ -175,12 +175,10 @@ local wk_config = {
 
 	--------------------------------------------- windows ---------------------------------------------
 	{ "<c-v>", cmd("vsplit"), desc = "Split [v]ertically" },
-  { "<c-right>", "<c-w>l", desc = "To the right split!" },
-  { "<c-left>", "<c-w>h", desc = "To the left split!" },
-	-- { "<c-down>", cmd("ZellijNavigateDown"), desc = "Go to window down", noremap = true },
-	-- { "<c-up>",  cmd("ZellijNavigateUp"), desc = "Go to window up", noremap = true },
-	-- { "<c-right>", cmd("ZellijNavigateRightTab"), desc = "Go to window right", noremap = true, silent = true },
-	-- { "<c-left>", cmd("ZellijNavigateLeftTab"), desc = "Go to window left", noremap = true },
+	{ "<c-down>", cmd("NvimTmuxNavigateDown"), desc = "Go to window down", noremap = true },
+	{ "<c-up>",  cmd("NvimTmuxNavigateUp"), desc = "Go to window up", noremap = true },
+	{ "<c-right>", cmd("NvimTmuxNavigateRight"), desc = "Go to window right", noremap = true, silent = true },
+	{ "<c-left>", cmd("NvimTmuxNavigateLeft"), desc = "Go to window left", noremap = true },
 
 	--------------------------------------------- marks ---------------------------------------------
 	{ "mm", "<Plug>(Marks-toggle)", desc = "Toggle mark" },
