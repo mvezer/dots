@@ -38,7 +38,7 @@ return function ()
       hidden = true,
       sources = {
         explorer = {
-          focus = "input",
+          focus = "list",
           auto_close = true
         }
       }
