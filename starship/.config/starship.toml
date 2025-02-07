@@ -1,5 +1,15 @@
-# [aws]
-# symbol = "  "
+format = '$status$directory$nodejs$git_branch'
+
+[status]
+# style = 'bg:blue'
+symbol = '🔴 '
+success_symbol = ''
+format = '[$symbol$common_meaning$signal_name \($int\)]($style) '
+map_symbol = true
+disabled = false
+
+[aws]
+symbol = "  "
 
 [buf]
 symbol = " "
@@ -90,53 +100,6 @@ symbol = " "
 
 [ocaml]
 symbol = " "
-
-[os.symbols]
-Alpaquita = " "
-Alpine = " "
-AlmaLinux = " "
-Amazon = " "
-Android = " "
-Arch = " "
-Artix = " "
-CachyOS = " "
-CentOS = " "
-Debian = " "
-DragonFly = " "
-Emscripten = " "
-EndeavourOS = " "
-Fedora = " "
-FreeBSD = " "
-Garuda = "󰛓 "
-Gentoo = " "
-HardenedBSD = "󰞌 "
-Illumos = "󰈸 "
-Kali = " "
-Linux = " "
-Mabox = " "
-Macos = " "
-Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
-Mint = " "
-NetBSD = " "
-NixOS = " "
-Nobara = " "
-OpenBSD = "󰈺 "
-openSUSE = " "
-OracleLinux = "󰌷 "
-Pop = " "
-Raspbian = " "
-Redhat = " "
-RedHatEnterprise = " "
-RockyLinux = " "
-Redox = "󰀘 "
-Solus = "󰠳 "
-SUSE = " "
-Ubuntu = " "
-Unknown = " "
-Void = " "
-Windows = "󰍲 "
 
 [package]
 symbol = "󰏗 "
