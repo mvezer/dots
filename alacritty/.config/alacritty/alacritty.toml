@@ -31,3 +31,12 @@ blur = true
 #   "-s",
 #   "default"
 # ]
+
+[terminal.shell]
+program = "/bin/zsh"
+args = [
+  "--login",
+  "-c",
+  "tmux"
+  # "tmux new-session -A -D -s default"
+]
