@@ -253,3 +253,7 @@ config.bind('M', 'hint links spawn mpv {hint-url}')
 config.bind('alt-down', 'tab-next')
 config.bind('alt-up', 'tab-prev')
 config.bind('xx', 'config-cycle tabs.show always switching')
+
+c.fonts.default_family = ['Hack Nerd Font Mono', 'monospace']
+c.fonts.default_size = '13pt'
+c.tabs.width = '15%'
