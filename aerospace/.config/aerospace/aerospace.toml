@@ -71,8 +71,8 @@ automatically-unhide-macos-hidden-apps = false
 [gaps]
 outer.top =     [
   # offset of 32 on internal display, because of notch (16" MPB)
-  { monitor.'built-in.*' = 16 },
-  48
+  { monitor.'built-in.*' = 12 },
+  16
 ]
 outer.right =      10
 outer.bottom =     10
