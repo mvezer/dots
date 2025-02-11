@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
 source "$CONFIG_DIR/environment"
-source "$THEME_DIR/tokyonight"
+source "$THEME_DIR/kanagawa"
 
 create_workspace_bracket_for_monitor() {
   parameters=("$@")
   monitor_id=${parameters[0]}
   monitor_workspaces=("${parameters[@]:1}")
-  labels=("" "" "󰖟" "󰭹" "" "a" "r" "s" "t" "g")
+  labels=("" "" "󰖟" "󰭹" "" "a" "r" "s" "t" "g")
 
   if [ $monitor_id -eq 1 ]; then
     sketchybar --add item workspaces_spacer_left left \
                --set      workspaces_spacer_left \
-                          width=4 \
+                          width=6 \
                           background.drawing=off \
                           label.drawing=off
   fi
@@ -25,7 +25,7 @@ create_workspace_bracket_for_monitor() {
                                       background.drawing=off \
                                       click_script="aerospace workspace $workspace_id" \
                                       label=" $label" \
-                                      label.width="25" \
+                                      label.width="28" \
                                       script="$PLUGIN_DIR/aerospace $workspace_id"
   done
 

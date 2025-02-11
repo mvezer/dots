@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 source "$CONFIG_DIR/environment"
-source "$THEME_DIR/tokyonight"
+source "$THEME_DIR/kanagawa"
 
-CLOCK_LABEL_COLOR="$magenta"
-CLOCK_BACKGROUND_BORDER_COLOR="$magenta"
+CLOCK_LABEL_COLOR="$sand"
+CLOCK_BACKGROUND_BORDER_COLOR="$blue"
 
 sketchybar --add item clock_spacer_right right \
            --set      clock_spacer_right \
