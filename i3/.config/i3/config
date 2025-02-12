@@ -1,8 +1,8 @@
 font pango: Hack Nerd Font Mono 10
 
 # set the mod key to the winkey:
-set $mod Mod4
-set $alt Mod1
+set $mod Mod1
+set $super Mod4
 
 workspace_layout default
 
@@ -23,26 +23,26 @@ bindsym $mod+Shift+Right move workspace to output right
 bindsym $mod+Shift+Left move workspace to output left
 
 # move window to a workspace
-bindsym $mod+$alt+n move window to workspace $ws1
-bindsym $mod+$alt+1 move window to workspace $ws1
-bindsym $mod+$alt+e move window to workspace $ws2
-bindsym $mod+$alt+2 move window to workspace $ws1
-bindsym $mod+$alt+i move window to workspace $ws3
-bindsym $mod+$alt+3 move window to workspace $ws3
-bindsym $mod+$alt+o move window to workspace $ws4
-bindsym $mod+$alt+4 move window to workspace $ws4
-bindsym $mod+$alt+a move window to workspace $ws5
-bindsym $mod+$alt+5 move window to workspace $ws5
-bindsym $mod+$alt+r move window to workspace $ws6
-bindsym $mod+$alt+6 move window to workspace $ws6
-bindsym $mod+$alt+s move window to workspace $ws7
-bindsym $mod+$alt+7 move window to workspace $ws7
-bindsym $mod+$alt+t move window to workspace $ws8
-bindsym $mod+$alt+8 move window to workspace $ws8
-bindsym $mod+$alt+g move window to workspace $ws9
-bindsym $mod+$alt+9 move window to workspace $ws9
-bindsym $mod+$alt+m move window to workspace $ws10
-bindsym $mod+$alt+0 move window to workspace $ws10
+bindsym $mod+Shift+n move window to workspace $ws1
+bindsym $mod+Shift+1 move window to workspace $ws1
+bindsym $mod+Shift+e move window to workspace $ws2
+bindsym $mod+Shift+2 move window to workspace $ws1
+bindsym $mod+Shift+i move window to workspace $ws3
+bindsym $mod+Shift+3 move window to workspace $ws3
+bindsym $mod+Shift+o move window to workspace $ws4
+bindsym $mod+Shift+4 move window to workspace $ws4
+bindsym $mod+Shift+a move window to workspace $ws5
+bindsym $mod+Shift+5 move window to workspace $ws5
+bindsym $mod+Shift+r move window to workspace $ws6
+bindsym $mod+Shift+6 move window to workspace $ws6
+bindsym $mod+Shift+s move window to workspace $ws7
+bindsym $mod+Shift+7 move window to workspace $ws7
+bindsym $mod+Shift+t move window to workspace $ws8
+bindsym $mod+Shift+8 move window to workspace $ws8
+bindsym $mod+Shift+g move window to workspace $ws9
+bindsym $mod+Shift+9 move window to workspace $ws9
+bindsym $mod+Shift+m move window to workspace $ws10
+bindsym $mod+Shift+0 move window to workspace $ws10
 
 # switch to workspace
 bindsym $mod+n    workspace  $ws1
@@ -89,15 +89,15 @@ bindsym $mod+Shift+x exec --no-startup-id ~/.config/i3/scripts/powermenu
 bindsym $mod+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to update i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+$super+r restart
 
 # Backlight setting using dunst osc
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_up
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_down
 
 bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
+# bindsym $mod+Down focus down
+# bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # split in horizontal orientation
