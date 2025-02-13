@@ -7,7 +7,7 @@ create_workspace_bracket_for_monitor() {
   parameters=("$@")
   monitor_id=${parameters[0]}
   monitor_workspaces=("${parameters[@]:1}")
-  labels=("" "" "󰖟" "󰭹" "" "a" "r" "s" "t" "g")
+  labels=("" "" "󰖟" "󰭹" "" "a" "r" "s" "t" "󰌢")
 
   if [ $monitor_id -eq 1 ]; then
     sketchybar --add item workspaces_spacer_left left \

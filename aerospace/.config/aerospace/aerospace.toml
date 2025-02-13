@@ -70,9 +70,8 @@ automatically-unhide-macos-hidden-apps = false
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
 outer.top =     [
-  # offset of 32 on internal display, because of notch (16" MPB)
-  { monitor.'built-in.*' = 12 },
-  16
+  { monitor.'built-in.*' = 10 },
+  36
 ]
 outer.right =      10
 outer.bottom =     10
@@ -83,7 +82,7 @@ inner.vertical =   10
 # Assign certain workspaces to
 # See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [workspace-to-monitor-force-assignment]
-10 = 'secondary'
+9 = 'secondary'
 
 # Float CleanShot X windows by default
 # See: https://nikitabobko.github.io/AeroSpace/guide#on-window-detected-callback
@@ -105,7 +104,8 @@ preset = 'qwerty'
 
 # Open/focus apps using keybinds
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-cmd-enter = 'exec-and-forget open -a "Alacritty.app"'
+alt-enter = 'exec-and-forget open -a "Alacritty.app"'
+alt-b = 'exec-and-forget open -a "qutebrowser.app"'
 
 # Switch between layouts
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
@@ -118,16 +118,16 @@ cmd-enter = 'exec-and-forget open -a "Alacritty.app"'
 
 # Make windows fullscreen
 # See: https://nikitabobko.github.io/AeroSpace/commands#fullscreen
-cmd-m = 'fullscreen'
-cmd-shift-m = 'fullscreen --no-outer-gaps'
+alt-f = 'fullscreen'
+alt-shift-f = 'fullscreen --no-outer-gaps'
 # cmd-alt-ctrl-shift-enter = 'macos-native-fullscreen'
 
 # Switch window focus
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-cmd-left = 'focus left'
-cmd-down = 'focus down'
-cmd-up = 'focus up'
-cmd-right = 'focus right'
+alt-left = 'focus left'
+alt-down = 'focus down'
+# cmd-up = 'focus up'
+# cmd-right = 'focus right'
 
 # Move windows in the given direction
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
@@ -138,52 +138,52 @@ cmd-right = 'focus right'
 
 # Switch display focus
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus-monitor
-cmd-shift-left = 'focus-monitor left'
+# cmd-shift-left = 'focus-monitor left'
 # cmd-r = 'focus-monitor down'
 # cmd-alt-ctrl-shift-y = 'focus-monitor up'
-cmd-shift-right = 'focus-monitor right'
+# cmd-shift-right = 'focus-monitor right'
 
 # Switch workspaces
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-cmd-n = 'workspace 1'
-cmd-1 = 'workspace 1'
-cmd-e = 'workspace 2'
-cmd-2 = 'workspace 2'
-cmd-i = 'workspace 3'
-cmd-3 = 'workspace 3'
-cmd-o = 'workspace 4'
-cmd-4 = 'workspace 4'
-cmd-a = 'workspace 5'
-cmd-5 = 'workspace 5'
-cmd-r = 'workspace 6'
-cmd-6 = 'workspace 6'
-cmd-s = 'workspace 7'
-cmd-7 = 'workspace 7'
-cmd-t = 'workspace 8'
-cmd-8 = 'workspace 8'
-cmd-g = 'workspace 9'
-cmd-9 = 'workspace 9'
+alt-n = 'workspace 1'
+alt-1 = 'workspace 1'
+alt-e = 'workspace 2'
+alt-2 = 'workspace 2'
+alt-i = 'workspace 3'
+alt-3 = 'workspace 3'
+alt-o = 'workspace 4'
+alt-4 = 'workspace 4'
+alt-a = 'workspace 5'
+alt-5 = 'workspace 5'
+alt-r = 'workspace 6'
+alt-6 = 'workspace 6'
+alt-s = 'workspace 7'
+alt-7 = 'workspace 7'
+alt-t = 'workspace 8'
+alt-8 = 'workspace 8'
+alt-g = 'workspace 9'
+alt-9 = 'workspace 9'
 
 
 # Move windows/nodes to other workspaces
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-cmd-shift-n = 'move-node-to-workspace 1'
-cmd-shift-1 = 'move-node-to-workspace 1'
-cmd-shift-e = 'move-node-to-workspace 2'
-cmd-shift-2 = 'move-node-to-workspace 2'
-cmd-shift-i = 'move-node-to-workspace 3'
-cmd-shift-3 = 'move-node-to-workspace 3'
-cmd-shift-o = 'move-node-to-workspace 4'
-cmd-shift-4 = 'move-node-to-workspace 4'
-cmd-shift-a = 'move-node-to-workspace 5'
-cmd-shift-5 = 'move-node-to-workspace 5'
-cmd-shift-r = 'move-node-to-workspace 6'
-cmd-shift-6 = 'move-node-to-workspace 6'
-cmd-shift-s = 'move-node-to-workspace 7'
-cmd-shift-7 = 'move-node-to-workspace 7'
-cmd-shift-t = 'move-node-to-workspace 8'
-cmd-shift-8 = 'move-node-to-workspace 8'
-cmd-shift-g = 'move-node-to-workspace 9'
+alt-shift-n = 'move-node-to-workspace 1'
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-e = 'move-node-to-workspace 2'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-i = 'move-node-to-workspace 3'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-o = 'move-node-to-workspace 4'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-a = 'move-node-to-workspace 5'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-r = 'move-node-to-workspace 6'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-s = 'move-node-to-workspace 7'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-t = 'move-node-to-workspace 8'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-g = 'move-node-to-workspace 9'
 
 # Switch focus between the two last used workspaces
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
