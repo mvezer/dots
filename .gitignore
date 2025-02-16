@@ -5,3 +5,4 @@ nvim/.config/nvim/lazy-lock.json
 bin/.local/bin/config.json
 qutebrowser/.config/qutebrowser/quickmarks
 .DS_Store
+zed/.config/zed/prompts/prompts-library-db.0.mdb
