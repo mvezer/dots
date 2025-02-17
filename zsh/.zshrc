@@ -61,6 +61,7 @@ alias cfg="cd ~/.config"
 alias nxt="cd $WORKSPACE/next-level"
 alias zsrc="source ~/.zshrc"
 alias "nv"="nvim"
+alias "br"="brew bundle install --file=~/Brewfile --cleanup"
 if [[ "$OS" = "Linux" ]]; then
   alias cb="xclip -selection c"
 else
