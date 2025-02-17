@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 source "$CONFIG_DIR/environment"
-source "$THEME_DIR/kanagawa"
+source "$THEME_DIR/catppuccin_mocha"
 
-CLOCK_LABEL_COLOR="$sand"
+CLOCK_LABEL_COLOR="$yellow"
 CLOCK_BACKGROUND_BORDER_COLOR="$blue"
 
 sketchybar --add item clock_spacer_right right \
