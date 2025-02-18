@@ -11,10 +11,18 @@ local plugin_specs = {
 	},
 
 	--- kanagawa (https://github.com/rebelot/kanagawa.nvim)
-	{
-		"rebelot/kanagawa.nvim",
-		config = require("config.kanagawa"),
-	},
+	-- {
+	-- 	"rebelot/kanagawa.nvim",
+	-- 	config = require("config.kanagawa"),
+	-- },
+
+  --- catppuccin (https://github.com/catppuccin/nvim)
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = require("config.catppuccin"),
+  },
 
 	--- which-key (https://github.com/folke/which-key.nvim)
 	{
@@ -176,7 +184,10 @@ local plugin_specs = {
 				--- blink.cmp (https://github.com/Saghen/blink.cmp)
 				"saghen/blink.cmp",
 				version = "v0.*",
-        dependencies = { "saghen/blink.compat", lazy = true, verson = false },
+        dependencies = {
+          { "saghen/blink.compat", lazy = true, verson = false },
+          { "giuxtaposition/blink-cmp-copilot" },
+        },
 				config = require("config.blink"),
 			},
 		},

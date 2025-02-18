@@ -16,14 +16,14 @@ vim.api.nvim_create_user_command("DeleteEmptyBuffers", close_empty_buffers, { na
 vim.api.nvim_create_user_command("Cdc", ":cd %:p:h", {})
 
 -- fancy markdown
-local markdown_conceal = vim.api.nvim_create_augroup("markdown_conceal", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "markdown",
-	callback = function()
-		vim.opt_local.conceallevel = 2
-	end,
-	group = markdown_conceal,
-})
+-- local markdown_conceal = vim.api.nvim_create_augroup("markdown_conceal", { clear = true })
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "markdown",
+-- 	callback = function()
+-- 		vim.opt_local.conceallevel = 1
+-- 	end,
+-- 	group = markdown_conceal,
+-- })
 
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
