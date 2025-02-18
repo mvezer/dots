@@ -103,6 +103,7 @@ preset = 'qwerty'
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
 alt-enter = 'exec-and-forget open -a "Alacritty.app"'
 alt-b = 'exec-and-forget open -a "Zen Browser.app"'
+alt-x = 'exec-and-forget open -a "Commander One.app"'
 alt-q = 'close'
 
 # Switch between layouts
