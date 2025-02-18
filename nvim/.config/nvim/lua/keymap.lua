@@ -1,3 +1,13 @@
+--  _   __
+-- | | / /
+-- | |/ /  ___ _   _ _ __ ___   __ _ _ __
+-- |    \ / _ \ | | | '_ ` _ \ / _` | '_ \
+-- | |\  \  __/ |_| | | | | | | (_| | |_) |
+-- \_| \_/\___|\__, |_| |_| |_|\__,_| .__/
+--              __/ |               | |
+--             |___/                |_|
+-----------------------------------------------------------------------------------------------
+
 local function cmd(command)
 	return ":" .. command .. "<CR>"
 end
@@ -6,7 +16,6 @@ local wk = require("which-key")
 local Snacks = require("snacks")
 local wk_config = {
 	{ "<leader>/", function () Snacks.picker.lines() end, desc = "Fuzzily search in current buffer" },
-	-- { "<leader>e", cmd("Neotree toggle"), desc = "Toggles the file explorer window" },
 	{ "<leader>e", function () Snacks.picker.explorer() end, desc = "Toggles the file explorer window" },
 	{ "<leader>C", cmd("e $HOME/.config/nvim/lua"), desc = "Edit config" },
 	{ "<leader>f", group = "Format" },
@@ -64,11 +73,9 @@ local wk_config = {
 	{ "<leader>sj", function () Snacks.picker.jumps() end, desc = "Search [j]umps" },
 	{ "<leader>su", function () Snacks.picker.undo() end, desc = "Search [u]ndo" },
 	{ "<leader>sm", function () Snacks.picker.marks() end, desc = "Search [m]arks" },
+	{ "<leader>sn", cmd("ObsidianSearch"), desc = "Search Obsidian [n]otes" }, -- NO shit
 	{ "<leader>sM", function () Snacks.picker.man() end, desc = "Search ma[n] pages" },
 	{ "<leader>:", function () Snacks.picker.command_history() end, desc = "Command history" },
-	-- { "<leader>sg", cmd("Telescope git_files"), desc = "Search [g]it files" },
-	-- { "<leader>sf", cmd("Telescope find_files"), desc = "Search [f]iles" },
-	-- { "<leader>sh", cmd("Telescope help_tags"), desc = "Search [h]elp tags" },
 	-- {
 	-- 	"<leader>sw",
 	-- 	function()
@@ -76,11 +83,8 @@ local wk_config = {
 	-- 	end,
 	-- 	desc = "Search [w]ord under the cursor",
 	-- },
-	-- { "<leader>st", cmd("Telescope live_grep"), desc = "Search [t]ext" },
 	-- { "<leader>sd", cmd("Telescope diagnostics"), desc = "Search [d]iagnostics" },
 	-- { "<leader>sy", cmd("Telescope neoclip"), desc = "Search [y]anks (neoclip)" },
-	-- { "<leader>sr", cmd("Telescope oldfiles"), desc = "Search [r]ecently opened files" },
-	-- { "<leader>sR", cmd("Telescope registers"), desc = "Search [R]egisters" },
 	-- { "<leader>sn", cmd("ObsidianSearch"), desc = "Search Obsidian [n]otes" }, -- NO shit
 	-- { "<leader>su", cmd("Telescope undo"), desc = "Search undo list" },
 	-- { "<leader>sb", cmd("Telescope buffers"), desc = "Search [b]uffers" },
@@ -186,13 +190,6 @@ local wk_config = {
 	{ "mp", "<Plug>(Marks-prev)", desc = "Previous mark" },
 	{ "md", "<Plug>(Marks-delete)", desc = "Delete mark" },
 	{ "mD", "<Plug>(Marks-deletebuf)", desc = "Delete marks in buffer" },
-	{
-		";",
-		function()
-			require("snipe-marks").open_marks_menu()
-		end,
-		desc = "Open (local) marks menu",
-	},
 
 	--------------------------------------------- quicklist ---------------------------------------------
 	{
@@ -205,7 +202,6 @@ local wk_config = {
 
 	--------------------------------------------- misc shit ---------------------------------------------
 	{ "<Esc>", cmd("noh"), desc = "Remove highlight" },
-	-- { "<leader>z", cmd("ZenMode"), desc = "Toggle zen-mode", mode = { "v", "i", "n" } },
 	{
 		"<leader>z",
 		function()
@@ -215,8 +211,6 @@ local wk_config = {
 		mode = { "v", "i", "n" },
 	},
 	{ "<leader>N", cmd("set number!"), desc = "Toggle zen-mode", mode = { "v", "i", "n" } },
-	-- { "d", '"_d', desc = "Deletes stuff (puts it in the black hole register)", mode = { "n", "v" } },
-	-- { "D", '"_D', desc = "Deletes stuff (puts it in the black hole register)", mode = { "n", "v" } },
 	{
 		"<a-f>",
 		cmd("ToggleTerm direction=float"),
@@ -225,8 +219,6 @@ local wk_config = {
 	},
 	{ "<c-m>", cmd("NoiceAll"), desc = "Shows recent messages" },
 	{ "<c-t>", cmd("ToggleMarkdownTodo"), desc = "Toggle markdown todo" },
-	-- { "Q", "q" }, -- to prevent accidential recording (https://github.com/hrsh7th/nvim-cmp/issues/1692)
-	-- { "q", "<nop>" },
 
 	--------------------------------------------- flash ---------------------------------------------
 	{

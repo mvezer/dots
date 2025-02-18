@@ -1,25 +1,27 @@
------------------------------------------------------------------------------------------------
---- Plugins
+-- ______ _             _
+-- | ___ \ |           (_)
+-- | |_/ / |_   _  __ _ _ _ __  ___
+-- |  __/| | | | |/ _` | | '_ \/ __|
+-- | |   | | |_| | (_| | | | | \__ \
+-- \_|   |_|\__,_|\__, |_|_| |_|___/
+--                 __/ |
+--                |___/
 -----------------------------------------------------------------------------------------------
 
 local plugin_specs = {
 	--- flash (https://github.com/folke/flash.nvim)
 	{
 		"folke/flash.nvim",
+    version = "2.1.0",
 		event = "VeryLazy",
 		opts = {},
 	},
-
-	--- kanagawa (https://github.com/rebelot/kanagawa.nvim)
-	-- {
-	-- 	"rebelot/kanagawa.nvim",
-	-- 	config = require("config.kanagawa"),
-	-- },
 
   --- catppuccin (https://github.com/catppuccin/nvim)
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    version = "1.9.0",
     priority = 1000,
     config = require("config.catppuccin"),
   },
@@ -27,6 +29,7 @@ local plugin_specs = {
 	--- which-key (https://github.com/folke/which-key.nvim)
 	{
 		"folke/which-key.nvim",
+    version = "3.16.0",
 		event = "VeryLazy",
 		config = require("config.which-key"),
 	},
@@ -34,6 +37,7 @@ local plugin_specs = {
 	--- lualine (https://github.com/nvim-lualine/lualine.nvim)
 	{
 		"nvim-lualine/lualine.nvim",
+    commit = "f4f791f",
 		lazy = true,
 		event = "BufRead",
 		config = require("config.lualine"),
@@ -42,6 +46,7 @@ local plugin_specs = {
 	--- gitsigns (https://github.com/lewis6991/gitsigns.nvim)
 	{
 		"lewis6991/gitsigns.nvim",
+    version = "1.0.1",
 		lazy = true,
 		event = "BufRead",
 		opts = {},
@@ -50,6 +55,7 @@ local plugin_specs = {
 	--- markdown preview (https://github.com/iamcco/markdown-preview.nvim)
 	{
 		"iamcco/markdown-preview.nvim",
+    version = "0.0.10",
 		lazy = true,
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		build = "cd app && npm install",
@@ -57,15 +63,10 @@ local plugin_specs = {
 		ft = { "markdown" },
 	},
 
-  --- render markdown (https://github.com/MeanderingProgrammer/render-markdown.nvim)
-  -- {
-  --   'MeanderingProgrammer/render-markdown.nvim',
-  --   dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-  --   opts = {},
-  -- },
   -- markview (https://github.com/OXY2DEV/markview.nvim?tab=readme-ov-file#-installation)
   {
     "OXY2DEV/markview.nvim",
+    version = "25.3.1",
     lazy = false,
     config = require("config.markview")
   },
@@ -73,15 +74,17 @@ local plugin_specs = {
 	--- marks (https://github.com/chentoast/marks.nvim)
 	{
 		"chentoast/marks.nvim",
+    commit = "bb25ae3",
 		config = require("config.marks"),
 	},
 
   -- neo-tree (https://github.com/nvim-neo-tree/neo-tree.nvim)
   {
     "nvim-neo-tree/neo-tree.nvim",
+    tag = "3.30",
     branch = "v3.x",
     dependencies = {
-      "nvim-lua/plenary.nvim",
+      "nvim-lua/plenary.nvim", 
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
       "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
@@ -92,6 +95,7 @@ local plugin_specs = {
 	--- snacks (https://github.com/folke/snacks.nvim)
 	{
 		"folke/snacks.nvim",
+    version = "2.20.0",
 		priority = 1000,
 		lazy = false,
 		config = require("config.snacks"),
@@ -100,62 +104,33 @@ local plugin_specs = {
 	--- snipe (https://github.com/leath-dub/snipe.nvim)
 	{
 		"leath-dub/snipe.nvim",
+    commit = "0d0a482",
 		event = "VeryLazy",
 		config = require("config.snipe"),
-	},
-
-	--- snipe marks (https://github.com/nicholasxjy/snipe-marks.nvim)
-	{
-		"nicholasxjy/snipe-marks.nvim",
-		dependencies = { "leath-dub/snipe.nvim" },
 	},
 
 	--- suda (https://github.com/lambdalisue/suda.vim)
 	{
 		"lambdalisue/suda.vim",
+    version = "1.2.4",
 		lazy = true,
 		cmd = { "SudaWrite", "SudaRead" },
-	},
-
-	--- telescope (https://github.com/nvim-telescope/telescope.nvim)
-	{
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
-		lazy = true,
-		cmd = { "Telescope" },
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-			{ "debugloop/telescope-undo.nvim" },
-			{
-				"acksld/nvim-neoclip.lua",
-				dependencies = {
-					{
-						"kkharji/sqlite.lua",
-						module = "sqlite",
-					},
-				},
-				opts = {},
-			},
-		},
-		config = require("config.telescope"),
 	},
 
 	--- TreeSJ (split/join) (https://github.com/Wansmer/treesj)
 	{
 		"Wansmer/treesj",
+    commit = "48c1a75",
 		lazy = true,
 		event = "BufReadPost",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = require("config.treesj"),
 	},
 
-	--- ufo (https://github.com/kevinhwang91/nvim-ufo)
-	-- {}
-
 	--- url-open (https://github.com/sontungexpt/url-open)
 	{
 		"sontungexpt/url-open",
+    version = "1.7.1",
 		branch = "mini",
 		event = "VeryLazy",
 		cmd = "URLOpenUnderCursor",
@@ -172,21 +147,19 @@ local plugin_specs = {
 		cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 		dependencies = {
 			--- mason (https://github.com/williamboman/mason.nvim)
-			{ "williamboman/mason.nvim", opts = {} },
-      -- deactivate lsp-timeout, annoying messages
-			-- "hinell/lsp-timeout.nvim",
-			"folke/lsp-colors.nvim",
+			{ "williamboman/mason.nvim", opts = {}, version = "1.11.0" },
+			{ "folke/lsp-colors.nvim", version = "1.0.0" },
 			{ "folke/neodev.nvim", opts = {} },
-			"neovim/nvim-lspconfig",
-			"nvim-lua/plenary.nvim",
-			"ray-x/lsp_signature.nvim",
+      { "neovim/nvim-lspconfig", version = "1.6.0" },
+      { "nvim-lua/plenary.nvim", version = "0.1.4" },
+      { "ray-x/lsp_signature.nvim", version = "0.3.1" },
 			{
 				--- blink.cmp (https://github.com/Saghen/blink.cmp)
 				"saghen/blink.cmp",
-				version = "v0.*",
+				version = "0.12.4",
         dependencies = {
-          { "saghen/blink.compat", lazy = true, verson = false },
-          { "giuxtaposition/blink-cmp-copilot" },
+          { "saghen/blink.compat", lazy = true, version = "2.4.0" },
+          { "giuxtaposition/blink-cmp-copilot", commit = "5d4ed42" },
         },
 				config = require("config.blink"),
 			},
@@ -194,16 +167,17 @@ local plugin_specs = {
 		config = require("config.lsp"),
 	},
 
-	--- fidget
+	--- fidget (https://github.com/j-hui/fidget.nvim)
 	{
 		"j-hui/fidget.nvim",
-		tag = "v1.5.0",
+		version = "1.5.0",
 		opts = {},
 	},
 
 	--- copilot (https://github.com/zbirenbaum/copilot.lua)
 	{
 		"zbirenbaum/copilot.lua",
+    commit = "30321e3",
 		lazy = true,
 		cmd = "Copilot",
 		event = "InsertEnter",
@@ -213,6 +187,7 @@ local plugin_specs = {
 	--- conform (https://github.com/stevearc/conform.nvim)
 	{
 		"stevearc/conform.nvim",
+    version = "9.0.0",
 		lazy = true,
 		cmd = "Format",
 		event = "BufWritePre",
@@ -222,12 +197,14 @@ local plugin_specs = {
   -- nvim-recorder (https://github.com/chrisgrieser/nvim-recorder)
   {
     "chrisgrieser/nvim-recorder",
+    commit = "00644d6",
     opts = {},
   },
 
 	--- ufo (https://github.com/kevinhwang91/nvim-ufo)
 	{
 		"kevinhwang91/nvim-ufo",
+    version = "1.4.0",
 		event = "VeryLazy",
 		dependencies = { "kevinhwang91/promise-async" },
 		config = require("config.ufo"),
@@ -236,6 +213,7 @@ local plugin_specs = {
 	--- quicker (https://github.com/stevearc/quicker.nvim)
 	{
 		"stevearc/quicker.nvim",
+    version = "1.4.0",
 		event = "FileType qf",
 		opts = {},
 	},
@@ -243,12 +221,14 @@ local plugin_specs = {
   -- tmux neovim navigation (https://github.com/alexghergh/nvim-tmux-navigation)
   {
     "alexghergh/nvim-tmux-navigation",
+    commit = "4898c98",
     opts = {}
   },
 
   -- noice (https://github.com/folke/noice.nvim)
   {
     "folke/noice.nvim",
+    version = "4.10.0",
     event = "VeryLazy",
     dependencies = {
       "MunifTanjim/nui.nvim",
@@ -257,25 +237,25 @@ local plugin_specs = {
     config = require("config.noice")
   },
 
-  -- obsidian
+  -- obsidian (https://github.com/epwalsh/obsidian.nvim)
   {
     "epwalsh/obsidian.nvim",
-    version = "*",  -- recommended, use latest release instead of latest commit
+    version = "3.9.0",
     lazy = false,
-    -- ft = "markdown",
-    -- replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-    -- event = {
-      --   -- if you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-      --   -- e.g. "bufreadpre " .. vim.fn.expand "~" .. "/my-vault/*.md"
-      --   -- refer to `:h file-pattern` for more examples
-      --   "bufreadpre path/to/my-vault/*.md",
-      --   "bufnewfile path/to/my-vault/*.md",
-      -- },
-      dependencies = {
-        -- required.
-        "nvim-lua/plenary.nvim",
+    dependencies  = {
+      --- telescope (https://github.com/nvim-telescope/telescope.nvim)
+      {
+        "nvim-telescope/telescope.nvim",
+        version = "0.1.8",
+        lazy = true,
+        cmd = { "Telescope" },
+        dependencies = {
+          { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        },
+        config = require("config.telescope"),
       },
-      config = require("config.obsidian")
+    },
+    config = require("config.obsidian")
   }
 }
 
