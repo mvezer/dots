@@ -73,23 +73,9 @@ local wk_config = {
 	{ "<leader>sj", function () Snacks.picker.jumps() end, desc = "Search [j]umps" },
 	{ "<leader>su", function () Snacks.picker.undo() end, desc = "Search [u]ndo" },
 	{ "<leader>sm", function () Snacks.picker.marks() end, desc = "Search [m]arks" },
-	{ "<leader>sn", cmd("ObsidianSearch"), desc = "Search Obsidian [n]otes" }, -- NO shit
+	{ "<leader>sn", function () FindObsidianNotesWithSnackPicker() end, desc = "Search Obsidian [n]otes" }, -- NO shit
 	{ "<leader>sM", function () Snacks.picker.man() end, desc = "Search ma[n] pages" },
 	{ "<leader>:", function () Snacks.picker.command_history() end, desc = "Command history" },
-	-- {
-	-- 	"<leader>sw",
-	-- 	function()
-	-- 		require("telescope.builtin").grep_string({ cwd = vim.fn.getcwd() })
-	-- 	end,
-	-- 	desc = "Search [w]ord under the cursor",
-	-- },
-	-- { "<leader>sd", cmd("Telescope diagnostics"), desc = "Search [d]iagnostics" },
-	-- { "<leader>sy", cmd("Telescope neoclip"), desc = "Search [y]anks (neoclip)" },
-	-- { "<leader>sn", cmd("ObsidianSearch"), desc = "Search Obsidian [n]otes" }, -- NO shit
-	-- { "<leader>su", cmd("Telescope undo"), desc = "Search undo list" },
-	-- { "<leader>sb", cmd("Telescope buffers"), desc = "Search [b]uffers" },
-	-- { "<leader>ss", cmd("Telescope git_files"), desc = "Search files in git repo" },
-	-- { "<leader>sm", cmd("Telescope marks"), desc = "Search marks" },
 
 	--------------------------------------------- git ---------------------------------------------
 	{ "<leader>g", group = "Git" },
@@ -118,7 +104,7 @@ local wk_config = {
 
 	--------------------------------------------- notes ---------------------------------------------
 	{ "<leader>n", group = "Notes" },
-	{ "<leader>ns", cmd("ObsidianSearch"), desc = "Searches notes" },
+	{ "<leader>ns", function () FindObsidianNotesWithSnackPicker() end, desc = "Searches notes" },
 	{ "<leader>nn", cmd("ObsidianNewWithFileName"), desc = "Creates a new note" },
 
 	--------------------------------------  AI stuff: Copilot & ChatGPT -------------------------------------

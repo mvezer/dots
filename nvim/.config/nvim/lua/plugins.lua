@@ -242,19 +242,19 @@ local plugin_specs = {
     "epwalsh/obsidian.nvim",
     version = "3.9.0",
     lazy = false,
-    dependencies  = {
-      --- telescope (https://github.com/nvim-telescope/telescope.nvim)
-      {
-        "nvim-telescope/telescope.nvim",
-        version = "0.1.8",
-        lazy = true,
-        cmd = { "Telescope" },
-        dependencies = {
-          { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-        },
-        config = require("config.telescope"),
-      },
-    },
+    -- dependencies  = {
+    --   --- telescope (https://github.com/nvim-telescope/telescope.nvim)
+    --   {
+    --     "nvim-telescope/telescope.nvim",
+    --     version = "0.1.8",
+    --     lazy = true,
+    --     cmd = { "Telescope" },
+    --     dependencies = {
+    --       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    --     },
+    --     config = require("config.telescope"),
+    --   },
+    -- },
     config = require("config.obsidian")
   }
 }
