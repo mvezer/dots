@@ -78,20 +78,6 @@ local plugin_specs = {
 		config = require("config.marks"),
 	},
 
-  -- neo-tree (https://github.com/nvim-neo-tree/neo-tree.nvim)
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    tag = "3.30",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim", 
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-      "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-    },
-    config = require("config.neotree")
-  },
-
 	--- snacks (https://github.com/folke/snacks.nvim)
 	{
 		"folke/snacks.nvim",
