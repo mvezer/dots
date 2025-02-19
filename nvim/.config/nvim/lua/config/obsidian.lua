@@ -16,8 +16,11 @@ return function()
     },
     follow_url_func = function(url)
       -- Open the URL in the default web browser.
-      vim.fn.jobstart({"open", url})  -- Mac OS
-      -- vim.fn.jobstart({"xdg-open", url})  -- linux
+      if vim.fn.has("mac") == 1 then
+        vim.fn.jobstart({"open", url})  -- Mac OS
+      else
+        vim.fn.jobstart({"xdg-open", url})  -- linux
+      end
       -- vim.cmd(':silent exec "!start ' .. url .. '"') -- Windows
       -- vim.ui.open(url) -- need Neovim 0.10.0+
     end,
@@ -36,7 +39,7 @@ return function()
       win = {
         input = {
           keys = {
-            ["<c-x>"] = { "create_note", desc = "Create new note", mode = { "i", "n" } },
+            ["<c-n>"] = { "create_note", desc = "Create new note", mode = { "i", "n" } },
           },
         },
       },
