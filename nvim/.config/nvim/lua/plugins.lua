@@ -145,7 +145,7 @@ local plugin_specs = {
 				version = "0.12.4",
         dependencies = {
           { "saghen/blink.compat", lazy = true, version = "2.4.0" },
-          { "giuxtaposition/blink-cmp-copilot", commit = "5d4ed42" },
+          -- { "giuxtaposition/blink-cmp-copilot", commit = "5d4ed42" },
         },
 				config = require("config.blink"),
 			},
@@ -161,14 +161,14 @@ local plugin_specs = {
 	},
 
 	--- copilot (https://github.com/zbirenbaum/copilot.lua)
-	{
-		"zbirenbaum/copilot.lua",
-    commit = "30321e3",
-		lazy = true,
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = require("config.copilot"),
-	},
+	-- {
+	-- 	"zbirenbaum/copilot.lua",
+	--    commit = "30321e3",
+	-- 	lazy = true,
+	-- 	cmd = "Copilot",
+	-- 	event = "InsertEnter",
+	-- 	config = require("config.copilot"),
+	-- },
 
 	--- conform (https://github.com/stevearc/conform.nvim)
 	{
@@ -242,6 +242,13 @@ local plugin_specs = {
     --   },
     -- },
     config = require("config.obsidian")
+  },
+
+  -- supermaven (https://github.com/supermaven-inc/supermaven-nvim)
+  {
+    "supermaven-inc/supermaven-nvim",
+    commit = "07d20fc",
+    config = require("config.supermaven")
   }
 }
 
