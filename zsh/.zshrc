@@ -61,8 +61,6 @@ alias cfg="cd ~/.config"
 alias nxt="cd $WORKSPACE/next-level"
 alias zsrc="source ~/.zshrc"
 alias "nv"="nvim"
-alias "br"="HOMEBREW_NO_AUTO_UPDATE=1 brew bundle install --file=~/Brewfile --cleanup"
-alias "bru"="brew bundle install --file=~/Brewfile --cleanup"
 if [[ "$OS" = "Linux" ]]; then
   alias cb="xclip -selection c"
 else
@@ -87,6 +85,10 @@ source $ZSH_INCLUDES/kubernetes.zsh
 source $ZSH_INCLUDES/git.zsh
 source $ZSH_INCLUDES/go.zsh
 source $ZSH_INCLUDES/zig.zsh
+
+if [[ "$OS" = "Darwin" ]]; then
+  source $ZSH_INCLUDES/homebrew.zsh
+fi
 
 # misc settings
 unsetopt BEEP
