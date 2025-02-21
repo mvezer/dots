@@ -249,6 +249,16 @@ local plugin_specs = {
     "supermaven-inc/supermaven-nvim",
     commit = "07d20fc",
     config = require("config.supermaven")
+  },
+
+  --- vuffers (https://github.com/Hajime-Suzuki/vuffers.nvim)
+  {
+    "Hajime-Suzuki/vuffers.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "Tastyep/structlog.nvim",
+    },
+    opts = {},
   }
 }
 

@@ -42,7 +42,7 @@ local wk_config = {
 	{ "<leader>by", cmd("%y"), desc = "[Y]ank the entire buffer" },
 	{ "<leader>bY", cmd("let @+ = expand('%:p')"), desc = "[Y]ank the full filepath" },
 	{ "<leader>bd", cmd("Cdc"), desc = "Cd the current buffers dir" },
-  { "<leader>bb", cmd("Neotree buffers toggle"), desc = "Show all open buffers" },
+  { "<leader>bb", require("vuffers").toggle, desc = "Show all open buffers" },
 	{
 		"<c-x>",
 		function()
