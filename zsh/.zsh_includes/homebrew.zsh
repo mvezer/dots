@@ -2,10 +2,8 @@
 
 function enable_apps() {
   for app in "$@"; do
-    if ! /usr/bin/xattr -l "$app" | grep -q '^com.apple.quarantine'; then
-      echo "Enabling $app"
-      xattr -d -r com.apple.quarantine "$app"
-    fi
+    echo "Enabling $app..."
+    xattr -d -r com.apple.quarantine "$app"
   done
 }
 
@@ -13,6 +11,7 @@ apps_to_enable=(
   "/Applications/Alacritty.app"
   "/Applications/AeroSpace.app"
   "/Applications/Zen\ Browser.app"
+  "/Applications/Thorium.app"
 )
 
 alias "br"="HOMEBREW_NO_AUTO_UPDATE=1 brew bundle install --file=~/Brewfile --cleanup"

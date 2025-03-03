@@ -66,6 +66,8 @@ if [[ "$OS" = "Linux" ]]; then
 else
   alias cb="pbcopy"
 fi
+alias vpn="sudo wg-quick up wg0"
+alias vpn-down="sudo wg-quick down wg0"
 
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
