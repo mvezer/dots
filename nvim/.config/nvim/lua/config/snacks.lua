@@ -23,7 +23,7 @@ return function ()
     -- },
     notify = { enabled = true },
     quickfile = { enabled = true },
-    scroll = { enabled = true },
+    scroll = { enabled = false },
     statuscolumn = { enabled = true },
     -- toggle = {
     --   enabled = true,
