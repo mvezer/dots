@@ -18,37 +18,53 @@ return function()
 		})
 	end
 
+
 	local group = vim.api.nvim_create_augroup("lsp_cmds", { clear = true })
-	vim.api.nvim_create_autocmd("User", {
-		pattern = "LspAttached",
+	vim.api.nvim_create_autocmd("LspAttach", {
 		group = group,
 		desc = "LSP actions",
 		callback = function(args)
+      local Snacks = require("snacks")
 			-- local client = vim.lsp.get_client_by_id(args.data.client_id)
 			require("lsp_signature").on_attach(require("config.lsp.lsp-signature_config"), args.buf)
 
 			utils.bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", "LSP Hover")
-			utils.bufmap("n", "gd", '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>', "Go to definition")
+			utils.bufmap(
+        "n",
+        "gd",
+        -- '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>',
+        function() Snacks.picker.lsp_definitions() end,
+        "Go to definition"
+      )
 			utils.bufmap(
 				"n",
 				"gD",
-				'<cmd>lua require("telescope.builtin").lsp_declarations()<cr>',
+				-- '<cmd>lua require("telescope.builtin").lsp_declarations()<cr>',
+        function() Snacks.picker.lsp_definitions() end,
 				"Go to declaration(s)"
 			)
 			utils.bufmap(
 				"n",
 				"gi",
-				'<cmd>lua require("telescope.builtin").lsp_implementations()<cr>',
+				-- '<cmd>lua require("telescope.builtin").lsp_implementations()<cr>',
+        function() Snacks.picker.lsp_implementations() end,
 				"Go to implementation(s)"
 			)
 			utils.bufmap("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Go to type definition")
-			utils.bufmap("n", "gr", '<cmd>lua require("telescope.builtin").lsp_references()<cr>', "Go to reference(s)")
+			utils.bufmap(
+        "n",
+        "gr",
+        -- '<cmd>lua require("telescope.builtin").lsp_references()<cr>',
+        function() Snacks.picker.lsp_references() end,
+        "Go to reference(s)"
+      )
 			utils.bufmap("n", "gs", goto_source_definition)
 			utils.bufmap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename symbol")
 			utils.bufmap(
 				"n",
 				"<leader>ll",
-				'<cmd>lua require("telescope.builtin").diagnostics()<cr>',
+				-- '<cmd>lua require("telescope.builtin").diagnostics()<cr>',
+        function() Snacks.picker.diagnostics_buffer() end,
 				"Telescope diagnostic list"
 			)
 			utils.bufmap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", "LSP Code actions")

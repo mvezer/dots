@@ -254,6 +254,7 @@ local plugin_specs = {
   --- vuffers (https://github.com/Hajime-Suzuki/vuffers.nvim)
   {
     "Hajime-Suzuki/vuffers.nvim",
+    -- dir = "~/workspace/vuffers-picker.nvim/",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
       "Tastyep/structlog.nvim",
