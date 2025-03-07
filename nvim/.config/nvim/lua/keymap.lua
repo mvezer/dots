@@ -107,6 +107,8 @@ local wk_config = {
 	{ "<leader>ns", function () FindObsidianNotesWithSnackPicker() end, desc = "Searches notes" },
 	{ "<leader>nn", cmd("ObsidianNewWithFileName"), desc = "Creates a new note" },
 	{ "<leader>np", cmd("MarkdownPreview"), desc = "Previews the note in a browser window" },
+	{ "<leader>nt", cmd("ObsidianToday"), desc = "Today's daily note" },
+	{ "<leader>ny", cmd("ObsidianYesterday"), desc = "Yesterday's daily note" },
 
 	--------------------------------------  AI stuff: Copilot & ChatGPT -------------------------------------
 	{ "<leader>a", group = "AI functionality" },

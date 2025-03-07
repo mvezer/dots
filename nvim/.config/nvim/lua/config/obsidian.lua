@@ -1,11 +1,30 @@
 return function()
-  local notes_path =  "~/Dropbox/notes"
+  local work_notes_path =  "~/Documents/Notes/"
   require("obsidian").setup({
     workspaces = {
       {
-        name = "all-the-things",
-        path = notes_path,
-      }
+        name = "work",
+        path = work_notes_path,
+      },
+    },
+    daily_notes = {
+      -- Optional, if you keep daily notes in a separate directory.
+      folder = "dailies",
+      -- Optional, if you want to change the date format for the ID of daily notes.
+      date_format = "%d.%m.%Y",
+      -- Optional, if you want to change the date format of the default alias of daily notes.
+      -- alias_format = "%B %-d, %Y",
+      -- Optional, default tags to add to each new daily note created.
+      default_tags = { "daily-notes" },
+      -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
+      template = "daily"
+    },
+    templates = {
+      folder = "templates",
+      date_format = "%d.%m.%Y",
+      time_format = "%H:%M",
+      -- A map for custom variables, the key should be the variable and the value a function
+      substitutions = {},
     },
     ui = {
       enable = false, -- we are using markview for fancy markdown, no obsidian ui
@@ -27,7 +46,7 @@ return function()
   })
 
   function FindObsidianNotesWithSnackPicker (args)
-    local vault = vim.fn.expand(notes_path)
+    local vault = vim.fn.expand(work_notes_path)
     Snacks.picker.pick("grep", {
       cwd = vault,
       actions = {
