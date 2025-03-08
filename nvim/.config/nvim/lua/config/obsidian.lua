@@ -1,14 +1,30 @@
+local function get_workspaces()
+  if vim.fn.has("mac") == 1 then
+    return {
+      {
+        name = "work",
+        path =   "~/Documents/Notes/",
+      },
+      {
+        name = "personal",
+        path =   "~/notes/",
+      },
+    }
+    else
+    return {
+      {
+        name = "personal",
+        path =   "~/notes/",
+      },
+    }
+  end
+end
+
 return function()
   local work_notes_path =  "~/Documents/Notes/"
   require("obsidian").setup({
-    workspaces = {
-      {
-        name = "work",
-        path = work_notes_path,
-      },
-    },
+    workspaces = get_workspaces(),
     daily_notes = {
-      -- Optional, if you keep daily notes in a separate directory.
       folder = "dailies",
       -- Optional, if you want to change the date format for the ID of daily notes.
       date_format = "%d.%m.%Y",
