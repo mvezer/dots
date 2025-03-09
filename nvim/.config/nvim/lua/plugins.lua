@@ -103,10 +103,12 @@ local plugin_specs = {
 		cmd = { "SudaWrite", "SudaRead" },
 	},
 
+  --- nvim-treesitter-textobjects (https://github.com/nvim-treesitter/nvim-treesitter-textobjects)
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     event = "BufReadPost",
     config = require("config.treesitter-textobjects"),
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
 
 	--- TreeSJ (split/join) (https://github.com/Wansmer/treesj)
