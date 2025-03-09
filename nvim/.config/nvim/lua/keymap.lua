@@ -19,7 +19,7 @@ local wk_config = {
 	{ "<leader>e", function () Snacks.picker.explorer() end, desc = "Toggles the file explorer window" },
 	{ "<leader>C", cmd("e $HOME/.config/nvim/lua"), desc = "Edit config" },
 	{ "<leader>f", group = "Format" },
-	{ "<leader>fF", cmd("Format"), desc = "Format with conform" },
+	{ "<leader>fF", cmd("FormatBuffer"), desc = "Format with conform" },
 	{ "<leader>ff", cmd("FormatToggle"), desc = "Toggle autoformatting" },
 	{ "<leader>m", cmd("TSJToggle"), desc = "Toggle split/join" },
 
