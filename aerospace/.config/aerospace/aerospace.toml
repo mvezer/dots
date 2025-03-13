@@ -123,10 +123,10 @@ alt-shift-f = 'fullscreen --no-outer-gaps'
 
 # Switch window focus
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-alt-left = 'focus left'
+cmd-left = 'focus left'
 # alt-down = 'focus down'
 # cmd-up = 'focus up'
-alt-right = 'focus right'
+cmd-right = 'focus right'
 
 # Move windows in the given direction
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
