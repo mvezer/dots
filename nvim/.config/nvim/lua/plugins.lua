@@ -21,7 +21,7 @@ local plugin_specs = {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    version = "1.9.0",
+    -- version = "1.9.0",
     priority = 1000,
     config = require("config.catppuccin"),
   },
@@ -290,6 +290,15 @@ local plugin_specs = {
       "Tastyep/structlog.nvim",
     },
     opts = {},
+  },
+
+  --- vim-prisma (https://github.com/prisma/vim-prisma)
+  --- NOTE: for some reason the treesitter prisma syntax highlighting is not working
+  --- while the issue is not resolved, this plugin provides the syntax highlighting
+  --- (see issue: https://github.com/victorhqc/tree-sitter-prisma/issues/43)
+  {
+    "prisma/vim-prisma",
+    lazy = false
   }
 }
 

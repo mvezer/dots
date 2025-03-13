@@ -91,6 +91,7 @@ return function()
 			"eslint",
 			"html",
 			"lua_ls",
+      "prismals",
 			"ts_ls",
 		},
 		handlers = {

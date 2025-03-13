@@ -41,6 +41,11 @@ return function()
         -- and should return true or false
         include_surrounding_whitespace = true,
       },
-    },
-  })
+      ensure_installed = { "prisma" }, -- You can add other languages too
+      sync_install = false,
+      auto_install = true,
+      highlight = {
+        enable = true,
+      },   },
+    })
 end
