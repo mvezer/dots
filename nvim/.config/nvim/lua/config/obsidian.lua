@@ -3,11 +3,11 @@ local function get_workspaces()
     return {
       {
         name = "work",
-        path =   "~/Documents/Notes/",
+        path =   "~/Documents/work_notes/",
       },
       {
         name = "personal",
-        path =   "~/notes/",
+        path =   "~/Dropbox/Private notes/",
       },
     }
     else
@@ -21,7 +21,7 @@ local function get_workspaces()
 end
 
 return function()
-  local work_notes_path =  "~/Documents/Notes/"
+  local work_notes_path =  "~/Documents/work_notes/"
   require("obsidian").setup({
     workspaces = get_workspaces(),
     daily_notes = {
@@ -33,10 +33,10 @@ return function()
       -- Optional, default tags to add to each new daily note created.
       default_tags = { "daily-notes" },
       -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-      template = "daily"
+      template = "daily template"
     },
     templates = {
-      folder = "templates",
+      -- folder = "templates/",
       date_format = "%d.%m.%Y",
       time_format = "%H:%M",
       -- A map for custom variables, the key should be the variable and the value a function

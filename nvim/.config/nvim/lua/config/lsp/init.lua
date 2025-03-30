@@ -11,7 +11,7 @@ return function()
 	end
 
 	local function goto_source_definition()
-		local position_params = vim.lsp.util.make_position_params()
+		local position_params = vim.lsp.util.make_position_params(0, 'utf-8')
 		vim.lsp.buf.execute_command({
 			command = "_typescript.goToSourceDefinition",
 			arguments = { vim.api.nvim_buf_get_name(0), position_params.position },

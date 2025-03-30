@@ -16,6 +16,7 @@ return {
         library = {
           [vim.fn.expand("$VIMRUNTIME/lua")] = true,
           [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+          [vim.fn.expand("~/Developer/lua/share")] = true
         },
         maxPreload = 100000,
         preloadFileSize = 10000,

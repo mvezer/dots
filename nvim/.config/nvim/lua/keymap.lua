@@ -53,9 +53,7 @@ local wk_config = {
 	},
 	{
 		"<leader><leader>",
-		function()
-			require("snipe").open_buffer_menu()
-		end,
+    cmd("BufferLinePick"),
 		desc = "Pick buffer",
 	},
 	{ "<Tab>", cmd("bnext"), desc = "Next buffer" },
@@ -202,14 +200,13 @@ local wk_config = {
 		mode = { "v", "i", "n" },
 	},
 	{ "<leader>N", cmd("set number!"), desc = "Toggle zen-mode", mode = { "v", "i", "n" } },
-	{
-		"<a-f>",
-		cmd("ToggleTerm direction=float"),
-		desc = "Open terminal in a floating window",
-		mode = { "n", "i", "t" },
-	},
+
+  --- toggleterm setup
+	{ "<c-t>", cmd("ToggleTerm direction=float dir=%:p:h"), desc = "Open terminal in a floating window", mode = { "n", "i" } },
+	{ "<c-t>", function () vim.cmd("ToggleTerm") end, desc = "Closes the terminal", mode = { "t" } },
+
 	{ "<c-m>", cmd("NoiceAll"), desc = "Shows recent messages" },
-	{ "<c-t>", cmd("ToggleMarkdownTodo"), desc = "Toggle markdown todo" },
+	-- { "<c-t>", cmd("ToggleMarkdownTodo"), desc = "Toggle markdown todo" },
 
 	--------------------------------------------- flash ---------------------------------------------
 	{

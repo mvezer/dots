@@ -68,4 +68,3 @@ OS = vim.loop.os_uname().sysname
 
 vim.g.sql_type_default = "pgsql"
 NOTES_DIR = os.getenv("NOTES_DIR") or os.getenv("HOME") .. "/notes"
-
