@@ -1,42 +1,28 @@
 return function()
-	local autosave_ft_blacklist = { "sql", "typescript", "c" }
-
 	require("conform").setup({
-		formatters = {
-			tidy = {
-				command = function()
-					local function reset_cursor_pos(pos)
-						local num_rows = vim.api.nvim_buf_line_count(0)
-						if pos[1] > num_rows then
-							pos[1] = num_rows
-						end
-
-						vim.api.nvim_win_set_cursor(0, pos)
-					end
-					local cursor_pos = vim.api.nvim_win_get_cursor(0)
-					vim.cmd([[:keepjumps keeppatterns silent! 0;/^\%(\n*.\)\@!/,$d_]])
-					reset_cursor_pos(cursor_pos)
-					return ""
-				end,
-			},
-		},
-		formatters_by_ft = {
-			go = { "goimports", "gofmt" },
-			lua = { "stylua" },
-			typescript = { "eslint" },
-			sql = { "pg_format" },
-			["*"] = { "tidy" },
-		},
-		format_on_save = function(bufnr)
-			if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-				return
-			end
-
-			if vim.list_contains(autosave_ft_blacklist, vim.bo.filetype) then
-				return
-			end
-
-			return { timeout_ms = 500, lsp_format = "fallback" }
-		end,
-	})
+      notify_on_error = false,
+      format_on_save = function(bufnr)
+        -- Disable "format_on_save lsp_fallback" for languages that don't
+        -- have a well standardized coding style. You can add additional
+        -- languages here or re-enable it for the disabled ones.
+        local disable_filetypes = { c = true, cpp = true }
+        if disable_filetypes[vim.bo[bufnr].filetype] then
+          return nil
+        else
+          return {
+            timeout_ms = 500,
+            lsp_format = 'fallback',
+          }
+        end
+      end,
+      formatters_by_ft = {
+        lua = { 'stylua' },
+        -- Conform can also run multiple formatters sequentially
+        -- python = { "isort", "black" },
+        --
+        -- You can use 'stop_after_first' to run the first available formatter from the list
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        typescript = { "prettierd", "prettier", "eslint", stop_after_first = true },
+      },
+    })
 end

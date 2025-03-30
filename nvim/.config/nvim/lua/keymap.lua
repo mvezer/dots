@@ -15,8 +15,20 @@ end
 local wk = require("which-key")
 local Snacks = require("snacks")
 local wk_config = {
-	{ "<leader>/", function () Snacks.picker.lines() end, desc = "Fuzzily search in current buffer" },
-	{ "<leader>e", function () Snacks.picker.explorer() end, desc = "Toggles the file explorer window" },
+	{
+		"<leader>/",
+		function()
+			Snacks.picker.lines()
+		end,
+		desc = "Fuzzily search in current buffer",
+	},
+	{
+		"<leader>e",
+		function()
+			Snacks.picker.explorer()
+		end,
+		desc = "Toggles the file explorer window",
+	},
 	{ "<leader>C", cmd("e $HOME/.config/nvim/lua"), desc = "Edit config" },
 	{ "<leader>f", group = "Format" },
 	{ "<leader>fF", cmd("FormatBuffer"), desc = "Format with conform" },
@@ -42,7 +54,6 @@ local wk_config = {
 	{ "<leader>by", cmd("%y"), desc = "[Y]ank the entire buffer" },
 	{ "<leader>bY", cmd("let @+ = expand('%:p')"), desc = "[Y]ank the full filepath" },
 	{ "<leader>bd", cmd("Cdc"), desc = "Cd the current buffers dir" },
-  { "<leader>bb", require("vuffers").toggle, desc = "Show all open buffers" },
 	{
 		"<c-x>",
 		function()
@@ -53,7 +64,7 @@ local wk_config = {
 	},
 	{
 		"<leader><leader>",
-    cmd("BufferLinePick"),
+		cmd("BufferLinePick"),
 		desc = "Pick buffer",
 	},
 	{ "<Tab>", cmd("bnext"), desc = "Next buffer" },
@@ -61,19 +72,98 @@ local wk_config = {
 
 	--------------------------------------------- search stuff ---------------------------------------------
 	{ "<leader>s", group = "Search" },
-	{ "<leader>sg", function() Snacks.picker.git_files() end, desc = "Search [g]it files" },
-	{ "<leader>sh", function () Snacks.picker.help() end, desc = "Search [h]elp tags" },
-	{ "<leader>sb", function () Snacks.picker.buffers() end, desc = "Search [b]buffers" },
-	{ "<leader>sr", function () Snacks.picker.recent() end, desc = "Search [r]ecent files" },
-	{ "<leader>sf", function () Snacks.picker.files() end, desc = "Search [f]iles" },
-	{ "<leader>sw", function () Snacks.picker.grep_word() end, desc = "Search [w]ord", mode = { "n", "x" } },
-	{ "<leader>st", function () Snacks.picker.grep() end, desc = "Search [t]ext" },
-	{ "<leader>sj", function () Snacks.picker.jumps() end, desc = "Search [j]umps" },
-	{ "<leader>su", function () Snacks.picker.undo() end, desc = "Search [u]ndo" },
-	{ "<leader>sm", function () Snacks.picker.marks() end, desc = "Search [m]arks" },
-	{ "<leader>sn", function () FindObsidianNotesWithSnackPicker() end, desc = "Search Obsidian [n]otes" }, -- NO shit
-	{ "<leader>sM", function () Snacks.picker.man() end, desc = "Search ma[n] pages" },
-	{ "<leader>:", function () Snacks.picker.command_history() end, desc = "Command history" },
+	{
+		"<leader>sg",
+		function()
+			Snacks.picker.git_files()
+		end,
+		desc = "Search [g]it files",
+	},
+	{
+		"<leader>sh",
+		function()
+			Snacks.picker.help()
+		end,
+		desc = "Search [h]elp tags",
+	},
+	{
+		"<leader>sb",
+		function()
+			Snacks.picker.buffers()
+		end,
+		desc = "Search [b]buffers",
+	},
+	{
+		"<leader>sr",
+		function()
+			Snacks.picker.recent()
+		end,
+		desc = "Search [r]ecent files",
+	},
+	{
+		"<leader>sf",
+		function()
+			Snacks.picker.files()
+		end,
+		desc = "Search [f]iles",
+	},
+	{
+		"<leader>sw",
+		function()
+			Snacks.picker.grep_word()
+		end,
+		desc = "Search [w]ord",
+		mode = { "n", "x" },
+	},
+	{
+		"<leader>st",
+		function()
+			Snacks.picker.grep()
+		end,
+		desc = "Search [t]ext",
+	},
+	{
+		"<leader>sj",
+		function()
+			Snacks.picker.jumps()
+		end,
+		desc = "Search [j]umps",
+	},
+	{
+		"<leader>su",
+		function()
+			Snacks.picker.undo()
+		end,
+		desc = "Search [u]ndo",
+	},
+	{
+		"<leader>sm",
+		function()
+			Snacks.picker.marks()
+		end,
+		desc = "Search [m]arks",
+	},
+	{
+		"<leader>sn",
+		function()
+			FindObsidianNotesWithSnackPicker()
+		end,
+		desc = "Search Obsidian [n]otes",
+	}, -- NO shit
+	{
+		"<leader>sM",
+		function()
+			Snacks.picker.man()
+		end,
+		desc = "Search ma[n] pages",
+	},
+	{
+		"<leader>:",
+		function()
+			Snacks.picker.command_history()
+		end,
+		desc = "Command history",
+	},
 
 	--------------------------------------------- git ---------------------------------------------
 	{ "<leader>g", group = "Git" },
@@ -102,7 +192,13 @@ local wk_config = {
 
 	--------------------------------------------- notes ---------------------------------------------
 	{ "<leader>n", group = "Notes" },
-	{ "<leader>ns", function () FindObsidianNotesWithSnackPicker() end, desc = "Searches notes" },
+	{
+		"<leader>ns",
+		function()
+			FindObsidianNotesWithSnackPicker()
+		end,
+		desc = "Searches notes",
+	},
 	{ "<leader>nn", cmd("ObsidianNewWithFileName"), desc = "Creates a new note" },
 	-- { "<leader>np", cmd("MarkdownPreview"), desc = "Previews the note in a browser window" },
 	{ "<leader>nt", cmd("ObsidianToday"), desc = "Today's daily note" },
@@ -169,7 +265,7 @@ local wk_config = {
 	--------------------------------------------- windows ---------------------------------------------
 	{ "<c-v>", cmd("vsplit"), desc = "Split [v]ertically" },
 	{ "<c-down>", cmd("NvimTmuxNavigateDown"), desc = "Go to window down", noremap = true },
-	{ "<c-up>",  cmd("NvimTmuxNavigateUp"), desc = "Go to window up", noremap = true },
+	{ "<c-up>", cmd("NvimTmuxNavigateUp"), desc = "Go to window up", noremap = true },
 	{ "<c-right>", cmd("NvimTmuxNavigateRight"), desc = "Go to window right", noremap = true, silent = true },
 	{ "<c-left>", cmd("NvimTmuxNavigateLeft"), desc = "Go to window left", noremap = true },
 
@@ -191,19 +287,24 @@ local wk_config = {
 
 	--------------------------------------------- misc shit ---------------------------------------------
 	{ "<Esc>", cmd("noh"), desc = "Remove highlight" },
-	{
-		"<leader>z",
-		function()
-			Snacks.zen.zen()
-		end,
-		desc = "Toggle zen-mode",
-		mode = { "v", "i", "n" },
-	},
+	{ "<leader>z", cmd("Zi"), desc = "Zoxide with fzf", mode = { "n" } },
 	{ "<leader>N", cmd("set number!"), desc = "Toggle zen-mode", mode = { "v", "i", "n" } },
 
-  --- toggleterm setup
-	{ "<c-t>", cmd("ToggleTerm direction=float dir=%:p:h"), desc = "Open terminal in a floating window", mode = { "n", "i" } },
-	{ "<c-t>", function () vim.cmd("ToggleTerm") end, desc = "Closes the terminal", mode = { "t" } },
+	--- toggleterm setup
+	{
+		"<c-t>",
+		cmd("ToggleTerm direction=float dir=%:p:h"),
+		desc = "Open terminal in a floating window",
+		mode = { "n", "i" },
+	},
+	{
+		"<c-t>",
+		function()
+			vim.cmd("ToggleTerm")
+		end,
+		desc = "Closes the terminal",
+		mode = { "t" },
+	},
 
 	{ "<c-m>", cmd("NoiceAll"), desc = "Shows recent messages" },
 	-- { "<c-t>", cmd("ToggleMarkdownTodo"), desc = "Toggle markdown todo" },
