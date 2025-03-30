@@ -116,3 +116,14 @@ export PATH="$PATH:/Users/matyas.vezer/.lmstudio/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Lua
+export LUA_DIR=/Users/mat/Developer/lua
+export PATH="$PATH:${LUA_DIR}/bin"
+export LUA_CPATH="${LUA_DIR}/lib/lua/5.1/?.so"
+export LUA_PATH="${LUA_DIR}/share/lua/5.1/?.lua;;"
+export MANPATH="${LUA_DIR}/share/man:$MANPATH"
+
+# LuaRocks
+export PATH="$PATH:$HOME/.luarocks/bin"
+eval $(luarocks path --no-bin)
