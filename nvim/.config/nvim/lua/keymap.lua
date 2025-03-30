@@ -205,20 +205,11 @@ local wk_config = {
 	{ "<leader>ny", cmd("ObsidianYesterday"), desc = "Yesterday's daily note" },
 	{ "<leader>np", cmd("ObsidianWorkspace personal"), desc = "Opens personal workspace" },
 	{ "<leader>nw", cmd("ObsidianWorkspace work"), desc = "Opens work workspace" },
+	{ "<leader>ns", cmd("YankAllToSlack"), desc = "Yank the current buffer in [s]lack format" },
 
 	--------------------------------------  AI stuff: Copilot & ChatGPT -------------------------------------
 	{ "<leader>a", group = "AI functionality" },
-	{
-		"<leader>as",
-		function()
-			require("copilot.suggestion").toggle_auto_trigger()
-		end,
-		desc = "Get next copilot suggestion",
-	},
-	{ "<leader>ad", cmd("GpChatDelete"), desc = "Delete chat" },
-	{ "<leader>an", cmd("GpChatNew"), desc = "New chat" },
-	{ "<A-g>", cmd("GpChatToggle"), desc = "Toggle ChatGPT", mode = { "n", "v", "i" } },
-	{ "<A-w>", cmd("GpWhisper"), desc = "Activate Whisper" },
+	{ "<leader>am", cmd("SupermavenRestart"), desc = "Restarts supermaven" },
 
 	-- Test
 	-- { "<leader>t", group = "Test" },

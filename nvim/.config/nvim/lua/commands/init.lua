@@ -1,5 +1,6 @@
 require("commands/notes")
 require("commands/format")
+require("commands/slack")
 
 -- Close empty buffers
 local function close_empty_buffers()
