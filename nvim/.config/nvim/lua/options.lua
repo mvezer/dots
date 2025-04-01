@@ -1,6 +1,6 @@
 --  _____       _   _
 -- |  _  |     | | (_)
--- | | | |_ __ | |_ _  ___  _ __  ___ 
+-- | | | |_ __ | |_ _  ___  _ __  ___
 -- | | | | '_ \| __| |/ _ \| '_ \/ __|
 -- \ \_/ / |_) | |_| | (_) | | | \__ \
 --  \___/| .__/ \__|_|\___/|_| |_|___/
@@ -39,7 +39,7 @@ vim.o.smartcase = true
 
 -- Decrease update time
 vim.o.updatetime = 250
-vim.o.timeoutlen = 500
+vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
@@ -60,6 +60,8 @@ vim.opt.formatoptions:remove({ "r", "o" })
 vim.g.disable_autoformat = true
 vim.b.copilot_suggestion_auto_trigger = false
 vim.g.copilot_suggestion_auto_trigger = false
+
+vim.opt.cursorline = true
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
