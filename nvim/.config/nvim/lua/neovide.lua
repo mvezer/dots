@@ -4,7 +4,11 @@ vim.g.neovide_remember_window_size = true
 vim.g.neovide_confirm_quit = false
 vim.g.neovide_fullscreen = false
 vim.g.neovide_input_macos_option_key_is_meta = "both"
-vim.g.neovide_scale_factor = 1.0
+if vim.loop.os_uname().sysname == "Linux" then
+	vim.g.neovide_scale_factor = 0.7
+else
+	vim.g.neovide_scale_factor = 1.0
+end
 vim.opt.linespace = 1
 vim.g.neovide_refresh_rate_idle = 5
 
