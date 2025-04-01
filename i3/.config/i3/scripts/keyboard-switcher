@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+bluetooth_keyboard_name="Ferris Bling LP"
+internal_keyboard_master_id="3"
+internal_keyboard_slave_id="14" # AT Translated Set 2 keyboard
+
+function is_bluetooth_keyboard_connected() {
+  bluetoothctl devices | grep -q "$bluetooth_keyboard_name"
+}
+
+function is_internal_keyboard_enabled() {
+  xinput list | grep "id=$internal_keyboard_slave_id" | grep -q "keyboard ($internal_keyboard_master_id)"
+}
+
+function enable_internal_keyboard() {
+  xinput reattach $internal_keyboard_slave_id $internal_keyboard_master_id
+}
+
+function disable_internal_keyboard() {
+  xinput float $internal_keyboard_slave_id
+}
+
+if [[ "${BLOCK_BUTTON}" -eq 1 ]]; then
+  if is_internal_keyboard_enabled
+  then
+    disable_internal_keyboard
+  else
+    enable_internal_keyboard
+  fi
+fi
+
+KBD_ICON="󰹋"
+if is_internal_keyboard_enabled
+then
+  KBD_ICON=""
+fi
+echo $KBD_ICON
