@@ -7,3 +7,4 @@ background-opacity=0.93
 keybind = global:alt+c=toggle_quick_terminal
 keybind = global:alt+q=quit
 quick-terminal-position = center
+quit-after-last-window-closed = true
