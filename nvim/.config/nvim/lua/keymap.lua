@@ -255,10 +255,10 @@ local wk_config = {
 
 	--------------------------------------------- windows ---------------------------------------------
 	{ "<c-v>", cmd("vsplit"), desc = "Split [v]ertically" },
-	{ "<c-down>", cmd("NvimTmuxNavigateDown"), desc = "Go to window down", noremap = true },
-	{ "<c-up>", cmd("NvimTmuxNavigateUp"), desc = "Go to window up", noremap = true },
-	{ "<c-right>", cmd("NvimTmuxNavigateRight"), desc = "Go to window right", noremap = true, silent = true },
-	{ "<c-left>", cmd("NvimTmuxNavigateLeft"), desc = "Go to window left", noremap = true },
+	{ "<c-down>", "<c-w>j", desc = "Go to window down", noremap = true, silent = true },
+	{ "<c-up>", "<c-w>k", desc = "Go to window up", noremap = true, silent = true },
+	{ "<c-right>", "<c-w>l", desc = "Go to window right", noremap = true, silent = true },
+	{ "<c-left>", "<c-w>h", desc = "Go to window left", noremap = true, silent = true },
 
 	--------------------------------------------- marks ---------------------------------------------
 	{ "mm", "<Plug>(Marks-toggle)", desc = "Toggle mark" },
