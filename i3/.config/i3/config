@@ -26,7 +26,7 @@ bindsym $mod+Shift+Left move workspace to output left
 bindsym $mod+Shift+n move window to workspace $ws1
 bindsym $mod+Shift+1 move window to workspace $ws1
 bindsym $mod+Shift+e move window to workspace $ws2
-bindsym $mod+Shift+2 move window to workspace $ws1
+bindsym $mod+Shift+2 move window to workspace $ws2
 bindsym $mod+Shift+i move window to workspace $ws3
 bindsym $mod+Shift+3 move window to workspace $ws3
 bindsym $mod+Shift+o move window to workspace $ws4
@@ -104,7 +104,7 @@ bindsym $mod+Right focus right
 bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+# bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -163,7 +163,7 @@ set $ws10 "10"
 # bind program to workspace and focus to them on startup:
 assign [class="alacritty"] $ws1
 assign [class="ghostty"] $ws1
-assign [class="qutebrowser"] $ws2
+assign [class="zen-browser"] $ws2
 # assign [class="(?i)brave"] $ws2
 # assign [class="Thunar"] $ws3
 # assign [class="thunderbird"] $ws4
@@ -171,7 +171,7 @@ assign [class="qutebrowser"] $ws2
 
 # automatic set focus new window if it opens on another workspace than the current:
 for_window [class=ghostty] focus
-for_window [class=qutebrowser] focus
+for_window [class=zen-browser] focus
 # for_window [class=(?i)brave] focus
 # for_window [class=Thunar] focus
 # for_window [class=Thunderbird] focus
@@ -283,6 +283,7 @@ bindsym $mod+space exec --no-startup-id ~/.config/i3/scripts/app-launcher
 bindsym $mod+c exec --no-startup-id ~/.config/i3/scripts/screen-config
 bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/show-power-menu
 bindsym $mod+k exec --no-startup-id ~/.config/i3/scripts/keyboard-layout-menu
-bindsym $mod+b exec --no-startup-id /usr/bin/qutebrowser
+bindsym $mod+b exec --no-startup-id /usr/bin/zen-browser
 bindsym $mod+x exec --no-startup-id /usr/bin/pcmanfm
 bindsym $mod+p exec --no-startup-id /usr/bin/rofi-rbw
+bindsym $mod+v exec --no-startup-id /usr/bin/neovide
