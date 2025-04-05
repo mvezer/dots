@@ -289,6 +289,12 @@ local wk_config = {
 		mode = { "n", "i" },
 	},
 	{
+		"<esc>",
+		"<C-\\><C-n>",
+		desc = "Enters proper normal mode in the terminal buffer",
+		mode = { "t" },
+	},
+	{
 		"<c-t>",
 		function()
 			vim.cmd("ToggleTerm")

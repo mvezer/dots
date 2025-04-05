@@ -155,7 +155,7 @@ local plugin_specs = {
 	{ "prisma/vim-prisma", lazy = false },
 
 	{ "akinsho/toggleterm.nvim", config = require("config.toggleterm") },
-
+	{ "chomosuke/term-edit.nvim", event = "TermOpen", version = "1.*", opts = {} },
 	{
 		"nanotee/zoxide.vim",
 		version = "*",
