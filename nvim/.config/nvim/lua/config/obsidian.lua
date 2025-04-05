@@ -14,7 +14,7 @@ local function get_workspaces()
 		return {
 			{
 				name = "personal",
-				path = "~/notes/",
+				path = "~/Dropbox/Private notes",
 			},
 		}
 	end
