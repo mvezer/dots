@@ -171,6 +171,11 @@ local plugin_specs = {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { enable_cmp_integration = true },
 	},
+	{
+		"rasulomaroff/cursor.nvim",
+		event = "VeryLazy",
+		config = require("config.cursor"),
+	},
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
