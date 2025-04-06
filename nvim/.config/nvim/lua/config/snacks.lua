@@ -38,7 +38,7 @@ return function()
 			hidden = true,
 			sources = {
 				explorer = {
-					layout = { preset = "telescope", preview = true },
+					layout = { preset = "ivy", preview = "main", position = "float" },
 					focus = "list",
 					auto_close = true,
 				},
