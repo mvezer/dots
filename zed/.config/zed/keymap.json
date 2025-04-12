@@ -1,22 +1,72 @@
-// Zed keymap
-//
-// For information on binding keys, see the Zed
-// documentation: https://zed.dev/docs/key-bindings
-//
-// To see the default key bindings run `zed: open default keymap`
-// from the command palette.
+// ██╗░░██╗███████╗██╗░░░██╗███╗░░░███╗░█████╗░██████╗░
+// ██║░██╔╝██╔════╝╚██╗░██╔╝████╗░████║██╔══██╗██╔══██╗
+// █████═╝░█████╗░░░╚████╔╝░██╔████╔██║███████║██████╔╝
+// ██╔═██╗░██╔══╝░░░░╚██╔╝░░██║╚██╔╝██║██╔══██║██╔═══╝░
+// ██║░╚██╗███████╗░░░██║░░░██║░╚═╝░██║██║░░██║██║░░░░░
+// ╚═╝░░╚═╝╚══════╝░░░╚═╝░░░╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░░░░
+// ----------------------------------------------------
 [
   {
-    "context": "Workspace",
+    "context": "Workspace || Editor",
     "bindings": {
-      // "shift shift": "file_finder::Toggle"
+      "ctrl-t": "workspace::ToggleBottomDock",
+      "ctrl-x": "pane::CloseActiveItem"
     }
   },
   {
-    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "context": "ProjectPanel && not_editing",
     "bindings": {
-      "tab tab": "tab_switcher::Toggle",
-      "space t": "workspace::NewCenterTerminal"
+      "a": "project_panel::NewFile",
+      "d": "project_panel::Delete",
+      "r": "project_panel::Rename",
+      "y": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      "x": "project_panel::Cut",
+      "Y": "workspace::CopyPath",
+      "q": "workspace::ToggleLeftDock",
+      "cmd-e": "workspace::ToggleLeftDock",
+      "space e": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      "space g g": [
+        "task::Spawn",
+        { "task_name": "lazygit", "reveal_target": "center" }
+      ],
+      "g d": "editor::GoToDefinition",
+      "g r": "editor::FindAllReferences",
+      "g D": "editor::GoToTypeDefinition",
+      "g i": "editor::GoToImplementation",
+      "space l r": "editor::Rename",
+      "space s t": "pane::DeploySearch",
+      "space l f": "editor::ToggleInlineDiagnostics",
+      "space s r": "projects::OpenRecent",
+      "space b o": "pane::CloseInactiveItems",
+      "cmd-e": "workspace::ToggleLeftDock",
+      "space e": "workspace::ToggleLeftDock",
+      "space o": "outline::Toggle",
+      "s": "vim::PushSneak",
+      "shift-s": "vim::PushSneakBackward"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu && multibuffer",
+    "bindings": {
+      "space space": "editor::OpenExcerpts"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      // "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+  {
+    "context": "Editor && edit_prediction_conflict",
+    "bindings": {
+      "ctrl-enter": "editor::AcceptEditPrediction" // Example of a modified keybinding
     }
   }
 ]
