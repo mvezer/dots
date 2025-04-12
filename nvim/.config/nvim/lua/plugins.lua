@@ -176,6 +176,7 @@ local plugin_specs = {
 		event = "VeryLazy",
 		config = require("config.cursor"),
 	},
+	{ "smjonas/inc-rename.nvim", opts = {} },
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

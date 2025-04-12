@@ -38,7 +38,12 @@ return function()
 			hidden = true,
 			sources = {
 				explorer = {
-					layout = { preset = "ivy", preview = "main", position = "float" },
+					layout = {
+						preset = "ivy",
+						preview = "main",
+						position = "float",
+						layout = { height = 0.6, width = 0.99 },
+					},
 					focus = "list",
 					auto_close = true,
 				},
