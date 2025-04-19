@@ -69,6 +69,14 @@ fi
 alias vpn="sudo wg-quick up wg0"
 alias vpn-down="sudo wg-quick down wg0"
 
+alias awslogin='aws sso login --profile $(aws configure list-profiles | fzf)'
+function ecrlogin() {
+  # aws ecr get-login-password | docker login --username AWS --password-stdin 640616770507.dkr.ecr.eu-west-1.amazonaws.com/api-v2/api:staging
+  aws ecr get-login-password | docker login --username AWS --password-stdin 640616770507.dkr.ecr.eu-west-1.amazonaws.com/$1:staging
+}
+
+alias ecrlogin='aws ecr get-login-password | docker login --username AWS --password-stdin 640616770507.dkr.ecr.eu-west-1.amazonaws.com/api-v2/api:staging'
+
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
