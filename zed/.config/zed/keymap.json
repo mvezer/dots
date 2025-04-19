@@ -48,7 +48,10 @@
       "space e": "workspace::ToggleLeftDock",
       "space o": "outline::Toggle",
       "s": "vim::PushSneak",
-      "shift-s": "vim::PushSneakBackward"
+      "shift-s": "vim::PushSneakBackward",
+      "ctrl-v": "pane::SplitRight",
+      "ctrl-right": "workspace::ActivatePaneRight",
+      "ctrl-left": "workspace::ActivatePaneLeft"
     }
   },
   {

@@ -64,6 +64,9 @@
     "TypeScript": {
       "formatter": "prettier",
       "format_on_save": "on"
+    },
+    "YAML": {
+      "show_whitespaces": "all"
     }
   },
   "edit_predictions": {
