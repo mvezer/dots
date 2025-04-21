@@ -201,13 +201,6 @@ local wk_config = {
 		end,
 		desc = "Searches notes",
 	},
-	{ "<leader>nn", cmd("ObsidianNewWithFileName"), desc = "Creates a new note" },
-	-- { "<leader>np", cmd("MarkdownPreview"), desc = "Previews the note in a browser window" },
-	{ "<leader>nt", cmd("ObsidianToday"), desc = "Today's daily note" },
-	{ "<leader>ny", cmd("ObsidianYesterday"), desc = "Yesterday's daily note" },
-	{ "<leader>np", cmd("ObsidianWorkspace personal"), desc = "Opens personal workspace" },
-	{ "<leader>nw", cmd("ObsidianWorkspace work"), desc = "Opens work workspace" },
-	{ "<leader>ns", cmd("YankAllToSlack"), desc = "Yank the current buffer in [s]lack format" },
 
 	--------------------------------------  AI stuff: Copilot & ChatGPT -------------------------------------
 	{ "<leader>a", group = "AI functionality" },
@@ -310,7 +303,7 @@ local wk_config = {
 
 	--------------------------------------------- flash ---------------------------------------------
 	{
-		"s",
+		"<CR>",
 		function()
 			require("flash").jump()
 		end,
@@ -318,7 +311,7 @@ local wk_config = {
 		mode = { "n", "x", "o" },
 	},
 	{
-		"S",
+		"s",
 		function()
 			require("flash").treesitter()
 		end,
