@@ -110,10 +110,9 @@ preset = 'qwerty'
 
 # Open/focus apps using keybinds
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-alt-enter = 'exec-and-forget open -n -a "Ghostty.app"'
-alt-b = 'exec-and-forget open -a "Zen Browser.app"'
+alt-enter = 'exec-and-forget open -n -a "Alacritty.app"'
+alt-b = 'exec-and-forget open -a "Brave Browser.app"'
 alt-x = 'exec-and-forget open -a "Alacritty.app -e yazi"'
-alt-v = 'exec-and-forget open -n -a "Neovide.app"'
 alt-q = 'close'
 
 # Switch between layouts

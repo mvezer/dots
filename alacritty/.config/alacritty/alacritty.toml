@@ -22,13 +22,13 @@ option_as_alt = "Both"
 opacity = 0.8
 blur = true
 
-[terminal.shell]
-program = "/bin/zsh"
-args = [
-  "--login",
-  "-c",
-  "tmux attach || tmux new-session -s default"
-]
+# [terminal.shell]
+# program = "/bin/zsh"
+# args = [
+#   "--login",
+#   "-c",
+#   "tmux attach || tmux new-session -s default"
+# ]
 
 # [keyboard]
 # bindings = [
