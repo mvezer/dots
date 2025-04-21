@@ -69,6 +69,8 @@ local wk_config = {
 	},
 	{ "<Tab>", cmd("bnext"), desc = "Next buffer" },
 	{ "<S-Tab>", cmd("bprevious"), desc = "Previous buffer" },
+	{ "<C-Tab>", cmd("bnext"), desc = "Next buffer" },
+	{ "<C-S-Tab>", cmd("bprevious"), desc = "Previous buffer" },
 
 	--------------------------------------------- search stuff ---------------------------------------------
 	{ "<leader>s", group = "Search" },
