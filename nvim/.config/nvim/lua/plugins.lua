@@ -125,9 +125,6 @@ local plugin_specs = {
 		config = require("config.noice"),
 	},
 
-	-- obsidian (https://github.com/epwalsh/obsidian.nvim)
-	{ "epwalsh/obsidian.nvim", lazy = false, config = require("config.obsidian") },
-
 	-- supermaven (https://github.com/supermaven-inc/supermaven-nvim)
 	{ "supermaven-inc/supermaven-nvim", config = require("config.supermaven") },
 

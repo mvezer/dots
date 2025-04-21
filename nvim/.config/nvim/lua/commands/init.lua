@@ -1,4 +1,4 @@
-require("commands/notes")
+-- require("commands/notes")
 require("commands/format")
 require("commands/slack")
 
@@ -44,14 +44,14 @@ local fuzzy_find_in_buffer = function()
 end
 vim.api.nvim_create_user_command("FuzzyFind", fuzzy_find_in_buffer, { nargs = "?" })
 
-local open_url_under_cursor = function()
-	if require("obsidian").util.cursor_on_markdown_link() then
-		vim.cmd("ObsidianFollowLink")
-	else
-		vim.cmd("URLOpenUnderCursor")
-	end
-end
-vim.api.nvim_create_user_command("OpenUrlUnderCursor", open_url_under_cursor, { nargs = "?" })
+-- local open_url_under_cursor = function()
+-- 	if require("obsidian").util.cursor_on_markdown_link() then
+-- 		vim.cmd("ObsidianFollowLink")
+-- 	else
+-- 		vim.cmd("URLOpenUnderCursor")
+-- 	end
+-- end
+-- vim.api.nvim_create_user_command("OpenUrlUnderCursor", open_url_under_cursor, { nargs = "?" })
 
 local vscode_show_tasks = function()
 	require("telescope").extensions.vstask.tasks()

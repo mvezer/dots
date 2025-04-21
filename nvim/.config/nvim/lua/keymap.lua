@@ -145,13 +145,13 @@ local wk_config = {
 		end,
 		desc = "Search [m]arks",
 	},
-	{
-		"<leader>sn",
-		function()
-			FindObsidianNotesWithSnackPicker()
-		end,
-		desc = "Search Obsidian [n]otes",
-	}, -- NO shit
+	-- {
+	-- 	"<leader>sn",
+	-- 	function()
+	-- 		FindObsidianNotesWithSnackPicker()
+	-- 	end,
+	-- 	desc = "Search Obsidian [n]otes",
+	-- }, -- NO shit
 	{
 		"<leader>sM",
 		function()
