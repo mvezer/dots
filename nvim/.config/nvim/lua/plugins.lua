@@ -100,7 +100,22 @@ local plugin_specs = {
 	{ "stevearc/conform.nvim", event = { "BufWritePre" }, cmd = { "ConformInfo" }, config = require("config.conform") },
 
 	-- nvim-recorder (https://github.com/chrisgrieser/nvim-recorder)
-	{ "chrisgrieser/nvim-recorder", commit = "00644d6", opts = {} },
+	{
+		"chrisgrieser/nvim-recorder",
+		commit = "00644d6",
+		opts = {
+			mapping = {
+				startStopRecording = "<C-q>",
+				playMacro = "Q",
+				switchSlot = "<C-S-q>",
+				editMacro = "cq",
+				deleteAllMacros = "dq",
+				yankMacro = "yq",
+				-- ⚠️ this should be a string you don't use in insert mode during a macro
+				addBreakPoint = "##",
+			},
+		},
+	},
 
 	--- ufo (https://github.com/kevinhwang91/nvim-ufo)
 	{
