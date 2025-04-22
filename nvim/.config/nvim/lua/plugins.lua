@@ -24,6 +24,19 @@ local plugin_specs = {
 	--- gitsigns (https://github.com/lewis6991/gitsigns.nvim)
 	{ "lewis6991/gitsigns.nvim", version = "*", lazy = true, event = "BufRead", opts = {} },
 
+	{
+		"stevearc/oil.nvim",
+		---@module 'oil'
+		---@type oil.SetupOpts
+		opts = {},
+		dependencies = { { "echasnovski/mini.icons", opts = {} } },
+		lazy = false,
+		config = require("config.oil"),
+	},
+
+	--- mini.nvim (https://github.com/echasnovski/mini.nvim/tree/main)
+	-- { "echasnovski/mini.nvim", version = false },
+
 	--- markdown preview (https://github.com/iamcco/markdown-preview.nvim)
 	{
 		"iamcco/markdown-preview.nvim",
@@ -42,9 +55,6 @@ local plugin_specs = {
 
 	--- snacks (https://github.com/folke/snacks.nvim)
 	{ "folke/snacks.nvim", priority = 1000, lazy = false, config = require("config.snacks") },
-
-	--- suda (https://github.com/lambdalisue/suda.vim)
-	{ "lambdalisue/suda.vim", lazy = true, cmd = { "SudaWrite", "SudaRead" } },
 
 	--- nvim-treesitter-textobjects (https://github.com/nvim-treesitter/nvim-treesitter-textobjects)
 	{
@@ -65,9 +75,6 @@ local plugin_specs = {
 
 	--- url-open (https://github.com/sontungexpt/url-open)
 	{ "sontungexpt/url-open", branch = "mini", event = "VeryLazy", cmd = "URLOpenUnderCursor", opts = {} },
-
-	--- vim eunuch (https://github.com/tpope/vim-eunuch)
-	{ "tpope/vim-eunuch" },
 
 	--- LSP
 	{
@@ -127,18 +134,18 @@ local plugin_specs = {
 	},
 
 	--- quicker (https://github.com/stevearc/quicker.nvim)
-	{ "stevearc/quicker.nvim", event = "FileType qf", opts = {} },
+	-- { "stevearc/quicker.nvim", event = "FileType qf", opts = {} },
 
 	-- noice (https://github.com/folke/noice.nvim)
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
-		},
-		config = require("config.noice"),
-	},
+	-- {
+	-- 	"folke/noice.nvim",
+	-- 	event = "VeryLazy",
+	-- 	dependencies = {
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		"rcarriga/nvim-notify",
+	-- 	},
+	-- 	config = require("config.noice"),
+	-- },
 
 	-- supermaven (https://github.com/supermaven-inc/supermaven-nvim)
 	{ "supermaven-inc/supermaven-nvim", config = require("config.supermaven") },
@@ -166,8 +173,8 @@ local plugin_specs = {
 	--- (see issue: https://github.com/victorhqc/tree-sitter-prisma/issues/43)
 	{ "prisma/vim-prisma", lazy = false },
 
-	{ "akinsho/toggleterm.nvim", config = require("config.toggleterm") },
-	{ "chomosuke/term-edit.nvim", event = "TermOpen", version = "1.*", opts = {} },
+	-- { "akinsho/toggleterm.nvim", config = require("config.toggleterm") },
+	-- { "chomosuke/term-edit.nvim", event = "TermOpen", version = "1.*", opts = {} },
 	{
 		"nanotee/zoxide.vim",
 		version = "*",
@@ -177,18 +184,18 @@ local plugin_specs = {
 	},
 	{ "akinsho/bufferline.nvim", dependencies = "nvim-tree/nvim-web-devicons", config = require("config.bufferline") },
 	{ "notjedi/nvim-rooter.lua", config = require("config.nvim-rooter") },
-	{
-		"allaman/emoji.nvim",
-		ft = "markdown",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = { enable_cmp_integration = true },
-	},
-	{
-		"rasulomaroff/cursor.nvim",
-		event = "VeryLazy",
-		config = require("config.cursor"),
-	},
-	{ "smjonas/inc-rename.nvim", opts = {} },
+	-- {
+	-- 	"allaman/emoji.nvim",
+	-- 	ft = "markdown",
+	-- 	dependencies = { "nvim-lua/plenary.nvim" },
+	-- 	opts = { enable_cmp_integration = true },
+	-- },
+	-- {
+	-- 	"rasulomaroff/cursor.nvim",
+	-- 	event = "VeryLazy",
+	-- 	config = require("config.cursor"),
+	-- },
+	-- { "smjonas/inc-rename.nvim", opts = {} },
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

@@ -25,8 +25,13 @@ local wk_config = {
 	{
 		"<leader>e",
 		function()
-			Snacks.picker.explorer()
+			-- require("oil").open_float(vim.loop.cwd(), { preview = { horizontal = true } })
+			require("oil").open_float(nil, { preview = { horizontal = true } })
+			-- require("oil").toggle_float()
 		end,
+		-- function()
+		-- 	Snacks.picker.explorer()
+		-- end,
 		desc = "Toggles the file explorer window",
 	},
 	{ "<leader>C", cmd("e $HOME/.config/nvim/lua"), desc = "Edit config" },
