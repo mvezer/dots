@@ -67,6 +67,7 @@ else
   alias cb="pbcopy"
 fi
 alias vpn="sudo wg-quick up wg0"
+alias vpn-prod="sudo wg-quick up wg1"
 alias vpn-down="sudo wg-quick down wg0"
 
 alias awslogin='aws sso login --profile $(aws configure list-profiles | fzf)'

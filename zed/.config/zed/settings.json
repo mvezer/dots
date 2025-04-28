@@ -66,6 +66,9 @@
       "format_on_save": "on"
     },
     "YAML": {
+      "formatter": "language_server",
+      "tab_size": 2,
+      "format_on_save": "off",
       "show_whitespaces": "all"
     }
   },

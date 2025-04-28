@@ -35,10 +35,13 @@
         "task::Spawn",
         { "task_name": "lazygit", "reveal_target": "center" }
       ],
+      "space g n": "editor::GoToHunk",
+      "space g p": "editor::GoToPreviousHunk",
       "g d": "editor::GoToDefinition",
       "g r": "editor::FindAllReferences",
       "g D": "editor::GoToTypeDefinition",
       "g i": "editor::GoToImplementation",
+      "space d": "editor::GoToDiagnostic",
       "space l r": "editor::Rename",
       "space s t": "pane::DeploySearch",
       "space l f": "editor::ToggleInlineDiagnostics",
@@ -69,7 +72,7 @@
   {
     "context": "Editor && edit_prediction_conflict",
     "bindings": {
-      "ctrl-enter": "editor::AcceptEditPrediction" // Example of a modified keybinding
+      "ctrl-space": "editor::AcceptEditPrediction" // Example of a modified keybinding
     }
   }
 ]
