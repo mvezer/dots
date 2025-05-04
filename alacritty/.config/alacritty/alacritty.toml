@@ -19,7 +19,7 @@ import = [
 [window]
 decorations = "none"
 option_as_alt = "Both"
-opacity = 0.8
+opacity = 0.98
 blur = true
 
 # [terminal.shell]
