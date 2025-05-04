@@ -1,0 +1,28 @@
+return {
+	format_on_save = {
+		timeout_ms = 500,
+		lsp_format = "fallback",
+	},
+	formatters_by_ft = {
+		lua = { "stylua" },
+		typescript = { "prettier" },
+		javascript = { "prettier" },
+		typescriptreact = { "prettier" },
+		javascriptreact = { "prettier" },
+		css = { "prettier" },
+		scss = { "prettier" },
+		less = { "prettier" },
+		json = { "prettier" },
+		jsonc = { "prettier" },
+		yaml = { "prettier" },
+		markdown = { "prettier" },
+		markdown_inline = { "prettier" },
+		html = { "prettier" },
+		css_inline = { "prettier" },
+		scss_inline = { "prettier" },
+		less_inline = { "prettier" },
+		graphql = { "prettier" },
+		graphql_inline = { "prettier" },
+		solidity = { "prettier" },
+	},
+}
