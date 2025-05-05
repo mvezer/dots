@@ -91,6 +91,7 @@ local plugin_spec = {
 	},
 	{ "stevearc/conform.nvim", opts = require("format") },
 	{ "kdheepak/lazygit.nvim" },
+	{ "towolf/vim-helm" },
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
