@@ -195,9 +195,9 @@ alt-shift-t = 'move-node-to-workspace 8'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-g = 'move-node-to-workspace 9'
 
-[[on-window-detected]]
-if.app-id = 'com.brave.Browser'
-run = 'move-node-to-workspace 2' # mnemonics W - Web browser
+# [[on-window-detected]]
+# if.app-id = 'com.brave.Browser'
+# run = 'move-node-to-workspace 2' # mnemonics W - Web browser
 
 # Switch focus between the two last used workspaces
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
