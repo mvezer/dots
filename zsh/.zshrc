@@ -54,7 +54,6 @@ eval "$(zoxide init --cmd cd zsh)"
 # aliases
 alias ll="eza --icons -al --time-style=long-iso --git --no-user --no-permissions"
 alias l="eza --icons -al --time-style=long-iso --git --no-user --no-permissions"
-alias t="tmux attach -t default || tmux new -s default"
 alias tree="eza -al -T --no-time --no-user --no-permissions -I node_modules $argv"
 alias ws="cd $WORKSPACE"
 alias cfg="cd ~/.config"
@@ -94,6 +93,7 @@ if [ -f $SECRETS ]; then source $SECRETS; fi
 # source ZSH config
 source $ZSH_INCLUDES/general.zsh
 source $ZSH_INCLUDES/kubernetes.zsh
+source $ZSH_INCLUDES/tmux.zsh
 source $ZSH_INCLUDES/git.zsh
 source $ZSH_INCLUDES/go.zsh
 source $ZSH_INCLUDES/zig.zsh

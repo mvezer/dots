@@ -15,6 +15,7 @@ function nuke-rapp () {
   kubectl delete all -l prunable=true,reviewAppId="$1" -n nxt
 }
 function kex () {
-  command="${1:-/bin/sh}"
+  command="${1:-/bin/bash}"
+  # command="${1:-/bin/sh}"
   kubectl exec --stdin --tty $(kubectl get pods -oname | awk -F '/' '{ print $2 }' | fzf) -- $command
 }
