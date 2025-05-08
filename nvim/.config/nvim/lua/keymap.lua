@@ -34,9 +34,10 @@ vim.keymap.set("v", "<S-right>", ">gv")
 vim.keymap.set({ "n", "v" }, "c", '"_c')
 vim.keymap.set({ "n", "v" }, "C", '"_C')
 vim.keymap.set("v", "p", "P")
-vim.keymap.set("n", "<leader>f", function()
+vim.keymap.set("n", "<leader>F", function()
 	require("conform").format()
 end)
+vim.keymap.set("n", "<leader>f", "<cmd>ConformToggle<CR>", { desc = "Toggle autoformatting" })
 
 -- windows
 vim.keymap.set({ "n", "v", "i" }, "<c-v>", ":vsplit<CR>")

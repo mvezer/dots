@@ -41,13 +41,8 @@ local plugin_spec = {
 			},
 		},
 	},
-	{
-		"beauwilliams/statusline.lua",
-		dependencies = {
-			"nvim-lua/lsp-status.nvim",
-		},
-		opts = { match_colorscheme = true },
-	},
+	{ "stevearc/conform.nvim", event = { "BufWritePre" }, cmd = { "ConformInfo" }, config = require("format") },
+	{ "nvim-lualine/lualine.nvim", lazy = true, event = "BufRead", config = require("bar") },
 	{
 		"leath-dub/snipe.nvim",
 		keys = {
@@ -84,12 +79,12 @@ local plugin_spec = {
 		lazy = false,
 		opts = {
 			filesystem = {
+				filtered_items = { hide_dotfiles = false, hide_gitignored = false },
 				commands = { avante_add_files = require("ai").avante_add_files },
 			},
 			window = { mappings = { ["A"] = "avante_add_files" } },
 		},
 	},
-	{ "stevearc/conform.nvim", opts = require("format") },
 	{ "kdheepak/lazygit.nvim" },
 	{ "towolf/vim-helm" },
 	{

@@ -21,8 +21,8 @@ vim.diagnostic.config({
 local pumMaps = {
 	["<Down>"] = "<C-n>",
 	["<Up>"] = "<C-p>",
-	["<Tab>"] = "<C-y>", -- select item with <Tab>
-	["<CR>"] = "<C-e><CR>", -- close the pum and insert a new line
+	-- ["<Tab>"] = "<C-y>", -- select item with <Tab>
+	-- ["<CR>"] = "<C-e><CR>", -- close the pum and insert a new line
 }
 for insertKmap, pumKmap in pairs(pumMaps) do
 	vim.keymap.set("i", insertKmap, function()
