@@ -51,7 +51,7 @@ vim.keymap.set("n", "<leader>bo", ":%bd|e#|bd#<CR>", { silent = true }) -- close
 vim.keymap.set({ "n", "v", "i" }, "<C-x>", ":bd<CR>", { silent = true })
 vim.keymap.set("n", "<leader>by", ":%y<CR>")
 vim.keymap.set("n", "<leader>bY", ":let @+ = expand('%:p')", { silent = true })
-vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
+vim.keymap.set("n", "<Tab>", "<C-S-^>")
 vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
 vim.keymap.set("n", "<C-Tab>", ":bnext<CR>", { silent = true })
 vim.keymap.set("n", "<C-S-Tab>", ":bprevious<CR>", { silent = true })
