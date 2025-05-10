@@ -1,12 +1,29 @@
 -- options
 vim.g.mapleader = " "
+
+if vim.loop.os_uname().sysname == "Linux" then
+  vim.g.clipboard = {
+    name = "wl-clipboard",
+    copy = {
+      ["+"] = "wl-copy --foreground --type text/plain",
+      ["*"] = "wl-copy --foreground --primary --type text/plain",
+    },
+    paste = {
+      ["+"] = "wl-paste --no-newline",
+      ["*"] = "wl-paste --primary --no-newline",
+    },
+    cache_enabled = true,
+  }
+else
+  vim.o.clipboard = "unnamedplus"
+end
+
 vim.g.maplocalleader = " "
 vim.o.cmdheight = 0
 vim.o.number = true
-vim.o.relativenumber = true
+-- vim.o.relativenumber = true
 vim.o.signcolumn = "auto:4"
 vim.o.mouse = "a" -- enable mouse
-vim.o.clipboard = "unnamedplus"
 vim.o.breakindent = true
 vim.o.undofile = true -- persist undo
 vim.o.ignorecase = true
@@ -24,18 +41,19 @@ vim.o.softtabstop = 2
 -- vim.opt.listchars = { tab = " " }
 vim.opt.list = true
 vim.opt.listchars = {
-	tab = "→ ",
-	space = "·",
-	-- eol = "↵",
-	-- trail = "~",
-	-- extends = ">",
-	-- precedes = "<",
+  tab = "→ ",
+  space = "·",
+  -- eol = "↵",
+  -- trail = "~",
+  -- extends = ">",
+  -- precedes = "<",
 }
 -- vim.o.messagesopt = "wait:3000,history:500"
 vim.opt.cursorline = true
 -- vim.g.netrw_banner = 1 -- BUG: the screen is flickering when banner is off (https://github.com/neovim/neovim/issues/23650)
 vim.cmd([[autocmd FileType * set formatoptions-=ro]]) -- disable new line auto comment
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+-- vim.opt.grepprg = "rg --vimgrep -uu"
 
 require("plugins")
 require("lsp")
