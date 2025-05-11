@@ -10,11 +10,6 @@ local plugin_spec = {
       require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls", "ts_ls", "prismals", "eslint", "dockerls", "docker_compose_language_service" },
       })
-      -- require("mason-lspconfig").setup_handlers({
-      --   function(server_name)
-      --     require("lspconfig")[server_name].setup({})
-      --   end,
-      -- })
     end,
   },
   { "j-hui/fidget.nvim", opts = {} },
@@ -59,7 +54,7 @@ local plugin_spec = {
     opts = { hints = { dictionary = "neioarst" }, ui = { open_win_override = { border = "rounded" } } },
   },
   { "nvim-treesitter/nvim-treesitter", opts = {} },
-  { "ibhagwan/fzf-lua", opts = {} },
+  { "ibhagwan/fzf-lua", opts = require("fzf") },
   { "supermaven-inc/supermaven-nvim", opts = { keymaps = { accept_suggestion = "<S-Tab>" } } },
   {
     -- Make sure to set this up properly if you have lazy=true
@@ -82,6 +77,7 @@ local plugin_spec = {
     config = require("neo-tree-config"),
   },
   { "kdheepak/lazygit.nvim" },
+  { "brianhuster/live-preview.nvim" },
   { "towolf/vim-helm" },
   {
     "iamcco/markdown-preview.nvim",
