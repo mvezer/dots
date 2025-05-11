@@ -15,7 +15,7 @@ if vim.loop.os_uname().sysname == "Linux" then
     cache_enabled = true,
   }
 else
-  vim.o.clipboard = "unnamedplus"
+  vim.o.clipboard = "unnamed,unnamedplus"
 end
 
 vim.g.maplocalleader = " "
