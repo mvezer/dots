@@ -11,7 +11,6 @@ apps_to_enable=(
   "/Applications/Alacritty.app"
   "/Applications/AeroSpace.app"
   "/Applications/Zen\ Browser.app"
-  "/Applications/Thorium.app"
 )
 
 alias "br"="HOMEBREW_NO_AUTO_UPDATE=1 brew bundle install --file=~/Brewfile --cleanup"
