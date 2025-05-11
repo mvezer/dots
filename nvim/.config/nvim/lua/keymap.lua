@@ -22,6 +22,7 @@ vim.keymap.set("n", "<leader>sj", function()
   FzfLua.jumps()
 end)
 vim.keymap.set("n", "<leader>e", ":Neotree toggle float<CR>")
+vim.keymap.set("n", "<leader>E", ":NeoTreeFloatCurrentDir<CR>")
 vim.keymap.set({ "n", "v", "i" }, "<C-x>", ":bd<CR>", { silent = true })
 
 -- editing

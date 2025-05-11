@@ -79,13 +79,7 @@ local plugin_spec = {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     lazy = false,
-    opts = {
-      filesystem = {
-        filtered_items = { hide_dotfiles = false, hide_gitignored = false },
-        commands = { avante_add_files = require("ai").avante_add_files },
-      },
-      window = { mappings = { ["A"] = "avante_add_files" } },
-    },
+    config = require("neo-tree-config"),
   },
   { "kdheepak/lazygit.nvim" },
   { "towolf/vim-helm" },
