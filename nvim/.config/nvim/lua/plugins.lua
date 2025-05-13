@@ -20,7 +20,7 @@ local plugin_spec = {
       vim.cmd([[colorscheme nightfox]])
     end,
   },
-  { "chentoast/marks.nvim", event = "VeryLazy", opts = {} },
+  { "chentoast/marks.nvim", event = "VeryLazy", opts = { mappings = { delete_line = "M" } } },
   { "nvim-lua/plenary.nvim" },
   { "MunifTanjim/nui.nvim" },
   {
