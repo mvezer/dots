@@ -19,7 +19,7 @@ else
 end
 
 vim.g.maplocalleader = " "
-vim.o.cmdheight = 0
+vim.o.cmdheight = 1
 vim.o.number = true
 -- vim.o.relativenumber = true
 vim.o.signcolumn = "auto:4"

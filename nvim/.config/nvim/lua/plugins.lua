@@ -40,19 +40,7 @@ local plugin_spec = {
   },
   { "stevearc/conform.nvim", event = { "BufWritePre" }, cmd = { "ConformInfo" }, config = require("format") },
   { "nvim-lualine/lualine.nvim", lazy = true, event = "BufRead", config = require("bar") },
-  {
-    "leath-dub/snipe.nvim",
-    keys = {
-      {
-        "<leader><leader>",
-        function()
-          require("snipe").open_buffer_menu()
-        end,
-        desc = "Open Snipe buffer menu",
-      },
-    },
-    opts = { hints = { dictionary = "neioarst" }, ui = { open_win_override = { border = "rounded" } } },
-  },
+  { "j-morano/buffer_manager.nvim", opts = { line_keys = "neioarst" } },
   { "nvim-treesitter/nvim-treesitter", opts = {} },
   { "ibhagwan/fzf-lua", opts = require("fzf") },
   { "supermaven-inc/supermaven-nvim", opts = { keymaps = { accept_suggestion = "<S-Tab>" } } },

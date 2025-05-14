@@ -48,6 +48,11 @@ vim.keymap.set({ "n", "v", "i" }, "<c-right>", "<c-w>l")
 vim.keymap.set({ "n", "v", "i" }, "<c-left>", "<c-w>h")
 
 -- buffers
+
+vim.keymap.set("n", "<leader><leader>", function()
+  require("buffer_manager.ui").toggle_quick_menu()
+end)
+-- close all buffers but the current one
 vim.keymap.set("n", "<leader>bo", ":%bd|e#|bd#<CR>", { silent = true }) -- close all buffers but the current one
 vim.keymap.set({ "n", "v", "i" }, "<C-x>", ":bd<CR>", { silent = true })
 vim.keymap.set("n", "<leader>by", ":%y<CR>")
