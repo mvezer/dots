@@ -21,8 +21,8 @@ end)
 vim.keymap.set("n", "<leader>sj", function()
   FzfLua.jumps()
 end)
-vim.keymap.set("n", "<leader>e", ":Neotree toggle float<CR>")
-vim.keymap.set("n", "<leader>E", ":NeoTreeFloatCurrentDir<CR>")
+vim.keymap.set("n", "<leader>e", ":Neotree toggle float<CR>", { silent = true })
+vim.keymap.set("n", "<leader>E", ":NeoTreeFloatCurrentDir<CR>", { silent = true })
 vim.keymap.set({ "n", "v", "i" }, "<C-x>", ":bd<CR>", { silent = true })
 
 -- editing
@@ -38,7 +38,7 @@ vim.keymap.set("v", "p", "P")
 vim.keymap.set("n", "<leader>F", function()
   require("conform").format()
 end)
-vim.keymap.set("n", "<leader>f", "<cmd>ConformToggle<CR>", { desc = "Toggle autoformatting" })
+vim.keymap.set("n", "<leader>f", "<cmd>ConformToggle<CR>", { desc = "Toggle autoformatting", silent = true })
 
 -- windows
 vim.keymap.set({ "n", "v", "i" }, "<c-v>", ":vsplit<CR>")
@@ -61,7 +61,7 @@ vim.keymap.set("n", "<Tab>", "<C-S-^>")
 vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
 vim.keymap.set("n", "<C-Tab>", ":bnext<CR>", { silent = true })
 vim.keymap.set("n", "<C-S-Tab>", ":bprevious<CR>", { silent = true })
-vim.keymap.set("n", "<Esc>", ":noh<CR>")
+vim.keymap.set("n", "<Esc>", ":noh<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>gg", ":LazyGit<CR>")
 

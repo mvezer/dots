@@ -16,13 +16,14 @@ vim.lsp.config("*", {
   root_markers = { ".git" },
 })
 vim.diagnostic.config({
-  virtual_lines = true,
+  virtual_lines = false,
+  virtual_text = true,
 })
 local pumMaps = {
   ["<Down>"] = "<C-n>",
   ["<Up>"] = "<C-p>",
-  -- ["<Tab>"] = "<C-y>", -- select item with <Tab>
-  -- ["<CR>"] = "<C-e><CR>", -- close the pum and insert a new line
+  ["<Right>"] = "<C-y>", -- select item with <Tab>
+  ["<CR>"] = "<C-e><CR>", -- close the pum and insert a new line
 }
 for insertKmap, pumKmap in pairs(pumMaps) do
   vim.keymap.set("i", insertKmap, function()
@@ -45,6 +46,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       FzfLua.lsp_references()
     end, { buffer = true, noremap = true })
     vim.keymap.set("n", "<leader>lf", "<CMD>lua vim.diagnostic.open_float()<CR>", { buffer = true, noremap = true })
+    vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { noremap = true })
     vim.keymap.set("n", "<leader>o", function()
       FzfLua.lsp_document_symbols()
     end, { buffer = true, noremap = true })
