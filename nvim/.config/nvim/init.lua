@@ -14,6 +14,7 @@ if vim.loop.os_uname().sysname == "Linux" then
     },
     cache_enabled = true,
   }
+  vim.o.clipboard = "unnamed"
 else
   vim.o.clipboard = "unnamed,unnamedplus"
 end
