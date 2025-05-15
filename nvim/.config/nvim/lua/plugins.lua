@@ -8,7 +8,7 @@ local plugin_spec = {
     config = function()
       require("mason").setup()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "prismals", "eslint", "dockerls", "docker_compose_language_service" },
+        ensure_installed = { "lua_ls", "prismals", "eslint", "dockerls", "docker_compose_language_service" },
       })
     end,
   },
@@ -41,7 +41,22 @@ local plugin_spec = {
   { "stevearc/conform.nvim", event = { "BufWritePre" }, cmd = { "ConformInfo" }, config = require("format") },
   { "nvim-lualine/lualine.nvim", lazy = true, event = "BufRead", config = require("bar") },
   { "j-morano/buffer_manager.nvim", opts = { line_keys = "neioarst" } },
-  { "nvim-treesitter/nvim-treesitter", opts = {} },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = "typescript",
+      "javascript",
+      "lua",
+      "dockerfile",
+      "yaml",
+      "json",
+      "bash",
+      "c",
+      "cpp",
+      "toml",
+      "go",
+    },
+  },
   { "ibhagwan/fzf-lua", opts = require("fzf") },
   { "supermaven-inc/supermaven-nvim", opts = { keymaps = { accept_suggestion = "<S-Tab>" } } },
   {
@@ -99,6 +114,15 @@ local plugin_spec = {
   },
   { "numToStr/Navigator.nvim", opts = {} },
   { "Wansmer/treesj", lazy = true, event = "BufReadPost", opts = { use_default_keymaps = false } },
+  {
+    "pmizio/typescript-tools.nvim",
+    opts = {
+      on_attach = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+      end,
+    },
+  },
 }
 
 -- Bootstrap lazy.nvim
