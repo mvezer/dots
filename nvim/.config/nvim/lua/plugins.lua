@@ -98,6 +98,7 @@ local plugin_spec = {
     ft = { "markdown" },
   },
   { "numToStr/Navigator.nvim", opts = {} },
+  { "Wansmer/treesj", lazy = true, event = "BufReadPost", opts = { use_default_keymaps = false } },
 }
 
 -- Bootstrap lazy.nvim
