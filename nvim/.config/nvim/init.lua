@@ -20,7 +20,7 @@ end
 
 vim.g.maplocalleader = " "
 vim.o.cmdheight = 1
-vim.o.number = true
+vim.o.number = false
 -- vim.o.relativenumber = true
 vim.o.signcolumn = "auto:4"
 vim.o.mouse = "a" -- enable mouse
