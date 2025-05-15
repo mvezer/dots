@@ -97,6 +97,7 @@ local plugin_spec = {
     end,
     ft = { "markdown" },
   },
+  { "numToStr/Navigator.nvim", opts = {} },
 }
 
 -- Bootstrap lazy.nvim

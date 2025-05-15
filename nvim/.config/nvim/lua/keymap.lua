@@ -42,13 +42,12 @@ vim.keymap.set("n", "<leader>f", "<cmd>ConformToggle<CR>", { desc = "Toggle auto
 
 -- windows
 vim.keymap.set({ "n", "v", "i" }, "<c-v>", ":vsplit<CR>")
-vim.keymap.set({ "n", "v", "i" }, "<c-down>", "<c-w>j")
-vim.keymap.set({ "n", "v", "i" }, "<c-up>", "<c-w>k")
-vim.keymap.set({ "n", "v", "i" }, "<c-right>", "<c-w>l")
-vim.keymap.set({ "n", "v", "i" }, "<c-left>", "<c-w>h")
+vim.keymap.set({ "n", "v", "i" }, "<c-down>", ":NavigatorDown<CR>")
+vim.keymap.set({ "n", "v", "i" }, "<c-up>", ":NavigatorUp<CR>")
+vim.keymap.set({ "n", "v", "i" }, "<c-right>", ":NavigatorRight<CR>")
+vim.keymap.set({ "n", "v", "i" }, "<c-left>", ":NavigatorLeft<CR>")
 
 -- buffers
-
 vim.keymap.set("n", "<leader><leader>", function()
   require("buffer_manager.ui").toggle_quick_menu()
 end)
