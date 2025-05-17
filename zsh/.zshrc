@@ -29,6 +29,10 @@ fi
 if [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]] then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
+export HOMEBREW_BREWFILE="$HOME/.brew/Brewfile"
+if [ -f $(brew --prefix)/etc/brew-wrap ];then
+  source $(brew --prefix)/etc/brew-wrap
+fi
 
 # zinit
 if [ ! -d "$ZINIT_HOME" ]; then
@@ -96,7 +100,8 @@ source $ZSH_INCLUDES/go.zsh
 source $ZSH_INCLUDES/zig.zsh
 source $ZSH_INCLUDES/aws.zsh
 source $ZSH_INCLUDES/lua.zsh
-source $ZSH_INCLUDES/homebrew.zsh
+
+source $(brew --prefix)/share/zsh/site-functions/_todoist_fzf
 
 # misc settings
 unsetopt BEEP
@@ -107,4 +112,5 @@ export PATH="$PATH:/Users/matyas.vezer/.lmstudio/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 
