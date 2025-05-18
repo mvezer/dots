@@ -2,18 +2,18 @@
 vim.g.mapleader = " "
 
 if vim.loop.os_uname().sysname == "Linux" then
-  vim.g.clipboard = {
-    name = "wl-clipboard",
-    copy = {
-      ["+"] = "wl-copy --foreground --type text/plain",
-      ["*"] = "wl-copy --foreground --primary --type text/plain",
-    },
-    paste = {
-      ["+"] = "wl-paste --no-newline",
-      ["*"] = "wl-paste --primary --no-newline",
-    },
-    cache_enabled = true,
-  }
+  -- vim.g.clipboard = {
+  --   name = "wl-clipboard",
+  --   copy = {
+  --     ["+"] = "wl-copy --foreground --type text/plain",
+  --     ["*"] = "wl-copy --foreground --primary --type text/plain",
+  --   },
+  --   paste = {
+  --     ["+"] = "wl-paste --no-newline",
+  --     ["*"] = "wl-paste --primary --no-newline",
+  --   },
+  --   cache_enabled = true,
+  -- }
   vim.o.clipboard = "unnamed"
 else
   vim.o.clipboard = "unnamed,unnamedplus"
@@ -24,7 +24,7 @@ vim.o.cmdheight = 1
 vim.o.number = false
 -- vim.o.relativenumber = true
 vim.o.signcolumn = "auto:4"
-vim.o.mouse = "a" -- enable mouse
+vim.o.mouse = "a"     -- enable mouse
 vim.o.breakindent = true
 vim.o.undofile = true -- persist undo
 vim.o.ignorecase = true
