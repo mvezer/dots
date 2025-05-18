@@ -1,4 +1,14 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
+
+export HOMEBREW_BREWFILE="$HOME/.brew/Brewfile"
+
+if [[ -f "/opt/homebrew/bin/brew" ]] then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+if [ -f $(brew --prefix)/etc/brew-wrap ];then
+  source $(brew --prefix)/etc/brew-wrap
+fi
 
 function enable_apps() {
   for app in "$@"; do
@@ -10,7 +20,6 @@ function enable_apps() {
 apps_to_enable=(
   "/Applications/Alacritty.app"
   "/Applications/AeroSpace.app"
-  "/Applications/Zen\ Browser.app"
 )
 
 alias "br"="HOMEBREW_NO_AUTO_UPDATE=1 brew bundle install --file=~/Brewfile --cleanup"

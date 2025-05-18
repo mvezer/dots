@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 
 function init-go-project() {
   PACKAGE_PREFIX="github.com/mvezer"

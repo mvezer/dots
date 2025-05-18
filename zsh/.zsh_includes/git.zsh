@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 
 alias gitignore="git update-index --assume-unchanged"
 alias gitunignore="git update-index --no-assume-unchanged"
