@@ -1,6 +1,6 @@
 local plugin_spec = {
-  { "williamboman/mason.nvim", opts = {} },
-  { "folke/lazydev.nvim", opts = {} },
+  { "williamboman/mason.nvim",          opts = {} },
+  { "folke/lazydev.nvim",               opts = {} },
   { "neovim/nvim-lspconfig" },
   { "williamboman/mason-lspconfig.nvim" },
   {
@@ -12,7 +12,7 @@ local plugin_spec = {
       })
     end,
   },
-  { "j-hui/fidget.nvim", opts = {} },
+  { "j-hui/fidget.nvim",    opts = {} },
   {
     "EdenEast/nightfox.nvim",
     priority = 1000,
@@ -38,8 +38,8 @@ local plugin_spec = {
       },
     },
   },
-  { "stevearc/conform.nvim", event = { "BufWritePre" }, cmd = { "ConformInfo" }, config = require("format") },
-  { "nvim-lualine/lualine.nvim", lazy = true, event = "BufRead", config = require("bar") },
+  { "stevearc/conform.nvim",        event = { "BufWritePre" },        cmd = { "ConformInfo" }, config = require("format") },
+  { "nvim-lualine/lualine.nvim",    lazy = true,                      event = "BufRead",       config = require("bar") },
   { "j-morano/buffer_manager.nvim", opts = { line_keys = "neioarst" } },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -57,7 +57,7 @@ local plugin_spec = {
       "go",
     },
   },
-  { "ibhagwan/fzf-lua", opts = require("fzf") },
+  { "ibhagwan/fzf-lua",               opts = require("fzf") },
   { "supermaven-inc/supermaven-nvim", opts = { keymaps = { accept_suggestion = "<S-Tab>" } } },
   {
     -- Make sure to set this up properly if you have lazy=true
@@ -113,7 +113,7 @@ local plugin_spec = {
     ft = { "markdown" },
   },
   { "numToStr/Navigator.nvim", opts = {} },
-  { "Wansmer/treesj", lazy = true, event = "BufReadPost", opts = { use_default_keymaps = false } },
+  { "Wansmer/treesj",          lazy = true, event = "BufReadPost", opts = { use_default_keymaps = false } },
   {
     "pmizio/typescript-tools.nvim",
     opts = {
@@ -123,6 +123,7 @@ local plugin_spec = {
       end,
     },
   },
+  { "zk-org/zk-nvim", config = require("zk_config") },
 }
 
 -- Bootstrap lazy.nvim
@@ -133,7 +134,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
+      { out,                            "WarningMsg" },
       { "\nPress any key to exit..." },
     }, true, {})
     vim.fn.getchar()

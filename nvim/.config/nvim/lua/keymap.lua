@@ -51,7 +51,6 @@ vim.keymap.set({ "n", "v", "i" }, "<c-left>", ":NavigatorLeft<CR>")
 vim.keymap.set("n", "<leader><leader>", function()
   require("buffer_manager.ui").toggle_quick_menu()
 end)
--- close all buffers but the current one
 vim.keymap.set("n", "<leader>bo", ":%bd|e#|bd#<CR>", { silent = true }) -- close all buffers but the current one
 vim.keymap.set({ "n", "v", "i" }, "<C-x>", ":bd<CR>", { silent = true })
 vim.keymap.set("n", "<leader>by", ":%y<CR>")
@@ -69,3 +68,13 @@ vim.keymap.set("n", "<Down>", "gj")
 vim.keymap.set("n", "k", "gk")
 vim.keymap.set("n", "<Up>", "gk")
 vim.keymap.set("n", "<leader>m", ":TSJToggle<CR>", { silent = true })
+
+-- notes
+vim.keymap.set("n", "<leader>nnw", function()
+  vim.cmd("cd " .. vim.env.ZK_WORK_DIR)
+  vim.cmd("ZkNewWithTitle")
+end, { silent = true })
+vim.keymap.set("n", "<leader>nnp", function()
+  vim.cmd("cd " .. vim.env.ZK_PERSONAL_DIR)
+  vim.cmd("ZkNewWithTitle")
+end, { silent = true })

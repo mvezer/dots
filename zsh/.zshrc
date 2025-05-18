@@ -66,6 +66,7 @@ fi
 if [[ "$HOST" == "rocinante" ]]; then # work laptop
   source $ZSH_INCLUDES/promaton.zsh
 fi
+source $ZSH_INCLUDES/zk.zsh
 source $ZSH_INCLUDES/general.zsh
 source $ZSH_INCLUDES/kubernetes.zsh
 source $ZSH_INCLUDES/tmux.zsh
