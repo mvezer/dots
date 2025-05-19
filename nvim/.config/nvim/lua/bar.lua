@@ -19,16 +19,6 @@ return function()
     return "AF"
   end
 
-  local function zk_mode()
-    for _, v in pairs(require("zk-config").zk_modes) do
-      if vim.fn.getcwd() == v.dir then
-        return v.icon
-      end
-    end
-
-    return ""
-  end
-
   require("lualine").setup({
     options = {
       always_show_tabline = true,
@@ -41,7 +31,7 @@ return function()
       lualine_a = { "mode" },
       lualine_b = { "branch", "diff", "diagnostics" },
       lualine_c = { filename_plus_project },
-      lualine_x = { zk_mode, autoformat },
+      lualine_x = { require("zk-config").current_mode_icon, autoformat },
       lualine_y = { "filetype" },
       lualine_z = { "progress" },
     },
