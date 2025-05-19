@@ -1,4 +1,4 @@
-return function ()
+return function()
   local function filename_plus_project()
     local dir = vim.fn.getcwd() or ""
     local buffer_dir = vim.fn.expand("%")
@@ -19,6 +19,16 @@ return function ()
     return "AF"
   end
 
+  local function zk_mode()
+    for _, v in pairs(require("zk-config").zk_modes) do
+      if vim.fn.getcwd() == v.dir then
+        return v.icon
+      end
+    end
+
+    return ""
+  end
+
   require("lualine").setup({
     options = {
       always_show_tabline = true,
@@ -30,8 +40,8 @@ return function ()
     sections = {
       lualine_a = { "mode" },
       lualine_b = { "branch", "diff", "diagnostics" },
-      lualine_c = { filename_plus_project  },
-      lualine_x = { autoformat },
+      lualine_c = { filename_plus_project },
+      lualine_x = { zk_mode, autoformat },
       lualine_y = { "filetype" },
       lualine_z = { "progress" },
     },
