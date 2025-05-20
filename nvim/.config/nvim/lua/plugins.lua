@@ -124,15 +124,6 @@ local plugin_spec = {
   },
   { "numToStr/Navigator.nvim", opts = {} },
   { "Wansmer/treesj", lazy = true, event = "BufReadPost", opts = { use_default_keymaps = false } },
-  {
-    "pmizio/typescript-tools.nvim",
-    opts = {
-      on_attach = function(client)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-      end,
-    },
-  },
   { "zk-org/zk-nvim", config = require("zk-config").zk_config },
 }
 

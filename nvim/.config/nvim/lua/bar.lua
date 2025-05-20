@@ -19,6 +19,15 @@ return function()
     return "AF"
   end
 
+  local function inline_diagnostics()
+    local current_value = vim.diagnostic.config().virtual_text
+    if current_value then
+      return "[D]"
+    else
+      return "[-]"
+    end
+  end
+
   require("lualine").setup({
     options = {
       always_show_tabline = true,
@@ -31,7 +40,7 @@ return function()
       lualine_a = { "mode" },
       lualine_b = { "branch", "diff", "diagnostics" },
       lualine_c = { filename_plus_project },
-      lualine_x = { require("zk-config").current_mode_icon, autoformat },
+      lualine_x = { inline_diagnostics, require("zk-config").current_mode_icon, autoformat },
       lualine_y = { "filetype" },
       lualine_z = { "progress" },
     },

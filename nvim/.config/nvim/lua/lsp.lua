@@ -31,6 +31,16 @@ for insertKmap, pumKmap in pairs(pumMaps) do
   end, { expr = true })
 end
 
+function ToggleInlineDiagnostics()
+  local current_value = vim.diagnostic.config().virtual_text
+  if current_value then
+    vim.diagnostic.config({ virtual_text = false })
+  else
+    vim.diagnostic.config({ virtual_text = true })
+  end
+end
+vim.api.nvim_create_user_command("ToggeleInlineDiagnostics", ToggleInlineDiagnostics, {})
+
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local FzfLua = require("fzf-lua")
@@ -47,6 +57,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, { buffer = true, noremap = true })
     vim.keymap.set("n", "<leader>lf", "<CMD>lua vim.diagnostic.open_float()<CR>", { buffer = true, noremap = true })
     vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { noremap = true })
+    vim.keymap.set("n", "<leader>ld", ":ToggeleInlineDiagnostics<CR>", { buffer = true, noremap = true, silent = true })
     vim.keymap.set("n", "<leader>o", function()
       FzfLua.lsp_document_symbols()
     end, { buffer = true, noremap = true })
