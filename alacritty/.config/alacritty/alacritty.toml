@@ -2,7 +2,7 @@
 size=12.0
 
 [font.normal]
-family = "JetBrainsMono Nerd Font Mono"
+family = "FiraCode Nerd Font"
 
 [cursor.style]
 shape = "Beam"
