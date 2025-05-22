@@ -22,8 +22,9 @@ vim.diagnostic.config({
 local pumMaps = {
   ["<Down>"] = "<C-n>",
   ["<Up>"] = "<C-p>",
-  ["<Right>"] = "<C-y>", -- select item with <Tab>
-  ["<CR>"] = "<C-e><CR>", -- close the pum and insert a new line
+  ["<CR>"] = "<C-y>",
+  ["<Tab>"] = "<C-y>",
+  -- ["<>"] = "<C-e><CR>",
 }
 for insertKmap, pumKmap in pairs(pumMaps) do
   vim.keymap.set("i", insertKmap, function()
@@ -70,7 +71,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.api.nvim_create_autocmd({ "TextChangedI" }, {
       buffer = args.buf,
       callback = function()
-        vim.lsp.completion.get()
+        vim.defer_fn(vim.lsp.completion.get, 1000)
       end,
     })
     vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
