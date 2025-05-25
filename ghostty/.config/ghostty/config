@@ -1,8 +1,8 @@
 macos-option-as-alt = true
-font-family = JetBrainsMono Nerd Font Mono
+font-family = FiraCode Nerd Font Mono
 font-size = 13
 window-decoration = false
-theme = catppuccin-mocha
+theme = nightfox
 # background-opacity=0.93
 # keybind = global:alt+c=toggle_quick_terminal
 keybind = global:alt+q=quit
