@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+DATE="--"
+KEYBOARD_LAYOUT="--"
+
+while true; do
+  DATE="$(date +'%d.%m.%Y %H:%M')"
+  KEYBOARD_LAYOUT="$(xkb-switch -p)"
+  xsetroot -name "[$KEYBOARD_LAYOUT] $DATE"
+  sleep 1s
+done &
+
