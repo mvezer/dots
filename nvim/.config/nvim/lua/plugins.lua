@@ -50,7 +50,7 @@ local plugin_spec = {
     event = "BufRead",
     config = require("bar"),
   },
-  { "j-morano/buffer_manager.nvim", opts = { line_keys = "neioarst" } },
+  -- { "j-morano/buffer_manager.nvim", opts = { line_keys = "neioarst" } },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -91,7 +91,7 @@ local plugin_spec = {
   },
   { "kdheepak/lazygit.nvim" },
   { "brianhuster/live-preview.nvim" },
-  { "towolf/vim-helm" },
+  { "towolf/vim-helm", ft = "helm" },
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -125,6 +125,32 @@ local plugin_spec = {
   { "numToStr/Navigator.nvim", opts = {} },
   { "Wansmer/treesj", lazy = true, event = "BufReadPost", opts = { use_default_keymaps = false } },
   { "zk-org/zk-nvim", config = require("zk-config").zk_config },
+  { "b0o/schemastore.nvim" },
+  {
+    "akinsho/bufferline.nvim",
+    version = "*",
+    event = "BufRead",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    config = function()
+      local bufferline = require("bufferline")
+      bufferline.setup({
+        options = {
+          style_preset = bufferline.style_preset.no_italic,
+          pick = { alphabet = "neioarst" },
+          show_buffer_close_icons = false,
+          always_show_bufferline = false,
+        },
+      })
+    end,
+    keys = {
+      {
+        "<leader><leader>",
+        mode = { "n" },
+        "<CMD>BufferLinePick<CR>",
+        desc = "Pick buffer",
+      },
+    },
+  },
 }
 
 -- Bootstrap lazy.nvim

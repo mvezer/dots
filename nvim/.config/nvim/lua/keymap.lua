@@ -47,17 +47,12 @@ vim.keymap.set({ "n", "v", "i" }, "<c-up>", ":NavigatorUp<CR>")
 vim.keymap.set({ "n", "v", "i" }, "<c-right>", ":NavigatorRight<CR>")
 vim.keymap.set({ "n", "v", "i" }, "<c-left>", ":NavigatorLeft<CR>")
 
--- buffers
-vim.keymap.set("n", "<leader><leader>", function()
-  require("buffer_manager.ui").toggle_quick_menu()
-end)
 vim.keymap.set("n", "<leader>bo", ":%bd|e#|bd#<CR>", { silent = true }) -- close all buffers but the current one
 vim.keymap.set({ "n", "v", "i" }, "<C-x>", ":bd<CR>", { silent = true })
 vim.keymap.set("n", "<leader>by", ":%y<CR>")
 vim.keymap.set("n", "<leader>bY", ":let @+ = expand('%:p')", { silent = true })
-vim.keymap.set("n", "<Tab>", "<C-S-^>")
 vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
-vim.keymap.set("n", "<C-Tab>", ":bnext<CR>", { silent = true })
+vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
 vim.keymap.set("n", "<C-S-Tab>", ":bprevious<CR>", { silent = true })
 vim.keymap.set("n", "<Esc>", ":noh<CR>", { silent = true })
 
