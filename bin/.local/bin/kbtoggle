@@ -18,10 +18,12 @@ KB_IS_DISABLED=$(xinput list | grep "$KB_NAME" | awk '/floating/{ print "1" }')
 # If is in float, reattach
 if [ "$KB_IS_DISABLED" = "1" ]; then
     xinput reattach "$KB_ID" "$KB_SLAVE_ID"
+    notify-send "Laptop keyboard" "Enabled"
     echo "Enabled"
     exit
 fi
 
 # Disable
 xinput float "$KB_ID"
+notify-send "Laptop keyboard" "Disabled"
 echo "Disabled"
