@@ -1,5 +1,8 @@
 -- FzfLua
 local FzfLua = require("fzf-lua")
+vim.keymap.set("n", "<leader>sd", function()
+  FzfLua.diagnostics_document()
+end)
 vim.keymap.set("n", "<leader>sr", function()
   FzfLua.oldfiles()
 end)
