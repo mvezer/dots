@@ -35,6 +35,7 @@ return function()
       theme = "auto",
       component_separators = "|",
       section_separators = "",
+      globalstatus = true,
     },
     sections = {
       lualine_a = { "mode" },
