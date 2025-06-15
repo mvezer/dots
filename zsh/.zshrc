@@ -48,6 +48,14 @@ alias tree="eza -al -T --no-time --no-user --no-permissions -I node_modules $arg
 alias ws="cd $WORKSPACE"
 alias zsrc="source ~/.zshrc"
 alias "nv"="nvim"
+function v() {
+  local dst="$(command vifm --choose-dir - "$@")"
+  if [ -z "$dst" ]; then
+    echo 'Directory picking cancelled/failed'
+    return 1
+  fi
+  cd "$dst"
+}
 
 # clipboard
 if [[ "$OSTYPE" == "darwin"* ]]; then
