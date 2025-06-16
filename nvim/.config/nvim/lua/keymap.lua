@@ -86,11 +86,11 @@ vim.keymap.set("n", "<leader>nt", function()
 end, { silent = true })
 
 -- toggleterm
-vim.keymap.set({ "n", "i" }, "<c-t>", "<CMD>ToggleTerm direction=float dir=%:p:h<CR>",
-  { silent = true, desc = "Open terminal in a floating window" })
-vim.keymap.set({ "t" }, "<c-t>", "<CMD>ToggleTerm<CR>", { silent = true, desc = "Closes the terminal" })
-vim.keymap.set({ "t" }, "<esc>", "<C-\\><C-n>", {
-  silent = true,
-  desc =
-  "Enters proper normal mode in the terminal buffer"
-})
+-- vim.keymap.set({ "n", "i" }, "<c-t>", "<CMD>ToggleTerm direction=float dir=%:p:h<CR>",
+-- { silent = true, desc = "Open terminal in a floating window" })
+-- vim.keymap.set({ "t" }, "<c-t>", "<CMD>ToggleTerm<CR>", { silent = true, desc = "Closes the terminal" })
+-- vim.keymap.set({ "t" }, "<esc>", "<C-\\><C-n>", {
+--   silent = true,
+--   desc =
+--   "Enters proper normal mode in the terminal buffer"
+-- })
