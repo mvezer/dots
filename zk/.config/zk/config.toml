@@ -168,10 +168,11 @@ dead-link = "error"
 # Here are a few aliases to get you started.
 
 # Shortcut to a command.
-ls = "zk edit -i"
-lst = "zk edit -i --tag $1"
+l = "zk edit -i -x dailies"
+ld = "zk edit -i -t daily"
+lt = "zk edit -i --tag $1"
 n = 'zk new --title=$1'
-sync = 'git fetch && git diff --quiet && git diff --staged --quiet || git commit -am "Sync" && git push'
+today = "zk new --title daily-note --working-dir dailies --template daily.md"
 
 # Default flags for an existing command.
 #list = "zk list --quiet $@"
