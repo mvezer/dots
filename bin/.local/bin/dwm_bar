@@ -6,7 +6,12 @@ KEYBOARD_LAYOUT="--"
 while true; do
   DATE="$(date +'%d.%m.%Y %H:%M')"
   KEYBOARD_LAYOUT="$(xkb-switch -p)"
-  xsetroot -name "[$KEYBOARD_LAYOUT] $DATE"
+  if [[ -f /sys/class/power_supply/BAT0/capacity ]]; then
+    BATTERY_CAPACITY="[$(cat /sys/class/power_supply/BAT0/capacity)%]"
+  else
+    BATTERY_CAPACITY=""
+  fi
+  xsetroot -name " $BATTERY_CAPACITY [$KEYBOARD_LAYOUT] $DATE"
   sleep 1s
 done &
 

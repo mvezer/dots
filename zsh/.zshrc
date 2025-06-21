@@ -81,6 +81,7 @@ function v() {
 if [[ "$OSTYPE" == "darwin"* ]]; then
   alias cb="pbcopy"
 else
+  alias battery="cat /sys/class/power_supply/BAT0/capacity"
   alias cb="xclip -selection c"
 fi
 
