@@ -172,7 +172,7 @@ l = "zk edit -i -x dailies"
 ld = "zk edit -i -t daily"
 lt = "zk edit -i --tag $1"
 n = 'zk new --title=$1'
-today = "zk new --title daily-note --working-dir dailies --template daily.md"
+today = "zk new --title daily-note-$(date +%Y-%m-%d) --working-dir dailies --template daily.md"
 
 # Default flags for an existing command.
 #list = "zk list --quiet $@"
