@@ -41,7 +41,7 @@ return function()
       lualine_a = { "mode" },
       lualine_b = { "branch", "diff", "diagnostics" },
       lualine_c = { filename_plus_project },
-      lualine_x = { inline_diagnostics, require("zk-config").current_mode_icon, autoformat },
+      lualine_x = { inline_diagnostics },
       lualine_y = { "filetype" },
       lualine_z = { "progress" },
     },

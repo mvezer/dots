@@ -1,6 +1,6 @@
 local plugin_spec = {
-  { "williamboman/mason.nvim", opts = {} },
-  { "folke/lazydev.nvim", opts = {} },
+  { "williamboman/mason.nvim",          opts = {} },
+  { "folke/lazydev.nvim",               opts = {} },
   { "neovim/nvim-lspconfig" },
   { "williamboman/mason-lspconfig.nvim" },
   {
@@ -12,7 +12,7 @@ local plugin_spec = {
       })
     end,
   },
-  { "j-hui/fidget.nvim", opts = {} },
+  { "j-hui/fidget.nvim",    opts = {} },
   {
     "EdenEast/nightfox.nvim",
     priority = 1000,
@@ -67,7 +67,7 @@ local plugin_spec = {
       "go",
     },
   },
-  { "ibhagwan/fzf-lua", opts = require("fzf") },
+  { "ibhagwan/fzf-lua",               opts = require("fzf") },
   { "supermaven-inc/supermaven-nvim", opts = { keymaps = { accept_suggestion = "<S-Tab>" } } },
   {
     -- Make sure to set this up properly if you have lazy=true
@@ -91,7 +91,7 @@ local plugin_spec = {
   },
   { "kdheepak/lazygit.nvim" },
   { "brianhuster/live-preview.nvim" },
-  { "towolf/vim-helm", ft = "helm" },
+  { "towolf/vim-helm",              ft = "helm" },
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -129,7 +129,10 @@ local plugin_spec = {
     event = "BufReadPost",
     opts = { use_default_keymaps = false },
   },
-  { "zk-org/zk-nvim", config = require("zk-config").zk_config },
+  {
+    "zk-org/zk-nvim",
+    config = require("zk-config"),
+  },
   { "b0o/schemastore.nvim" },
   {
     "akinsho/bufferline.nvim",
@@ -173,7 +176,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
+      { out,                            "WarningMsg" },
       { "\nPress any key to exit..." },
     }, true, {})
     vim.fn.getchar()

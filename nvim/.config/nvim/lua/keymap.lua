@@ -66,31 +66,3 @@ vim.keymap.set("n", "<Down>", "gj")
 vim.keymap.set("n", "k", "gk")
 vim.keymap.set("n", "<Up>", "gk")
 vim.keymap.set("n", "<leader>m", ":TSJToggle<CR>", { silent = true })
-
--- notes
-vim.keymap.set("n", "<leader>nn", function()
-  vim.cmd("ZkSetDefaultModeOrCurrent")
-  vim.cmd("ZkNewWithTitle")
-end, { silent = true })
-vim.keymap.set("n", "<leader>ns", function()
-  vim.cmd("ZkSetDefaultModeOrCurrent")
-  require("zk.commands").get("ZkNotes")({ excludeHrefs = { "dailies" } })
-end, { silent = true })
-vim.keymap.set("n", "<leader>nd", function()
-  vim.cmd("ZkSetDefaultModeOrCurrent")
-  require("zk.commands").get("ZkNotes")({ tags = { "daily" } })
-end, { silent = true })
-vim.keymap.set("n", "<leader>nt", function()
-  vim.cmd("ZkSetDefaultModeOrCurrent")
-  require("zk.commands").get("today")
-end, { silent = true })
-
--- toggleterm
--- vim.keymap.set({ "n", "i" }, "<c-t>", "<CMD>ToggleTerm direction=float dir=%:p:h<CR>",
--- { silent = true, desc = "Open terminal in a floating window" })
--- vim.keymap.set({ "t" }, "<c-t>", "<CMD>ToggleTerm<CR>", { silent = true, desc = "Closes the terminal" })
--- vim.keymap.set({ "t" }, "<esc>", "<C-\\><C-n>", {
---   silent = true,
---   desc =
---   "Enters proper normal mode in the terminal buffer"
--- })

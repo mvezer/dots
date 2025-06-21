@@ -61,9 +61,3 @@ require("plugins")
 require("lsp")
 require("keymap")
 require("autocmds")
-
--- TODOs
--- [x] disable enter in popupmenu
--- [x] find a way to use fzf-lua with avante file selector or set up neovtree for that (https://github.com/yetone/avante.nvim?tab=readme-ov-file#neotree-shortcut)
--- [x] autoformat on save
--- obsidian plugin (or something similar)
