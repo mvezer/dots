@@ -7,6 +7,24 @@ export ZSH_INCLUDES="$HOME/.zsh_includes"
 export WORKSPACE="$HOME/workspace"
 export ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
+# misc settings
+unsetopt BEEP
+
+# history
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=10000
+export SAVEHIST=10000
+export HISTFILESIZE=10000
+export HISTIGNORE="&:ls:[bf]g:exit"
+export HISTTIMEFORMAT="%F %T "
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+
+# path
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.npm-packages"
 export PATH="$PATH:$HOME/go/bin"
@@ -22,8 +40,10 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
+# zinit light Aloxaf/fzf-tab
 zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
+zinit ice lucid wait'0'
+zinit light joshskidmore/zsh-fzf-history-search
 
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
@@ -84,14 +104,9 @@ source $ZSH_INCLUDES/zig.zsh
 source $ZSH_INCLUDES/aws.zsh
 source $ZSH_INCLUDES/lua.zsh
 
-# misc settings
-unsetopt BEEP
-
-export HISTFILE="~/.zsh_history"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-eval "$(atuin init zsh)"
