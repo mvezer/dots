@@ -1,7 +1,19 @@
 #!/usr/bin/env bash
 
-DATE="--"
-KEYBOARD_LAYOUT="--"
+function memory_use() {
+  MEMORY=$(free -m | grep -i "mem" | tr -s ' ' | cut -d' ' -f2,3)
+  MEM_TOTAL=$(echo $MEMORY | cut -d' ' -f1)
+  MEM_USED=$(echo $MEMORY | cut -d' ' -f2)
+  PERCENTAGE=$(echo "scale=1; $MEM_USED * 100 / $MEM_TOTAL" | bc)
+  echo "$PERCENTAGE%"
+}
+
+function disk_use() {
+  DISK_INFO=$(df -h /)
+  # USAGE_PERCENT=$(echo "$DISK_INFO" | awk 'NR==2 {print $5}' | sed 's/%//')
+  USAGE_PERCENT=$(echo "$DISK_INFO" | awk 'NR==2 {print $5}')
+  echo "$USAGE_PERCENT"
+}
 
 function battery_capacity() {
   if [[ -f /sys/class/power_supply/BAT0/capacity ]]; then
@@ -9,20 +21,32 @@ function battery_capacity() {
   else
     BATTERY_CAPACITY=""
   fi
-  if [[ $(cat /sys/class/power_supply/BAT0/status) == "Charging" ]]; then
+  if [[ $(cat /sys/class/power_supply/BAT0/status) == "Charging" || $(cat /sys/class/power_supply/BAT0/status) == "Full" ]]; then
     BATTERY_CAPACITY="$BATTERY_CAPACITY "
   fi
 
   echo $BATTERY_CAPACITY
 }
 
-while true; do
-  MEMORY=$(free -m | grep -i "mem" | tr -s ' ' | cut -d' ' -f2,3)
-  MEM_TOTAL=$(echo $MEMORY | cut -d' ' -f1)
-  MEM_USED=$(echo $MEMORY | cut -d' ' -f2)
-  DATE="$(date +'%d.%m.%Y %H:%M')"
-  KEYBOARD_LAYOUT="$(xkb-switch -p)"
-  xsetroot -name " [$MEM_USED/$MEM_TOTAL M] [$(battery_capacity)] [ $KEYBOARD_LAYOUT] $DATE"
-  sleep 1s
-done &
+function current_date() {
+  echo "$(date +'%d.%m.%Y %H:%M')"
+}
+
+function keyboard_layout() {
+  echo "$(xkb-switch -p)"
+}
+
+function render() {
+  echo "[disk: $(disk_use) | mem: $(memory_use) | bat: $(battery_capacity) | layout: $(keyboard_layout)]  $(current_date)"
+}
+
+if [[ "$1" == "debug" ]]; then
+  render
+else
+  while true; do
+    xsetroot -name " $(render)"
+    sleep 1s
+  done &
+fi
+
 
