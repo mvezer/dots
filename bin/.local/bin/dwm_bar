@@ -3,15 +3,26 @@
 DATE="--"
 KEYBOARD_LAYOUT="--"
 
-while true; do
-  DATE="$(date +'%d.%m.%Y %H:%M')"
-  KEYBOARD_LAYOUT="$(xkb-switch -p)"
+function battery_capacity() {
   if [[ -f /sys/class/power_supply/BAT0/capacity ]]; then
-    BATTERY_CAPACITY="[$(cat /sys/class/power_supply/BAT0/capacity)%]"
+    BATTERY_CAPACITY="$(cat /sys/class/power_supply/BAT0/capacity)%"
   else
     BATTERY_CAPACITY=""
   fi
-  xsetroot -name " $BATTERY_CAPACITY [$KEYBOARD_LAYOUT] $DATE"
+  if [[ $(cat /sys/class/power_supply/BAT0/status) == "Charging" ]]; then
+    BATTERY_CAPACITY="$BATTERY_CAPACITY "
+  fi
+
+  echo $BATTERY_CAPACITY
+}
+
+while true; do
+  MEMORY=$(free -m | grep -i "mem" | tr -s ' ' | cut -d' ' -f2,3)
+  MEM_TOTAL=$(echo $MEMORY | cut -d' ' -f1)
+  MEM_USED=$(echo $MEMORY | cut -d' ' -f2)
+  DATE="$(date +'%d.%m.%Y %H:%M')"
+  KEYBOARD_LAYOUT="$(xkb-switch -p)"
+  xsetroot -name " [$MEM_USED/$MEM_TOTAL M] [$(battery_capacity)] [ $KEYBOARD_LAYOUT] $DATE"
   sleep 1s
 done &
 
