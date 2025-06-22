@@ -69,7 +69,7 @@ alias ws="cd $WORKSPACE"
 alias zsrc="source ~/.zshrc"
 alias "nv"="nvim"
 function v() {
-  local dst="$(command vifm --choose-dir - "$@")"
+  local dst="$(command vifm . --choose-dir - "$@")"
   if [ -z "$dst" ]; then
     echo 'Directory picking cancelled/failed'
     return 1
