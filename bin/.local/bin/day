@@ -1,8 +1,19 @@
 #!/usr/bin/env bash
+
+pushd &> /dev/null
+cd $ZK_DIR
 if [ "$1" = "yesterday" ] || [ "$1" = "y" ]; then
-    day=$(date -d "yesterday" +%Y-%m-%d)
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+      day=$(date -v -1d +%Y-%m-%d)
+    else
+      day=$(date -d "yesterday" +%Y-%m-%d)
+  fi
 elif [ "$1" = "tomorrow" ] || [ "$1" = "t" ]; then
-    day=$(date -d "tomorrow" +%Y-%m-%d)
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+      day=$(date -v +1d +%Y-%m-%d)
+    else
+      day=$(date -d "tomorrow" +%Y-%m-%d)
+  fi
 else
     day=$(date +%Y-%m-%d)
 fi
@@ -14,3 +25,4 @@ if [ -n "$file" ]; then
 else
     zk new --title "daily-note-${day}" --working-dir dailies --template daily.md --extra day="$day"
 fi
+popd &> /dev/null
