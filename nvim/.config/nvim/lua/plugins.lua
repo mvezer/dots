@@ -1,6 +1,6 @@
 local plugin_spec = {
-  { "williamboman/mason.nvim",          opts = {} },
-  { "folke/lazydev.nvim",               opts = {} },
+  { "williamboman/mason.nvim", opts = {} },
+  { "folke/lazydev.nvim", opts = {} },
   { "neovim/nvim-lspconfig" },
   { "williamboman/mason-lspconfig.nvim" },
   {
@@ -12,11 +12,16 @@ local plugin_spec = {
       })
     end,
   },
-  { "j-hui/fidget.nvim",    opts = {} },
+  { "j-hui/fidget.nvim", opts = {} },
   {
     "EdenEast/nightfox.nvim",
     priority = 1000,
     config = function()
+      require("nightfox").setup({
+        options = {
+          transparent = true,
+        },
+      })
       vim.cmd([[colorscheme nightfox]])
     end,
   },
@@ -67,8 +72,11 @@ local plugin_spec = {
       "go",
     },
   },
-  { "ibhagwan/fzf-lua",               opts = require("fzf") },
-  { "supermaven-inc/supermaven-nvim", opts = { keymaps = { accept_suggestion = "<S-Tab>" }, color = { suggestion_color = "#005f5f", cterm = 23 } } },
+  { "ibhagwan/fzf-lua", opts = require("fzf") },
+  {
+    "supermaven-inc/supermaven-nvim",
+    opts = { keymaps = { accept_suggestion = "<S-Tab>" }, color = { suggestion_color = "#005f5f", cterm = 23 } },
+  },
   {
     -- Make sure to set this up properly if you have lazy=true
     "MeanderingProgrammer/render-markdown.nvim",
@@ -91,7 +99,7 @@ local plugin_spec = {
   },
   { "kdheepak/lazygit.nvim" },
   { "brianhuster/live-preview.nvim" },
-  { "towolf/vim-helm",              ft = "helm" },
+  { "towolf/vim-helm", ft = "helm" },
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -176,7 +184,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out,                            "WarningMsg" },
+      { out, "WarningMsg" },
       { "\nPress any key to exit..." },
     }, true, {})
     vim.fn.getchar()
