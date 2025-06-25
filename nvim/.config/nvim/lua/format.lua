@@ -9,7 +9,12 @@ return function()
         command = "prettier",
         args = { "--stdin-filepath", "$FILENAME" },
         cwd = require("conform.util").root_file({ ".prettierrc", "package.json" }),
-      }
+      },
+      rustfmt = {
+        command = "/Users/mat/.cargo/bin/rustfmt",
+        args = { "--emit=stdout", "--edition=2021" },
+        cwd = require("conform.util").root_file({ "Cargo.toml" }),
+      },
     },
     format_on_save = function(bufnr)
       if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
@@ -37,7 +42,8 @@ return function()
       less_inline = { "my_pretteier", "eslint", stop_after_first = true },
       graphql = { "my_pretteier", "eslint", stop_after_first = true },
       graphql_inline = { "my_pretteier", "eslint", stop_after_first = true },
-      solidity = { "my_pretteier", "eslint", stop_after_first = true }
+      solidity = { "my_pretteier", "eslint", stop_after_first = true },
+      rust = { "rustfmt", lsp_format = "fallback" },
     },
   })
 end
