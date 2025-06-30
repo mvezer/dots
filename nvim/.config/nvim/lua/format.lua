@@ -1,5 +1,5 @@
 return function()
-  vim.api.nvim_create_user_command("ConformToggle", function()
+  vim.api.nvim_create_user_command("ToggleConform", function()
     vim.b.disable_autoformat = not vim.b.disable_autoformat
     -- print("Conform autoformatting " .. (vim.b.conform_disable and "disabled" or "enabled"))
   end, {})

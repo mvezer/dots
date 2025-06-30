@@ -45,8 +45,9 @@ local plugin_spec = {
   },
   {
     "stevearc/conform.nvim",
-    event = { "BufWritePre" },
-    cmd = { "ConformInfo" },
+    lazy = false,
+    -- event = { "BufWritePre" },
+    -- cmd = { "ConformInfo, ToggleConform" },
     config = require("format"),
   },
   {

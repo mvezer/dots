@@ -1,6 +1,6 @@
 return function()
   local function filename_plus_project()
-    local dir = vim.fn.getcwd() or ""
+    local dir = vim.fn.getcwd() or            ""
     local buffer_dir = vim.fn.expand("%")
     local project = "[" .. string.match(dir, ".+/(.+)$") .. "]"
     local relative_path = buffer_dir:gsub(dir, "")
@@ -13,18 +13,18 @@ return function()
 
   local function autoformat()
     if vim.g.disable_autoformat == true or vim.b.disable_autoformat == true then
-      return "--"
+      return "-"
     end
 
-    return "AF"
+    return "🔠"
   end
 
   local function inline_diagnostics()
     local current_value = vim.diagnostic.config().virtual_text
     if current_value then
-      return "[D]"
+      return "🔍"
     else
-      return "[-]"
+      return "-"
     end
   end
 
@@ -32,7 +32,7 @@ return function()
     if require("supermaven-nvim.api").is_running() then
       return "🤖"
     else
-      return "🧠"
+      return "-"
     end
   end
 
@@ -49,7 +49,7 @@ return function()
       lualine_a = { "mode" },
       lualine_b = { "branch", "diff", "diagnostics" },
       lualine_c = { filename_plus_project },
-      lualine_x = { inline_diagnostics, supermaven },
+      lualine_x = { autoformat, inline_diagnostics, supermaven },
       lualine_y = { "filetype" },
       lualine_z = { "progress" },
     },

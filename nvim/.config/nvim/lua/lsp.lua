@@ -40,7 +40,7 @@ function ToggleInlineDiagnostics()
     vim.diagnostic.config({ virtual_text = true })
   end
 end
-vim.api.nvim_create_user_command("ToggeleInlineDiagnostics", ToggleInlineDiagnostics, {})
+vim.api.nvim_create_user_command("ToggleInlineDiagnostics", ToggleInlineDiagnostics, {})
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)

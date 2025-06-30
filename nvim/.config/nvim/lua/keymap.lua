@@ -31,6 +31,7 @@ vim.keymap.set("n", "<leader>e", ":Neotree toggle float<CR>", { silent = true })
 vim.keymap.set("n", "<leader>E", ":NeoTreeFloatCurrentDir<CR>", { silent = true })
 vim.keymap.set({ "n", "v", "i" }, "<C-x>", ":bd<CR>", { silent = true })
 vim.keymap.set("n", "<leader>s", ":SupermavenToggle<CR>", { silent = true })
+vim.keymap.set("n", "<leader>d", ":ToggleInlineDiagnostics<CR>", { silent = true })
 
 -- editing
 vim.keymap.set("v", "<", "<gv")
@@ -45,7 +46,7 @@ vim.keymap.set("v", "p", "P")
 vim.keymap.set("n", "<leader>F", function()
   require("conform").format()
 end)
-vim.keymap.set("n", "<leader>f", "<cmd>ConformToggle<CR>", { desc = "Toggle autoformatting", silent = true })
+vim.keymap.set("n", "<leader>f", "<cmd>ToggleConform<CR>", { desc = "Toggle autoformatting", silent = true })
 
 -- windows
 vim.keymap.set({ "n", "v", "i" }, "<c-v>", ":vsplit<CR>")
