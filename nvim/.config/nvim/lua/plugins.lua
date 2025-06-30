@@ -75,7 +75,7 @@ local plugin_spec = {
   { "ibhagwan/fzf-lua", opts = require("fzf") },
   {
     "supermaven-inc/supermaven-nvim",
-    opts = { keymaps = { accept_suggestion = "<S-Tab>" }, color = { suggestion_color = "#005f5f", cterm = 23 } },
+    config = require("supermaven"),
   },
   {
     -- Make sure to set this up properly if you have lazy=true

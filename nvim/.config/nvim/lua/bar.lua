@@ -28,6 +28,14 @@ return function()
     end
   end
 
+  local function supermaven()
+    if require("supermaven-nvim.api").is_running() then
+      return "🤖"
+    else
+      return "🧠"
+    end
+  end
+
   require("lualine").setup({
     options = {
       always_show_tabline = true,
@@ -41,7 +49,7 @@ return function()
       lualine_a = { "mode" },
       lualine_b = { "branch", "diff", "diagnostics" },
       lualine_c = { filename_plus_project },
-      lualine_x = { inline_diagnostics },
+      lualine_x = { inline_diagnostics, supermaven },
       lualine_y = { "filetype" },
       lualine_z = { "progress" },
     },
