@@ -45,10 +45,10 @@ vim.api.nvim_create_user_command("ToggleInlineDiagnostics", ToggleInlineDiagnost
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local FzfLua = require("fzf-lua")
-    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-    if client.server_capabilities.completionProvider ~= nil then
-      client.server_capabilities.completionProvider.triggerCharacters = vim.split("qwertyuiopasdfghjklzxcvbnm. ", "")
-    end
+    -- local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+    -- if client.server_capabilities.completionProvider ~= nil then
+    --   client.server_capabilities.completionProvider.triggerCharacters = vim.split("qwertyuiopasdfghjklzxcvbnm. ", "")
+    -- end
     -- LSP keymap
     vim.keymap.set("n", "gd", function()
       FzfLua.lsp_definitions()
@@ -65,45 +65,64 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>lv", function()
       vim.diagnostic.config({
         virtual_lines = not vim.diagnostic.config().virtual_lines,
-        -- virtual_text = not vim.diagnostic.config().virtual_text,
       })
     end, { buffer = true, noremap = true })
-    vim.api.nvim_create_autocmd({ "TextChangedI" }, {
-      buffer = args.buf,
-      callback = function()
-        vim.defer_fn(vim.lsp.completion.get, 1000)
-      end,
-    })
-    vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+    -- vim.api.nvim_create_autocmd({ "TextChangedI" }, {
+    --   buffer = args.buf,
+    --   callback = function()
+    --     vim.defer_fn(vim.lsp.completion.get, 1000)
+    --   end,
+    -- })
+    -- vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+    --
+    -- local _, cancel_prev = nil, function() end
+    -- vim.api.nvim_create_autocmd("CompleteChanged", {
+    --   buffer = args.buf,
+    --   callback = function()
+    --     cancel_prev()
+    --     local info = vim.fn.complete_info({ "selected" })
+    --     local completionItem = vim.tbl_get(vim.v.completed_item, "user_data", "nvim", "lsp", "completion_item")
+    --     if nil == completionItem then
+    --       return
+    --     end
+    --     _, cancel_prev = vim.lsp.buf_request(
+    --       args.buf,
+    --       vim.lsp.protocol.Methods.completionItem_resolve,
+    --       completionItem,
+    --       -- function(err, item, ctx)
+    --       function(_, item)
+    --         if not item then
+    --           return
+    --         end
+    --         local docs = (item.documentation or {}).value
+    --         local win = vim.api.nvim__complete_set(info["selected"], { info = docs })
+    --         if win.winid and vim.api.nvim_win_is_valid(win.winid) then
+    --           vim.treesitter.start(win.bufnr, "markdown")
+    --           vim.wo[win.winid].conceallevel = 3
+    --         end
+    --       end
+    --     )
+    --   end,
+    -- })
 
-    local _, cancel_prev = nil, function() end
-    vim.api.nvim_create_autocmd("CompleteChanged", {
-      buffer = args.buf,
-      callback = function()
-        cancel_prev()
-        local info = vim.fn.complete_info({ "selected" })
-        local completionItem = vim.tbl_get(vim.v.completed_item, "user_data", "nvim", "lsp", "completion_item")
-        if nil == completionItem then
-          return
-        end
-        _, cancel_prev = vim.lsp.buf_request(
-          args.buf,
-          vim.lsp.protocol.Methods.completionItem_resolve,
-          completionItem,
-          -- function(err, item, ctx)
-          function(_, item)
-            if not item then
-              return
-            end
-            local docs = (item.documentation or {}).value
-            local win = vim.api.nvim__complete_set(info["selected"], { info = docs })
-            if win.winid and vim.api.nvim_win_is_valid(win.winid) then
-              vim.treesitter.start(win.bufnr, "markdown")
-              vim.wo[win.winid].conceallevel = 3
-            end
-          end
-        )
-      end,
+    -- This is copied straight from blink
+    -- https://cmp.saghen.dev/installation#merging-lsp-capabilities
+    local capabilities = {
+      textDocument = {
+        foldingRange = {
+          dynamicRegistration = false,
+          lineFoldingOnly = true,
+        },
+      },
+    }
+
+    capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+
+    -- Setup language servers.
+
+    vim.lsp.config("*", {
+      capabilities = capabilities,
+      root_markers = { ".git" },
     })
   end,
 })
