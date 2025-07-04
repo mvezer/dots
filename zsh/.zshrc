@@ -6,7 +6,7 @@ export EDITOR="nvim"
 export ZSH_INCLUDES="$HOME/.zsh_includes"
 export WORKSPACE="$HOME/workspace"
 export ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-export TERM="xterm"
+export TERM="xterm-256color"
 
 # misc settings
 unsetopt BEEP
