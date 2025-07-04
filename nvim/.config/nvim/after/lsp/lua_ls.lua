@@ -18,7 +18,7 @@ return {
         path = vim.split(package.path, ";"),
       },
       diagnostics = {
-        globals = { "vim", "vim.loop", "kong", "ngx" },
+        globals = { "vim", "vim.loop", "vim.loop.os_uname", "vim.uv", "kong", "ngx" },
       },
       workspace = {
         library = { vim.env.VIMRUNTIME },
