@@ -1,7 +1,7 @@
 local plugin_spec = {
-  { "williamboman/mason.nvim", opts = {} },
-  { "folke/lazydev.nvim", opts = {} },
-  { "saghen/blink.cmp", version = "1.*", config = require("blink") },
+  { "williamboman/mason.nvim",          opts = {} },
+  { "folke/lazydev.nvim",               opts = {} },
+  { "saghen/blink.cmp",                 version = "1.*", config = require("blink") },
   { "neovim/nvim-lspconfig" },
   { "williamboman/mason-lspconfig.nvim" },
   {
@@ -13,16 +13,13 @@ local plugin_spec = {
       })
     end,
   },
+  { "tpope/vim-eunuch" },
   { "j-hui/fidget.nvim", opts = {} },
   {
     "EdenEast/nightfox.nvim",
     priority = 1000,
     config = function()
-      require("nightfox").setup({
-        options = {
-          transparent = true,
-        },
-      })
+      require("nightfox").setup({ options = { transparent = true } })
       vim.cmd([[colorscheme nightfox]])
     end,
   },
@@ -33,129 +30,49 @@ local plugin_spec = {
     "folke/flash.nvim",
     event = "VeryLazy",
     opts = { labels = "neioarst" },
-    keys = {
-      {
-        "s",
-        mode = { "n", "x", "o" },
-        function()
-          require("flash").jump()
-        end,
-        desc = "Flash",
-      },
-    },
+    keys = { { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" } },
   },
   {
     "stevearc/conform.nvim",
     lazy = false,
-    -- event = { "BufWritePre" },
-    -- cmd = { "ConformInfo, ToggleConform" },
     config = require("format"),
   },
-  {
-    "nvim-lualine/lualine.nvim",
-    lazy = true,
-    event = "BufRead",
-    config = require("bar"),
-  },
-  -- { "j-morano/buffer_manager.nvim", opts = { line_keys = "neioarst" } },
+  { "nvim-lualine/lualine.nvim",      lazy = true,                   event = "BufRead", config = require("bar") },
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = "typescript",
-      "javascript",
-      "lua",
-      "dockerfile",
-      "yaml",
-      "json",
-      "bash",
-      "c",
-      "cpp",
-      "toml",
-      "go",
-    },
+    opts = { ensure_installed = "typescript", "javascript", "lua", "dockerfile", "yaml", "json", "bash", "c", "cpp", "toml", "go" },
   },
-  { "ibhagwan/fzf-lua", opts = require("fzf") },
+  { "ibhagwan/fzf-lua",               opts = require("fzf") },
+  { "supermaven-inc/supermaven-nvim", config = require("supermaven") },
   {
-    "supermaven-inc/supermaven-nvim",
-    config = require("supermaven"),
-  },
-  {
-    -- Make sure to set this up properly if you have lazy=true
     "MeanderingProgrammer/render-markdown.nvim",
-    opts = {
-      file_types = { "markdown", "Avante" },
-    },
+    opts = { file_types = { "markdown", "Avante" } },
     ft = { "markdown", "Avante" },
   },
-  {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    build = "make",
-    config = require("ai").setup_avante,
-  },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    lazy = false,
-    config = require("neo-tree-config"),
-  },
-  { "kdheepak/lazygit.nvim" },
-  { "brianhuster/live-preview.nvim" },
-  { "towolf/vim-helm", ft = "helm" },
+  { "kdheepak/lazygit.nvim", config = function() vim.g.lazygit_floating_window_scaling_factor = 1.0 end },
+  { "towolf/vim-helm",       ft = "helm" },
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     build = "cd app && yarn install",
-    init = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-    end,
+    init = function() vim.g.mkdp_filetypes = { "markdown" } end,
     config = require("markdown"),
     ft = { "markdown" },
   },
   { "numToStr/Navigator.nvim", opts = {} },
-  {
-    "Wansmer/treesj",
-    lazy = true,
-    event = "BufReadPost",
-    opts = { use_default_keymaps = false },
-  },
-  {
-    "zk-org/zk-nvim",
-    config = require("zk-config"),
-  },
+  { "Wansmer/treesj",          lazy = true,                    event = "BufReadPost",                            opts = { use_default_keymaps = false } },
+  { "zk-org/zk-nvim",          config = require("zk-config") },
   { "b0o/schemastore.nvim" },
+  { "stevearc/oil.nvim",       config = require("oil-config"), dependencies = { "nvim-tree/nvim-web-devicons" }, lazy = false },
+  { "benomahony/oil-git.nvim" },
   {
     "akinsho/bufferline.nvim",
     version = "*",
     event = "BufRead",
     dependencies = "nvim-tree/nvim-web-devicons",
-    config = function()
-      local bufferline = require("bufferline")
-      bufferline.setup({
-        options = {
-          style_preset = bufferline.style_preset.no_italic,
-          pick = { alphabet = "neioarst" },
-          show_buffer_close_icons = false,
-          always_show_bufferline = false,
-        },
-      })
-    end,
-    keys = {
-      {
-        "<leader><leader>",
-        mode = { "n" },
-        "<CMD>BufferLinePick<CR>",
-        desc = "Pick buffer",
-      },
-    },
+    config = require("bufferline-config"),
+    keys = { { "<leader><leader>", mode = { "n" }, "<CMD>BufferLinePick<CR>", desc = "Pick buffer" } },
   },
-  -- {
-  --   "akinsho/toggleterm.nvim",
-  --   opts = {
-  --     direction = "float",
-  --     autochdir = true,
-  --   }
-  -- },
 }
 
 -- Bootstrap lazy.nvim
@@ -166,7 +83,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
+      { out,                            "WarningMsg" },
       { "\nPress any key to exit..." },
     }, true, {})
     vim.fn.getchar()
