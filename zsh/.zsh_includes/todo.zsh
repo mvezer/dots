@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 alias "todo"="todo.sh -d $HOME/.config/todo.txt/todo.cfg"
 

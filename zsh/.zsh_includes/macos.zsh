@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+
+alias cb="pbcopy"
+
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export HOMEBREW_BREWFILE="$HOME/.brew/Brewfile"
 
 if [[ -f "/opt/homebrew/bin/brew" ]] then

@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+export PATH="$PATH:$HOME/go/bin"
+
 function init-go-project() {
   PACKAGE_PREFIX="github.com/mvezer"
 
