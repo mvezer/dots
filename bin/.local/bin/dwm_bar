@@ -36,8 +36,18 @@ function keyboard_layout() {
   echo "$(xkb-switch -p)"
 }
 
+function volume() {
+  volume_percent="$(pulsemixer --get-volume | cut -d' ' -f1)"
+  if [[ "$volume_percent" == "0" ]]; then
+    echo "󰸈"
+  else
+    echo "$volume_percent%"
+  fi
+}
+
+
 function render() {
-  echo "[disk: $(disk_use) | mem: $(memory_use) | bat: $(battery_capacity) | layout: $(keyboard_layout)]  $(current_date)"
+  echo "[vol: $(volume) | disk: $(disk_use) | mem: $(memory_use) | bat: $(battery_capacity) | layout: $(keyboard_layout)]  $(current_date)"
 }
 
 if [[ "$1" == "debug" ]]; then
