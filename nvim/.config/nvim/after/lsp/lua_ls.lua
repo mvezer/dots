@@ -18,10 +18,25 @@ return {
         path = vim.split(package.path, ";"),
       },
       diagnostics = {
-        globals = { "vim", "vim.loop", "vim.loop.os_uname", "vim.uv", "kong", "ngx" },
+        globals = {
+          "vim",
+          "vim.loop",
+          "vim.loop.os_uname",
+          "vim.uv",
+          "kong",
+          "ngx",
+          "awesome",
+          "root",
+          "client",
+          "screen"
+        },
       },
       workspace = {
-        library = { vim.env.VIMRUNTIME },
+        library = {
+          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+          [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+          ["/usr/share/awesome/lib"] = true,
+        }
       },
       telemetry = {
         enable = false,
