@@ -4,7 +4,7 @@
 
 # terminal emulator
 alt + Return
-	ghostty
+  alacritty -o "font.size=9.0"
 
 # program launcher
 alt + @space
@@ -19,16 +19,16 @@ super + Escape
 #
 
 # quit/restart bspwm
-super + super + q
+super + super + w
 	bspc wm -r
 
 # close and kill
-alt + {_,shift + }q
+super + {_,shift + }q
 	bspc node -{c,k}
 
 # app launcher
 alt + b
-  brave-browser-stable
+  vivaldi-stable
 
 # alternate between the tiled and monocle layout
 super + m
@@ -59,8 +59,8 @@ super + ctrl + {m,x,y,z}
 #
 
 # focus the node in the given direction
-super + {left,down,up,right}
-	bspc node -{s} {west,south,north,east}
+super + {Left,Down,Up,Right}
+	bspc node -f {west,south,north,east}
 
 # focus the node for the given path jump
 # super + {p,b,comma,period}
