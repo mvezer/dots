@@ -65,14 +65,14 @@ local plugin_spec = {
   { "b0o/schemastore.nvim" },
   { "stevearc/oil.nvim",       config = require("oil-config"), dependencies = { "nvim-tree/nvim-web-devicons" }, lazy = false },
   { "benomahony/oil-git.nvim" },
-  {
-    "akinsho/bufferline.nvim",
-    version = "*",
-    event = "BufRead",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    config = require("bufferline-config"),
-    keys = { { "<leader><leader>", mode = { "n" }, "<CMD>BufferLinePick<CR>", desc = "Pick buffer" } },
-  },
+  -- {
+  --   "akinsho/bufferline.nvim",
+  --   version = "*",
+  --   event = "BufRead",
+  --   dependencies = "nvim-tree/nvim-web-devicons",
+  --   config = require("bufferline-config"),
+  --   keys = { { "<leader><leader>", mode = { "n" }, "<CMD>BufferLinePick<CR>", desc = "Pick buffer" } },
+  -- },
 }
 
 -- Bootstrap lazy.nvim
