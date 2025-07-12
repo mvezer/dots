@@ -1,6 +1,6 @@
 return function()
   local function filename_plus_project()
-    local dir = vim.fn.getcwd() or            ""
+    local dir = vim.fn.getcwd() or ""
     local buffer_dir = vim.fn.expand("%")
     local project = "[" .. string.match(dir, ".+/(.+)$") .. "]"
     local relative_path = buffer_dir:gsub(dir, "")
@@ -16,13 +16,13 @@ return function()
       return "-"
     end
 
-    return "🔠"
+    return "[F]"
   end
 
   local function inline_diagnostics()
     local current_value = vim.diagnostic.config().virtual_text
     if current_value then
-      return "🔍"
+      return "[D]"
     else
       return "-"
     end
@@ -30,7 +30,7 @@ return function()
 
   local function supermaven()
     if require("supermaven-nvim.api").is_running() then
-      return "🤖"
+      return "[AC]"
     else
       return "-"
     end
