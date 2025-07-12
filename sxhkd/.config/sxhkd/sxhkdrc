@@ -4,7 +4,7 @@
 
 # terminal emulator
 alt + Return
-  alacritty -o "font.size=9.0"
+  alacritty -o "font.size=8.0"
 
 # program launcher
 alt + @space
