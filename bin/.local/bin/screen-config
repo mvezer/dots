@@ -1,0 +1,6 @@
+#!/bin/bash
+
+profile=$(autorandr --list | rofi -dpi 1 -dmenu -p "screen config" -config ~/.config/rofi/screens.rasi)
+if [ -n "$profile" ]; then
+  autorandr -c $profile
+fi

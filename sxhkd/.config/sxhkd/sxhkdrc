@@ -8,7 +8,7 @@ alt + Return
 
 # program launcher
 alt + @space
-	rofi -modi drun -show drun -config ~/.config/rofi/app-launcher.rasi
+	app-launcher
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -19,7 +19,7 @@ super + Escape
 #
 
 # quit/restart bspwm
-super + super + w
+super + w
 	bspc wm -r
 
 # close and kill
@@ -31,8 +31,8 @@ alt + b
   vivaldi-stable
 
 # alternate between the tiled and monocle layout
-super + m
-	bspc desktop -l next
+# super + m
+# 	bspc desktop -l next
 
 # send the newest marked node to the newest preselected node
 # super + y
@@ -47,8 +47,12 @@ super + m
 #
 
 # set the window state
-super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+# super + {t,shift + t,s,f}
+# 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# screen configuration selector
+super + s
+  screen-config
 
 # set the node flags
 super + ctrl + {m,x,y,z}
