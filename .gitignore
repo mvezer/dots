@@ -6,3 +6,5 @@ bin/.local/bin/config.json
 qutebrowser/.config/qutebrowser/quickmarks
 .DS_Store
 zed/.config/zed/prompts/prompts-library-db.0.mdb
+vifm/.config/vifm/vifminfo.json
+vifm/.config/vifm/scripts/README
