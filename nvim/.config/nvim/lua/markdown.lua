@@ -4,7 +4,7 @@ return function()
   if os == "Linux" then
     vim.cmd([[
        function OpenMarkdownPreview (url)
-          let cmd = "flatpak run \"com.brave.Browser\""
+          let cmd = "firefox --new-window ". shellescape(a:url)
           silent call system(cmd)
        endfunction
        ]])
