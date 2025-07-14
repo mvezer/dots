@@ -8,3 +8,5 @@ qutebrowser/.config/qutebrowser/quickmarks
 zed/.config/zed/prompts/prompts-library-db.0.mdb
 vifm/.config/vifm/vifminfo.json
 vifm/.config/vifm/scripts/README
+qutebrowser/.config/qutebrowser/autoconfig.yml
+qutebrowser/.config/qutebrowser/autoconfig.yml.backup
