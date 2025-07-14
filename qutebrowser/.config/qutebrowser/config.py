@@ -187,7 +187,7 @@ config.set('content.register_protocol_handler', True, 'https://mail.google.com?e
 # `{line0}`: Same as `{line}`, but starting from index 0. * `{column0}`:
 # Same as `{column}`, but starting from index 0.
 # Type: ShellCommand
-c.editor.command = ['ghostty', '-c', 'nvim', '-f', '{file}', '-c', 'normal {line}G{column0}l']
+c.editor.command = ['alacritty', '-c', 'nvim', '-f', '{file}', '-c', 'normal {line}G{column0}l']
 
 # Position of the tab bar.
 # Type: Position
@@ -243,6 +243,9 @@ c.url.searchengines = {'DEFAULT': 'https://google.com/search?hl=en&q={}', '!a': 
 # Type: Bool
 c.colors.webpage.darkmode.enabled = False
 
+# Trick the stupid google
+c.content.headers.user_agent = 'Mozilla/5.0 (Windows NT 10.0; rv:109.0) Gecko/20100101 Firefox/115.0'
+
 # Bindings for normal mode
 config.bind('<Alt+Down>', 'tab-next')
 config.bind('<Alt+Left>', 'back')
@@ -250,9 +253,8 @@ config.bind('<Alt+Right>', 'forward')
 config.bind('<Alt+Up>', 'tab-prev')
 config.bind('<Ctrl+x>', 'tab-close')
 config.bind('M', 'hint links spawn mpv {hint-url}')
-config.bind('alt-down', 'tab-next')
-config.bind('alt-up', 'tab-prev')
 config.bind('xx', 'config-cycle tabs.show always switching')
+config.bind('<Alt-p>', 'spawn --userscript ~/.config/qutebrowser/userscripts/1pass.js')
 
 c.fonts.default_family = ['Hack Nerd Font Mono', 'monospace']
 c.fonts.default_size = '13pt'
