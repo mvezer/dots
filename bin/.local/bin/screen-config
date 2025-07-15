@@ -7,7 +7,7 @@ if [ ! -d "$LAYOUT_DIR" ]; then
   exit 0
 fi
 
-profile=$(ls $LAYOUT_DIR -1 | cut -d'.' -f1 | rofi -dpi 1 -dmenu -p "screen config" -config ~/.config/rofi/screens.rasi)
+profile=$(ls $LAYOUT_DIR -1 | cut -d'.' -f1 | rofi -dpi 1 -dmenu -p "screen config" -config ~/.config/rofi/screens.rasi -monitor primary)
 if [ -n "$profile" ]; then
   eval $("$LAYOUT_DIR/$profile.sh")
 fi
