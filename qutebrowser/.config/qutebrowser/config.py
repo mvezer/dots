@@ -256,7 +256,7 @@ config.bind('<Ctrl+x>', 'tab-close')
 config.bind('M', 'hint links spawn mpv {hint-url}')
 config.bind('xx', 'config-cycle tabs.show always switching')
 config.bind('<Alt-p>', 'spawn --userscript ~/.config/qutebrowser/userscripts/1pass.js')
-config.bind('<Super+b>', 'config-cycle tabs.show always switching')
+config.bind('<Super+b>', 'config-cycle tabs.show always never')
 
 c.fonts.default_family = ['Hack Nerd Font Mono', 'monospace']
 c.fonts.default_size = '13pt'
