@@ -66,6 +66,7 @@ sudo xbps-install -Syu \
     qbittorrent \
     qutebrowser \
     nerd-fonts \
+    noto-fonts-emoji \
     xclip \
     xkb-switch \
     pulseaudio \
