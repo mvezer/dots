@@ -1,0 +1,119 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "Installing Void Linux"
+echo "---------------------"
+cd ~
+
+echo "Applying settings..."
+`bind 'set bell-style none' - turn off bell`
+`sudo loadkeys /usr/share/kbd/keymaps/i386/qwerty/us.map.gz`
+
+echo "Installing packages..."
+sudo xbps-install -Syu \
+    bat \ # cli tools
+    btop \
+    bluez \
+    cmake \
+    curl \
+    dbus \
+    eza \
+    fd \
+    fzf \
+    git \
+    htop \
+    jq \
+    neovim \
+    ripgrep \
+    starship \
+    stow \
+    the_silver_searcher \
+    tmux \
+    vim \
+    vifm \
+    wget \
+    zoxide \
+    zsh \
+    base-devel \
+    clang \
+    cmake \
+    delta \
+    git \
+    lazygit \
+    llvm \
+    luarocks \
+    ninja \
+    pkgconf \
+    rustup \
+    nodejs \
+    yarn \
+    zip \
+    zk \
+    xorg \
+    libx11 \
+    libx11-devel \
+    libxft \
+    libxft-devel \
+    libxinerama \
+    libxinerama-devel 
+    arandr \
+    alacritty \
+    dmenu \
+    dunst \
+    feh \
+    firefox \
+    qbittorrent \
+    qutebrowser \
+    nerd-fonts \
+    xclip \
+    xkb-switch \
+    pulseaudio \
+    alsa-plugins-pulseaudio \
+    pulsemixer \
+    pavucontrol \
+  > /dev/null
+
+echo "Set up shell..."
+chsh -s /usr/bin/zsh
+
+echo "Creating directories..."
+mkdir ~/Downlads
+mkdir ~/workspace
+mkdir ~/temp
+
+echo "Installing DWM..."
+git clone https://github.com/mvezer/dwm ~/workspace/dwm
+
+echo "Setting up dotfiles..."
+git clone http://github.com/mvezer/dots ~/.dotfiles --depth=10
+cd ~/.dotfiles
+stow alacritty
+stow bin
+stow dunst
+stow lazygit
+stow nvim \
+stow qutebrowser
+stow rofi
+stow starship
+stow tmux
+stow vifm
+stow zk
+stow zsh
+cd ~
+
+echo "Install 1password cli..."
+cd ~/temp
+wget "https://cache.agilebits.com/dist/1P/op2/pkg/v2.31.1/op_linux_amd64_v2.31.1.zip" -O op.zip
+unzip op.zip
+cp op ~/.local/bin
+cd ~
+
+echo "Installing dropbox cli... (target: ~/.dropbox-dist)"
+wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+
+echo "Setting up services..."
+sudo ln -sv /etd/sv/dbus /var/service/
+sudo sv enable dbus
+sudo ln -sv /etd/sv/blutoothd /var/service/
+sudo sv enable blutoothd
