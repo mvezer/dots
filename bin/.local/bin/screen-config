@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-LAYOUT_DIR=~/.screenlayoutt
+LAYOUT_DIR=~/.screenlayout
 
 if [ ! -d "$LAYOUT_DIR" ]; then
   notify-send -i /usr/share/icons/Adwaita/symbolic/status/screen-shared-symbolic.svg "Screen config error" "The directory \"$LAYOUT_DIR\" does not exist"
