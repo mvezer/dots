@@ -65,6 +65,40 @@ local plugin_spec = {
   { "b0o/schemastore.nvim" },
   { "stevearc/oil.nvim",       config = require("oil-config"), dependencies = { "nvim-tree/nvim-web-devicons" }, lazy = false },
   { "benomahony/oil-git.nvim" },
+  {
+    "yetone/avante.nvim",
+    build = "make",
+    event = "VeryLazy",
+    version = false,
+    opts = require("avante-config"),
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "echasnovski/mini.pick",         -- for file_selector provider mini.pick
+      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+      "stevearc/dressing.nvim",        -- for input provider dressing
+      "folke/snacks.nvim",             -- for input provider snacks
+      "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
+      -- "zbirenbaum/copilot.lua",        -- for providers='copilot'
+      {
+        -- support for image pasting
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          -- recommended settings
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            -- required for Windows users
+            use_absolute_path = true,
+          },
+        },
+      },
+    },
+  }
 }
 
 -- Bootstrap lazy.nvim
