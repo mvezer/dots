@@ -2,9 +2,9 @@
 
 # global npm packages
 export NPM_PACKAGES="$HOME/.npm-packages"
-export PATH="$PATH:$NPM_PACKAGES"
+export PATH="$PATH:$NPM_PACKAGES/bin"
 # should set once:
-# npm config set prefix "$NPM_PACKAGES"
+npm config set prefix "$NPM_PACKAGES"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
