@@ -118,7 +118,7 @@ local function setup_fzf()
   map("n", "<leader>sh", fzf.helptags, map_opts)
   map("n", "<leader>sd", fzf.lsp_document_diagnostics, map_opts)
   map("n", "<leader><leader>", fzf.buffers, { desc = "Fzf show buffers", noremap = true, silent = true })
-  fzf.setup({ "max-perf" })
+  fzf.setup({ "max-perf", winopts = { height = 1, width = 1 } })
 end
 local function setup_oil()
   require("oil").setup({
