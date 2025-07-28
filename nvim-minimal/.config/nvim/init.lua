@@ -50,15 +50,11 @@ local autocmd = vim.api.nvim_create_autocmd
 autocmd("TextYankPost", {
   group = augroup,
   pattern = "*",
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+  callback = function() vim.highlight.on_yank() end,
 })
 
 vim.pack.add({
   { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
-  "https://github.com/nvim-treesitter/nvim-treesitter-context",
-  "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/ibhagwan/fzf-lua",
   "https://github.com/EdenEast/nightfox.nvim",
   "https://github.com/tpope/vim-eunuch",
@@ -68,20 +64,19 @@ vim.pack.add({
   "https://github.com/stevearc/oil.nvim",
   "https://github.com/supermaven-inc/supermaven-nvim",
   "https://github.com/folke/flash.nvim",
-  "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/stevearc/conform.nvim",
   "https://github.com/MeanderingProgrammer/render-markdown.nvim",
+  "https://github.com/zk-org/zk-nvim"
 })
 local fzf = require("fzf-lua")
 local function setup_lsp()
   map("n", "<leader>ld", vim.diagnostic.open_float, map_opts)
   vim.lsp.enable({ "bashls", "lua_ls", "ts_ls", "clang", "yamlls" })
 
-  local chars = {} -- trigger autocompletion on EVERY keypress
+  local chars = {}
   for i = 32, 126 do
     table.insert(chars, string.char(i))
   end
-
   local pumMap = function(insertKmap, pumKmap)
     map("i", insertKmap, function()
       if vim.fn.pumvisible() == 0 then
@@ -91,7 +86,6 @@ local function setup_lsp()
       end
     end, { expr = true })
   end
-
   autocmd("LspAttach", {
     group = augroup,
     callback = function(args)
@@ -135,13 +129,11 @@ local function setup_oil()
   map("n", "<leader>e", ":Oil<cr>")
 end
 local function setup_supermaven()
-  if not require("supermaven-nvim.api").is_running() then
-    require("supermaven-nvim").setup({
-      keymaps = { accept_suggestion = "<S-Tab>" },
-      color = { suggestion_color = "#005f5f", cterm = 23 },
-    })
-    map("n", "<leader>a", ":SupermavenToggle<CR>", map_opts)
-  end
+  require("supermaven-nvim").setup({
+    keymaps = { accept_suggestion = "<S-Tab>" },
+    color = { suggestion_color = "#005f5f", cterm = 23 },
+  })
+  map("n", "<leader>a", ":SupermavenToggle<CR>", map_opts)
 end
 local function setup_flash()
   require("flash").setup({ labels = "neioarst" })
@@ -149,74 +141,22 @@ local function setup_flash()
     require("flash").jump()
   end, { desc = "Flash" })
 end
-local function setup_lualine()
-  require("lualine").setup({
-    options = {
-      component_separators = "|",
-      section_separators = "",
-    },
-    sections = {
-      lualine_c = {
-        function()
-          return (vim.fn.expand("%:p")):sub(#(vim.fn.getcwd() or "") + 1)
-        end,
-      },
-      lualine_x = {
-        function()
-          return (vim.g.disable_autoformat == true or vim.b.disable_autoformat) and "-" or "F"
-        end,
-        function()
-          return require("supermaven-nvim.api").is_running() and "AI" or "-"
-        end,
-      },
-      lualine_y = { "filetype" },
-      lualine_z = { "progress" },
-    },
-    inactive_sections = {
-      lualine_c = { "filename" },
-      lualine_x = { "location" },
-    },
-  })
-end
 local function setup_conform()
   require("conform").setup({
-    formatters = {
-      my_prettier = {
-        command = "prettier",
-        args = { "--stdin-filepath", "$FILENAME" },
-        cwd = require("conform.util").root_file({ ".prettierrc", "package.json" }),
-      },
-      rustfmt = {
-        command = "/Users/mat/.cargo/bin/rustfmt",
-        args = { "--emit=stdout", "--edition=2021" },
-        cwd = require("conform.util").root_file({ "Cargo.toml" }),
-      },
-    },
     format_on_save = function(bufnr)
       local enable_autoformat = not vim.g.disable_autoformat and not vim.b[bufnr].disable_autoformat
       return enable_autoformat and { timeout_ms = 500, lsp_format = "fallback" } or nil
     end,
     formatters_by_ft = {
       lua = { "stylua" },
-      javascript = { "my_prettier", "eslint", stop_after_first = true },
-      typescript = { "my_prettier", "eslint", stop_after_first = true },
-      typescriptreact = { "my_pretteier", "eslint", stop_after_first = true },
-      javascriptreact = { "my_pretteier", "eslint", stop_after_first = true },
-      css = { "my_pretteier", "eslint", stop_after_first = true },
-      scss = { "my_pretteier", "eslint", stop_after_first = true },
-      less = { "my_pretteier", "eslint", stop_after_first = true },
-      json = { "my_pretteier", "eslint", stop_after_first = true },
-      jsonc = { "my_pretteier", "eslint", stop_after_first = true },
-      yaml = { "my_pretteier", "eslint", stop_after_first = true },
-      markdown = { "my_pretteier", "eslint", stop_after_first = true },
-      markdown_inline = { "my_pretteier", "eslint", stop_after_first = true },
-      html = { "my_pretteier", "eslint", stop_after_first = true },
-      css_inline = { "my_pretteier", "eslint", stop_after_first = true },
-      scss_inline = { "my_pretteier", "eslint", stop_after_first = true },
-      less_inline = { "my_pretteier", "eslint", stop_after_first = true },
-      graphql = { "my_pretteier", "eslint", stop_after_first = true },
-      graphql_inline = { "my_pretteier", "eslint", stop_after_first = true },
-      solidity = { "my_pretteier", "eslint", stop_after_first = true },
+      javascript = { "prettier", "eslint", stop_after_first = true },
+      typescript = { "prettier", "eslint", stop_after_first = true },
+      typescriptreact = { "prettier", "eslint", stop_after_first = true },
+      javascriptreact = { "prettier", "eslint", stop_after_first = true },
+      json = { "prettier", "eslint", stop_after_first = true },
+      jsonc = { "prettier", "eslint", stop_after_first = true },
+      yaml = { "prettier", "eslint", stop_after_first = true },
+      html = { "prettier", "eslint", stop_after_first = true },
       rust = { "rustfmt", lsp_format = "fallback" },
     },
   })
@@ -224,6 +164,21 @@ local function setup_conform()
     vim.b.disable_autoformat = not vim.b.disable_autoformat
   end, map_opts)
 end
+
+function RENDER_STATUSBAR()
+  local branch = vim.fn.system("git branch --show-current 2>/dev/null"):gsub("\n", "")
+  local filename = (vim.fn.expand("%:p")):sub(#(vim.fn.getcwd() or "") + 1)
+  local autoformat = (vim.g.disable_autoformat == true or vim.b.disable_autoformat) and "-" or "F"
+  local supermaven = pcall(require, "supermaven-nvim.api") and require("supermaven-nvim.api").is_running() and "AI" or
+      "-"
+  local filetype = vim.bo.filetype
+  local location = vim.fn.line('.') .. ',' .. vim.fn.col('.')
+  return "*" ..
+      branch ..
+      " " .. filename .. "%=" .. "[" .. autoformat .. "][" .. supermaven .. "] " .. location .. " | " .. filetype
+end
+
+vim.o.statusline = "%{%v:lua.RENDER_STATUSBAR()%}"
 
 require("nightfox").setup({})
 vim.cmd([[colorscheme nightfox]])
@@ -233,8 +188,9 @@ setup_lsp()
 setup_oil()
 setup_supermaven()
 setup_flash()
-setup_lualine()
 setup_conform()
+
 require("Navigator").setup({})
+require("zk").setup({})
 require("marks").setup({ mappings = { delete_line = "M" } })
 require("render-markdown").setup({})
