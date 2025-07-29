@@ -50,7 +50,9 @@ local autocmd = vim.api.nvim_create_autocmd
 autocmd("TextYankPost", {
   group = augroup,
   pattern = "*",
-  callback = function() vim.highlight.on_yank() end,
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
 vim.pack.add({
@@ -66,7 +68,7 @@ vim.pack.add({
   "https://github.com/folke/flash.nvim",
   "https://github.com/stevearc/conform.nvim",
   "https://github.com/MeanderingProgrammer/render-markdown.nvim",
-  "https://github.com/zk-org/zk-nvim"
+  "https://github.com/zk-org/zk-nvim",
 })
 local fzf = require("fzf-lua")
 local function setup_lsp()
@@ -165,19 +167,35 @@ local function setup_conform()
   end, map_opts)
 end
 
-function RENDER_STATUSBAR()
-  local branch = vim.fn.system("git branch --show-current 2>/dev/null"):gsub("\n", "")
-  local filename = (vim.fn.expand("%:p")):sub(#(vim.fn.getcwd() or "") + 1)
-  local autoformat = (vim.g.disable_autoformat == true or vim.b.disable_autoformat) and "-" or "F"
-  local supermaven = pcall(require, "supermaven-nvim.api") and require("supermaven-nvim.api").is_running() and "AI" or
-      "-"
-  local filetype = vim.bo.filetype
-  local location = vim.fn.line('.') .. ',' .. vim.fn.col('.')
-  return "*" ..
-      branch ..
-      " " .. filename .. "%=" .. "[" .. autoformat .. "][" .. supermaven .. "] " .. location .. " | " .. filetype
-end
+vim.api.nvim_set_hl(0, "StatusLineGitClean", { fg = "#98c379", bg = "NONE", bold = true }) -- Green for clean
+vim.api.nvim_set_hl(0, "StatusLineGitDirty", { fg = "#e06c75", bg = "NONE", bold = true }) -- Red for dirty
+vim.api.nvim_set_hl(0, "StatusLineFileChanged", { fg = "#d19a66", bg = "NONE", bold = true }) -- Orange for changed files
 
+function RENDER_STATUSBAR()
+  local autoformat = (vim.g.disable_autoformat == true or vim.b.disable_autoformat) and "-" or "F"
+  local supermaven = pcall(require, "supermaven-nvim.api") and require("supermaven-nvim.api").is_running() and "AI"
+    or "-"
+  local cwd = vim.fn.getcwd() or ""
+  local cwd_with_tilde = vim.fn.fnamemodify(cwd, ":~")
+  local git_status = vim.fn.system("git status --porcelain 2>/dev/null"):gsub("\n", "")
+  local branch_color = git_status == "" and "%#StatusLineGitClean#" or "%#StatusLineGitDirty#"
+  local branch = branch_color
+    .. vim.fn.system("git branch --show-current 2>/dev/null"):gsub("\n", "")
+    .. "%#StatusLine#"
+  local filename_color = vim.bo.modified and "%#StatusLineFileChanged#" or "%#StatusLine#"
+  local filename = filename_color .. (vim.fn.expand("%:p")):sub(#cwd + 1) .. "%#StatusLine#"
+  return string.format(
+    "[*%s][%s%s]%%=[%s][%s][%s][%d,%d]",
+    branch,
+    cwd_with_tilde,
+    filename,
+    autoformat,
+    supermaven,
+    vim.bo.filetype,
+    vim.fn.line("."),
+    vim.fn.col(".")
+  )
+end
 vim.o.statusline = "%{%v:lua.RENDER_STATUSBAR()%}"
 
 require("nightfox").setup({})
