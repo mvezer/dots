@@ -167,9 +167,9 @@ local function setup_conform()
   end, map_opts)
 end
 
-vim.api.nvim_set_hl(0, "StatusLineGitClean", { fg = "#98c379", bg = "NONE", bold = true }) -- Green for clean
-vim.api.nvim_set_hl(0, "StatusLineGitDirty", { fg = "#e06c75", bg = "NONE", bold = true }) -- Red for dirty
-vim.api.nvim_set_hl(0, "StatusLineFileChanged", { fg = "#d19a66", bg = "NONE", bold = true }) -- Orange for changed files
+vim.api.nvim_set_hl(0, "StatusLineGitClean", { fg = "#81b29a", bg = "NONE", bold = true })
+vim.api.nvim_set_hl(0, "StatusLineGitDirty", { fg = "#c94f6d", bg = "NONE", bold = true })
+vim.api.nvim_set_hl(0, "StatusLineFileChanged", { fg = "#f4a261", bg = "NONE", bold = true })
 
 function RENDER_STATUSBAR()
   local autoformat = (vim.g.disable_autoformat == true or vim.b.disable_autoformat) and "-" or "F"
