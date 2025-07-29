@@ -1,10 +1,6 @@
 #!/user/bin/env zsh
 
-if [[ "$HOST" == "bebop" ]]; then # we're home :)
-  export ZK_DIR="$HOME/Dropbox/notes"
-else
-  export ZK_DIR="$HOME/notes"
-fi
+export ZK_DIR="$HOME/notes"
 
 alias n="pushd &> /dev/null && cd $ZK_DIR && zk edit quick-note && popd &> /dev/null"
 
