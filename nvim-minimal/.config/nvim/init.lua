@@ -44,6 +44,8 @@ map("n", "<leader>bY", ":let @+ = expand('%:p')", map_opts)
 map("n", "<Esc>", ":noh<CR>", map_opts)
 map("n", "<Down>", "gj")
 map("n", "<Up>", "gk")
+map("n", "<C-u>", "<C-u>zz")
+map("n", "<C-d>", "<C-d>zz")
 
 local augroup = vim.api.nvim_create_augroup("mat.cfg", { clear = true })
 local autocmd = vim.api.nvim_create_autocmd
@@ -73,7 +75,7 @@ vim.pack.add({
 local fzf = require("fzf-lua")
 local function setup_lsp()
   map("n", "<leader>ld", vim.diagnostic.open_float, map_opts)
-  vim.lsp.enable({ "bashls", "lua_ls", "ts_ls", "clang", "yamlls" })
+  vim.lsp.enable({ "bashls", "lua_ls", "ts_ls", "clangd", "yamlls" })
   local chars = {}
   for i = 32, 126 do
     table.insert(chars, string.char(i))
@@ -140,6 +142,7 @@ local function setup_flash()
   require("flash").setup({ labels = "neioarst" })
   map({ "n", "x", "o" }, "s", function()
     require("flash").jump()
+    vim.api.nvim_feedkeys("zz", "n", false)
   end, { desc = "Flash" })
 end
 local function setup_conform()
@@ -177,6 +180,7 @@ function RENDER_STATUSBAR()
   local filename = filename_color .. (vim.fn.expand("%:p")):sub(#cwd + 1) .. "%#StatusLine#"
   return string.format("[*%s][%s%s]%%=[%s][%s][%s][%d,%d]", branch, cwd_with_tilde, filename, autoformat, supermaven, vim.bo.filetype, vim.fn.line("."), vim.fn.col("."))
 end
+
 vim.o.statusline = "%{%v:lua.RENDER_STATUSBAR()%}"
 
 require("nightfox").setup({})
