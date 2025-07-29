@@ -74,7 +74,6 @@ local fzf = require("fzf-lua")
 local function setup_lsp()
   map("n", "<leader>ld", vim.diagnostic.open_float, map_opts)
   vim.lsp.enable({ "bashls", "lua_ls", "ts_ls", "clang", "yamlls" })
-
   local chars = {}
   for i = 32, 126 do
     table.insert(chars, string.char(i))
@@ -144,23 +143,19 @@ local function setup_flash()
   end, { desc = "Flash" })
 end
 local function setup_conform()
+  local formatters_by_ft = {
+    lua = { "stylua" },
+    rust = { "rustfmt", lsp_format = "fallback" },
+  }
+  for _, ft in ipairs({ "javascript ", "typescript ", "typescriptreact ", "javascriptreact ", "json ", "jsonc ", "yaml ", "html " }) do
+    formatters_by_ft[ft] = { "prettier", "eslint", stop_after_first = true }
+  end
   require("conform").setup({
     format_on_save = function(bufnr)
       local enable_autoformat = not vim.g.disable_autoformat and not vim.b[bufnr].disable_autoformat
       return enable_autoformat and { timeout_ms = 500, lsp_format = "fallback" } or nil
     end,
-    formatters_by_ft = {
-      lua = { "stylua" },
-      javascript = { "prettier", "eslint", stop_after_first = true },
-      typescript = { "prettier", "eslint", stop_after_first = true },
-      typescriptreact = { "prettier", "eslint", stop_after_first = true },
-      javascriptreact = { "prettier", "eslint", stop_after_first = true },
-      json = { "prettier", "eslint", stop_after_first = true },
-      jsonc = { "prettier", "eslint", stop_after_first = true },
-      yaml = { "prettier", "eslint", stop_after_first = true },
-      html = { "prettier", "eslint", stop_after_first = true },
-      rust = { "rustfmt", lsp_format = "fallback" },
-    },
+    formatters_by_ft = formatters_by_ft,
   })
   map("n", "<leader>f", function()
     vim.b.disable_autoformat = not vim.b.disable_autoformat
@@ -170,31 +165,17 @@ end
 vim.api.nvim_set_hl(0, "StatusLineGitClean", { fg = "#81b29a", bg = "NONE", bold = true })
 vim.api.nvim_set_hl(0, "StatusLineGitDirty", { fg = "#c94f6d", bg = "NONE", bold = true })
 vim.api.nvim_set_hl(0, "StatusLineFileChanged", { fg = "#f4a261", bg = "NONE", bold = true })
-
 function RENDER_STATUSBAR()
   local autoformat = (vim.g.disable_autoformat == true or vim.b.disable_autoformat) and "-" or "F"
-  local supermaven = pcall(require, "supermaven-nvim.api") and require("supermaven-nvim.api").is_running() and "AI"
-    or "-"
+  local supermaven = pcall(require, "supermaven-nvim.api") and require("supermaven-nvim.api").is_running() and "AI" or "-"
   local cwd = vim.fn.getcwd() or ""
   local cwd_with_tilde = vim.fn.fnamemodify(cwd, ":~")
   local git_status = vim.fn.system("git status --porcelain 2>/dev/null"):gsub("\n", "")
   local branch_color = git_status == "" and "%#StatusLineGitClean#" or "%#StatusLineGitDirty#"
-  local branch = branch_color
-    .. vim.fn.system("git branch --show-current 2>/dev/null"):gsub("\n", "")
-    .. "%#StatusLine#"
+  local branch = branch_color .. vim.fn.system("git branch --show-current 2>/dev/null"):gsub("\n", "") .. "%#StatusLine#"
   local filename_color = vim.bo.modified and "%#StatusLineFileChanged#" or "%#StatusLine#"
   local filename = filename_color .. (vim.fn.expand("%:p")):sub(#cwd + 1) .. "%#StatusLine#"
-  return string.format(
-    "[*%s][%s%s]%%=[%s][%s][%s][%d,%d]",
-    branch,
-    cwd_with_tilde,
-    filename,
-    autoformat,
-    supermaven,
-    vim.bo.filetype,
-    vim.fn.line("."),
-    vim.fn.col(".")
-  )
+  return string.format("[*%s][%s%s]%%=[%s][%s][%s][%d,%d]", branch, cwd_with_tilde, filename, autoformat, supermaven, vim.bo.filetype, vim.fn.line("."), vim.fn.col("."))
 end
 vim.o.statusline = "%{%v:lua.RENDER_STATUSBAR()%}"
 
