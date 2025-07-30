@@ -39,13 +39,13 @@ map({ "n", "v", "i" }, "<c-right>", ":NavigatorRight<CR>", map_opts)
 map({ "n", "v", "i" }, "<c-left>", ":NavigatorLeft<CR>", map_opts)
 map("n", "<leader>bo", ":%bd|e#|bd#<CR>", map_opts) -- close all buffers but the current one
 map({ "n", "v", "i" }, "<C-x>", ":bd<CR>", map_opts)
-map("n", "<leader>by", ":%y<CR>")
+map("n", "<leader>by", ":%y<CR>", map_opts)
 map("n", "<leader>bY", ":let @+ = expand('%:p')", map_opts)
 map("n", "<Esc>", ":noh<CR>", map_opts)
-map("n", "<Down>", "gj")
-map("n", "<Up>", "gk")
 map("n", "<C-u>", "<C-u>zz")
 map("n", "<C-d>", "<C-d>zz")
+map("n", "<Down>", "gj", map_opts)
+map("n", "<Up>", "gk", map_opts)
 
 local augroup = vim.api.nvim_create_augroup("mat.cfg", { clear = true })
 local autocmd = vim.api.nvim_create_autocmd
@@ -95,8 +95,8 @@ local function setup_lsp()
       local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
       if client:supports_method("textDocument/implementation") then
         local bufopts = { noremap = true, silent = true, buffer = args.buf }
-        map("n", "gd", vim.lsp.buf.definition, bufopts)
-        map("n", "gD", vim.lsp.buf.type_definition, bufopts)
+        map("n", "gd", fzf.lsp_definitions, bufopts)
+        map("n", "gD", fzf.lsp_typedefs, bufopts)
         map("n", "K", vim.lsp.buf.hover, bufopts)
         map("n", "gr", fzf.lsp_references, bufopts)
         map("n", "<leader>lr", vim.lsp.buf.rename, bufopts)
@@ -120,7 +120,7 @@ local function setup_fzf()
   map("n", "<leader>st", fzf.live_grep, map_opts)
   map("n", "<leader>sh", fzf.helptags, map_opts)
   map("n", "<leader>sd", fzf.lsp_document_diagnostics, map_opts)
-  map("n", "<leader><leader>", fzf.buffers, { desc = "Fzf show buffers", noremap = true, silent = true })
+  map("n", "<leader><leader>", fzf.buffers, map_opts)
   fzf.setup({ "max-perf", winopts = { height = 1, width = 1 } })
 end
 local function setup_oil()
@@ -136,7 +136,7 @@ local function setup_supermaven()
     keymaps = { accept_suggestion = "<S-Tab>" },
     color = { suggestion_color = "#005f5f", cterm = 23 },
   })
-  map("n", "<leader>a", ":SupermavenToggle<CR>", map_opts)
+  map("n", "<leader>a", ":SupermavenToggle<CR>:redrawstatus<CR>", map_opts)
 end
 local function setup_flash()
   require("flash").setup({ labels = "neioarst" })
@@ -162,6 +162,7 @@ local function setup_conform()
   })
   map("n", "<leader>f", function()
     vim.b.disable_autoformat = not vim.b.disable_autoformat
+    vim.cmd("redrawstatus")
   end, map_opts)
 end
 
@@ -173,12 +174,18 @@ function RENDER_STATUSBAR()
   local supermaven = pcall(require, "supermaven-nvim.api") and require("supermaven-nvim.api").is_running() and "AI" or "-"
   local cwd = vim.fn.getcwd() or ""
   local cwd_with_tilde = vim.fn.fnamemodify(cwd, ":~")
-  local git_status = vim.fn.system("git status --porcelain 2>/dev/null"):gsub("\n", "")
-  local branch_color = git_status == "" and "%#StatusLineGitClean#" or "%#StatusLineGitDirty#"
-  local branch = branch_color .. vim.fn.system("git branch --show-current 2>/dev/null"):gsub("\n", "") .. "%#StatusLine#"
-  local filename_color = vim.bo.modified and "%#StatusLineFileChanged#" or "%#StatusLine#"
-  local filename = filename_color .. (vim.fn.expand("%:p")):sub(#cwd + 1) .. "%#StatusLine#"
-  return string.format("[*%s][%s%s]%%=[%s][%s][%s][%d,%d]", branch, cwd_with_tilde, filename, autoformat, supermaven, vim.bo.filetype, vim.fn.line("."), vim.fn.col("."))
+  local branch = vim.fn.system("git branch --show-current 2>/dev/null"):gsub("\n", "")
+  if branch ~= "" and branch ~= nil then
+    local git_status = vim.fn.system("git status --porcelain 2>/dev/null"):gsub("\n", "")
+    local branch_color = git_status == "" and "%#StatusLineGitClean#" or "%#StatusLineGitDirty#"
+    branch = " on  " .. branch_color .. branch .. "%#StatusLine#"
+  end
+  local filename = vim.fn.expand("%:p")
+  if filename ~= "" and filename ~= nil then
+    local filename_color = vim.bo.modified and "%#StatusLineFileChanged#" or "%#StatusLine#"
+    filename = " [" .. filename_color .. (filename):sub(#cwd + 1) .. "%#StatusLine#" .. "]"
+  end
+  return string.format("%s%s%s%%=%s | %s | %s | %d,%d", cwd_with_tilde, branch, filename, autoformat, supermaven, vim.bo.filetype, vim.fn.line("."), vim.fn.col("."))
 end
 
 vim.o.statusline = "%{%v:lua.RENDER_STATUSBAR()%}"
