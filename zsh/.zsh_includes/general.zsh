@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 
 function draw_line {
   printf %"$COLUMNS"s |tr " " "${1:--}"
