@@ -24,6 +24,7 @@ o.list = true
 o.listchars = { tab = "→ ", space = "·" }
 o.cursorline = true
 vim.cmd([[autocmd FileType * set formatoptions-=ro]]) -- disable new line auto comment <3
+vim.cmd([[autocmd TermOpen * startinsert]])
 
 -- Plugins
 vim.pack.add({
@@ -67,11 +68,12 @@ map("n", "<leader>bo", ":%bd|e#|bd#<CR>", map_opts) -- close all buffers but the
 map({ "n", "v", "i" }, "<C-x>", ":bd<CR>", map_opts)
 map("n", "<leader>by", ":%y<CR>", map_opts)
 map("n", "<leader>bY", ":let @+ = expand('%:p')", map_opts)
-map("n", "<Esc>", ":noh<CR>", map_opts)
 map("n", "<C-u>", "<C-u>zz")
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<Down>", "gj", map_opts)
 map("n", "<Up>", "gk", map_opts)
+map("n", "<Esc>", ":noh<CR>", map_opts)
+map("t", "<Esc>", "<C-\\><C-n>", map_opts)
 
 -- Highlight on yank
 autocmd("TextYankPost", {
