@@ -293,10 +293,9 @@ local function setup_conform()
     lua = { "stylua" },
     rust = { "rustfmt", lsp_format = "fallback" },
   }
-  for _, ft in ipairs({ "javascript ", "typescript ", "typescriptreact ", "javascriptreact ", "json ", "jsonc ", "yaml ", "html " }) do
+  for _, ft in ipairs({ "javascript ", "typescript", "typescriptreact", "javascriptreact ", "json", "jsonc ", "yaml ", "html" }) do
     formatters_by_ft[ft] = { "prettier", "eslint_d", stop_after_first = true }
   end
-
   require("conform").setup({
     format_on_save = function(bufnr)
       local enable_autoformat = not vim.g.disable_autoformat and not vim.b[bufnr].disable_autoformat
