@@ -230,6 +230,8 @@ local function setup_dap()
     },
   }
   dap.configurations.c = dap.configurations.cpp
+
+  local dap_view = require("dap-view").setup({})
   map("n", "<leader>d", function()
     require("dap").continue()
   end, map_opts)
@@ -245,7 +247,6 @@ local function setup_dap()
   map("n", "<leader>w", function()
     require("dap").repl.toggle()
   end, map_opts)
-  require("dap-view").setup({})
 end
 
 -- FZF-lua
@@ -328,7 +329,7 @@ local function setup_statusbar()
     local filename = vim.fn.expand("%:p")
     if filename ~= "" and filename ~= nil then
       local filename_color = vim.bo.modified and "%#StatusLineFileChanged#" or "%#StatusLine#"
-      filename = " [" .. filename_color .. (filename):sub(#cwd + 1) .. "%#StatusLine#" .. "]"
+      filename = " " .. filename_color .. (filename):sub(#cwd + 1) .. "%#StatusLine#"
     end
     return string.format("%s%s%s%%=%s | %s | %s | %d,%d", cwd_with_tilde, branch, filename, autoformat, supermaven, vim.bo.filetype, vim.fn.line("."), vim.fn.col("."))
   end
