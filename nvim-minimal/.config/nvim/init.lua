@@ -45,6 +45,8 @@ vim.pack.add({
   "https://github.com/mfussenegger/nvim-dap",
   "https://github.com/igorlfs/nvim-dap-view",
   "https://github.com/toppair/peek.nvim",
+  "https://github.com/nvim-lua/plenary.nvim",
+  "https://github.com/olimorris/codecompanion.nvim",
 })
 
 -- Utils
@@ -112,7 +114,7 @@ local function setup_supermaven()
     keymaps = { accept_suggestion = "<S-Tab>" },
     color = { suggestion_color = "#005f5f", cterm = 23 },
   })
-  map("n", "<leader>a", ":SupermavenToggle<CR>:redrawstatus<CR>", map_opts)
+  map("n", "<leader>s", ":SupermavenToggle<CR>:redrawstatus<CR>", map_opts)
 end
 
 -- Flash
@@ -153,7 +155,7 @@ local function setup_statusbar()
   vim.api.nvim_set_hl(0, "StatusLineFileChanged", { fg = "#f4a261", bg = "NONE", bold = true })
   function RENDER_STATUSBAR()
     local autoformat = (vim.g.disable_autoformat == true or vim.b.disable_autoformat) and "-" or "F"
-    local supermaven = pcall(require, "supermaven-nvim.api") and require("supermaven-nvim.api").is_running() and "AI" or "-"
+    local supermaven = pcall(require, "supermaven-nvim.api") and require("supermaven-nvim.api").is_running() and "SMVN" or "-"
     local cwd = vim.fn.getcwd() or ""
     local cwd_with_tilde = vim.fn.fnamemodify(cwd, ":~")
     local branch = vim.fn.system("git branch --show-current 2>/dev/null"):gsub("\n", "")
@@ -173,6 +175,20 @@ local function setup_statusbar()
   vim.o.statusline = "%{%v:lua.RENDER_STATUSBAR()%}"
 end
 
+local function setup_codecompanion()
+  require("codecompanion").setup({
+    strategies = {
+      chat = {
+        adapter = "anthropic",
+      },
+      inline = {
+        adapter = "anthropic",
+      },
+    },
+  })
+  map("n", "<leader>cc", ":CodeCompanionChat<CR>", map_opts)
+end
+
 require("Navigator").setup({})
 require("zk").setup({})
 require("marks").setup({ mappings = { delete_line = "M" } })
@@ -187,5 +203,7 @@ setup_supermaven()
 setup_flash()
 setup_conform()
 setup_statusbar()
+setup_statusbar()
+setup_codecompanion()
 require("setup_dap")()
 require("setup_lsp")()
