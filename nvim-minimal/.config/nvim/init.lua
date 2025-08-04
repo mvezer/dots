@@ -50,52 +50,48 @@ vim.pack.add({
 })
 
 -- Utils
-local map_opts = { silent = true }
-local map = vim.keymap.set
-local augroup = vim.api.nvim_create_augroup("mat.cfg", { clear = true })
-local autocmd = vim.api.nvim_create_autocmd
-local fzf = require("fzf-lua")
+local utils = require("utils")
 
 -- Mappings
-map("v", "<", "<gv", map_opts)
-map("v", ">", ">gv", map_opts)
-map({ "n", "v" }, "c", '"_c', map_opts)
-map({ "n", "v" }, "C", '"_C', map_opts)
-map("v", "p", "P", map_opts)
-map({ "n", "v", "i" }, "<c-v>", ":vsplit<CR>", map_opts)
-map({ "n", "v", "i" }, "<c-down>", ":NavigatorDown<CR>", map_opts)
-map({ "n", "v", "i" }, "<c-up>", ":NavigatorUp<CR>", map_opts)
-map({ "n", "v", "i" }, "<c-right>", ":NavigatorRight<CR>", map_opts)
-map({ "n", "v", "i" }, "<c-left>", ":NavigatorLeft<CR>", map_opts)
-map("n", "<leader>bo", ":%bd|e#|bd#<CR>", map_opts) -- close all buffers but the current one
-map({ "n", "v", "i" }, "<C-x>", ":bd<CR>", map_opts)
-map("n", "<leader>by", ":%y<CR>", map_opts)
-map("n", "<leader>bY", ":let @+ = expand('%:p')", map_opts)
-map("n", "<C-u>", "<C-u>zz")
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<Down>", "gj", map_opts)
-map("n", "<Up>", "gk", map_opts)
-map("n", "<Esc>", ":noh<CR>", map_opts)
-map("t", "<Esc>", "<C-\\><C-n>", map_opts)
+utils.map("v", "<", "<gv", utils.map_opts)
+utils.map("v", ">", ">gv", utils.map_opts)
+utils.map({ "n", "v" }, "c", '"_c', utils.map_opts)
+utils.map({ "n", "v" }, "C", '"_C', utils.map_opts)
+utils.map("v", "p", "P", utils.map_opts)
+utils.map({ "n", "v", "i" }, "<c-v>", ":vsplit<CR>", utils.map_opts)
+utils.map({ "n", "v", "i" }, "<c-down>", ":bnext<CR>", utils.map_opts)
+utils.map({ "n", "v", "i" }, "<c-up>", ":bprevious<CR>", utils.map_opts)
+utils.map({ "n", "v", "i" }, "<c-right>", ":NavigatorRight<CR>", utils.map_opts)
+utils.map({ "n", "v", "i" }, "<c-left>", ":NavigatorLeft<CR>", utils.map_opts)
+utils.map("n", "<leader>bo", ":%bd|e#|bd#<CR>", utils.map_opts) -- close all buffers but the current one
+utils.map({ "n", "v", "i" }, "<C-x>", ":bd<CR>", utils.map_opts)
+utils.map("n", "<leader>by", ":%y<CR>", utils.map_opts)
+utils.map("n", "<leader>bY", ":let @+ = expand('%:p')", utils.map_opts)
+utils.map("n", "<C-u>", "<C-u>zz")
+utils.map("n", "<C-d>", "<C-d>zz")
+utils.map("n", "<Down>", "gj", utils.map_opts)
+utils.map("n", "<Up>", "gk", utils.map_opts)
+utils.map("n", "<Esc>", ":noh<CR>", utils.map_opts)
+utils.map("t", "<Esc>", "<C-\\><C-n>", utils.map_opts)
 
 -- Highlight on yank
-autocmd("TextYankPost", {
-  group = augroup,
+utils.autocmd("TextYankPost", {
+  group = utils.augroup,
   pattern = "*",
   callback = function()
     vim.highlight.on_yank()
   end,
 })
 
--- FZF-lua
+-- utils.fzf.lua
 local function setup_fzf()
-  map("n", "<leader>sf", fzf.files, map_opts)
-  map("n", "<leader>sr", fzf.oldfiles, map_opts)
-  map("n", "<leader>st", fzf.live_grep, map_opts)
-  map("n", "<leader>sh", fzf.helptags, map_opts)
-  map("n", "<leader>sd", fzf.lsp_document_diagnostics, map_opts)
-  map("n", "<leader><leader>", fzf.buffers, map_opts)
-  fzf.setup({ "max-perf", winopts = { height = 1, width = 1 } })
+  utils.map("n", "<leader>sf", utils.fzf.files, utils.map_opts)
+  utils.map("n", "<leader>sr", utils.fzf.oldfiles, utils.map_opts)
+  utils.map("n", "<leader>st", utils.fzf.live_grep, utils.map_opts)
+  utils.map("n", "<leader>sh", utils.fzf.helptags, utils.map_opts)
+  utils.map("n", "<leader>sd", utils.fzf.lsp_document_diagnostics, utils.map_opts)
+  utils.map("n", "<leader><leader>", utils.fzf.buffers, utils.map_opts)
+  utils.fzf.setup({ "max-perf", winopts = { height = 1, width = 1 } })
 end
 
 -- Oil
@@ -105,7 +101,7 @@ local function setup_oil()
     watch_for_changes = true,
     view_options = { show_hidden = true },
   })
-  map("n", "<leader>e", ":Oil<cr>")
+  utils.map("n", "<leader>e", ":Oil<cr>")
 end
 
 -- Supermaven
@@ -114,79 +110,16 @@ local function setup_supermaven()
     keymaps = { accept_suggestion = "<S-Tab>" },
     color = { suggestion_color = "#005f5f", cterm = 23 },
   })
-  map("n", "<leader>s", ":SupermavenToggle<CR>:redrawstatus<CR>", map_opts)
+  utils.map("n", "<leader>s", ":SupermavenToggle<CR>:redrawstatus<CR>", utils.map_opts)
 end
 
 -- Flash
 local function setup_flash()
   require("flash").setup({ labels = "neioarst" })
-  map({ "n", "x", "o" }, "s", function()
+  utils.map({ "n", "x", "o" }, "s", function()
     require("flash").jump()
     vim.api.nvim_feedkeys("zz", "n", false)
   end, { desc = "Flash" })
-end
-
--- Conform
-local function setup_conform()
-  local formatters_by_ft = {
-    lua = { "stylua" },
-    rust = { "rustfmt", lsp_format = "fallback" },
-  }
-  for _, ft in ipairs({ "javascript ", "typescript", "typescriptreact", "javascriptreact ", "json", "jsonc ", "yaml ", "html" }) do
-    formatters_by_ft[ft] = { "prettier", "eslint_d", stop_after_first = true }
-  end
-  require("conform").setup({
-    format_on_save = function(bufnr)
-      local enable_autoformat = not vim.g.disable_autoformat and not vim.b[bufnr].disable_autoformat
-      return enable_autoformat and { timeout_ms = 500, lsp_format = "fallback" } or nil
-    end,
-    formatters_by_ft = formatters_by_ft,
-  })
-  map("n", "<leader>f", function()
-    vim.b.disable_autoformat = not vim.b.disable_autoformat
-    vim.cmd("redrawstatus")
-  end, map_opts)
-end
-
--- Statusbar
-local function setup_statusbar()
-  vim.api.nvim_set_hl(0, "StatusLineGitClean", { fg = "#81b29a", bg = "NONE", bold = true })
-  vim.api.nvim_set_hl(0, "StatusLineGitDirty", { fg = "#c94f6d", bg = "NONE", bold = true })
-  vim.api.nvim_set_hl(0, "StatusLineFileChanged", { fg = "#f4a261", bg = "NONE", bold = true })
-  function RENDER_STATUSBAR()
-    local autoformat = (vim.g.disable_autoformat == true or vim.b.disable_autoformat) and "-" or "F"
-    local supermaven = pcall(require, "supermaven-nvim.api") and require("supermaven-nvim.api").is_running() and "SMVN" or "-"
-    local cwd = vim.fn.getcwd() or ""
-    local cwd_with_tilde = vim.fn.fnamemodify(cwd, ":~")
-    local branch = vim.fn.system("git branch --show-current 2>/dev/null"):gsub("\n", "")
-    if branch ~= "" and branch ~= nil then
-      local git_status = vim.fn.system("git status --porcelain 2>/dev/null"):gsub("\n", "")
-      local branch_color = git_status == "" and "%#StatusLineGitClean#" or "%#StatusLineGitDirty#"
-      branch = " on  " .. branch_color .. branch .. "%#StatusLine#"
-    end
-    local filename = vim.fn.expand("%:p")
-    if filename ~= "" and filename ~= nil then
-      local filename_color = vim.bo.modified and "%#StatusLineFileChanged#" or "%#StatusLine#"
-      filename = " " .. filename_color .. (filename):sub(#cwd + 1) .. "%#StatusLine#"
-    end
-    return string.format("%s%s%s%%=%s | %s | %s | %d,%d", cwd_with_tilde, branch, filename, autoformat, supermaven, vim.bo.filetype, vim.fn.line("."), vim.fn.col("."))
-  end
-
-  vim.o.statusline = "%{%v:lua.RENDER_STATUSBAR()%}"
-end
-
-local function setup_codecompanion()
-  require("codecompanion").setup({
-    strategies = {
-      chat = {
-        adapter = "anthropic",
-      },
-      inline = {
-        adapter = "anthropic",
-      },
-    },
-  })
-  map("n", "<leader>cc", ":CodeCompanionChat<CR>", map_opts)
 end
 
 require("Navigator").setup({})
@@ -201,9 +134,8 @@ setup_fzf()
 setup_oil()
 setup_supermaven()
 setup_flash()
-setup_conform()
-setup_statusbar()
-setup_statusbar()
-setup_codecompanion()
+require("setup_conform")()
+require("setup_codecompanion")()
 require("setup_dap")()
 require("setup_lsp")()
+require("setup_statusbar")()

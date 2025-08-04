@@ -1,6 +1,6 @@
+local utils = require("utils")
+
 return function()
-  local map_opts = { silent = true }
-  local map = vim.keymap.set
   local dap = require("dap")
   local dap_view = require("dap-view")
   dap.adapters.codelldb = {
@@ -28,10 +28,10 @@ return function()
   dap.configurations.c = dap.configurations.cpp
 
   dap_view.setup({})
-  map("n", "<leader>d", dap.continue, map_opts)
-  map("n", "<leader>D", dap.disconnect, map_opts)
-  map("n", "<leader>b", dap.toggle_breakpoint, map_opts)
-  map("n", "<leader>w", dap_view.add_expr, map_opts)
-  map("n", "<C-s>", dap.step_over, map_opts)
-  map("n", "<C-i>", dap.step_into, map_opts)
+  utils.map("n", "<leader>d", dap.continue, utils.map_opts)
+  utils.map("n", "<leader>D", dap.disconnect, utils.map_opts)
+  utils.map("n", "<leader>b", dap.toggle_breakpoint, utils.map_opts)
+  utils.map("n", "<leader>w", dap_view.add_expr, utils.map_opts)
+  utils.map("n", "<C-s>", dap.step_over, utils.map_opts)
+  utils.map("n", "<C-i>", dap.step_into, utils.map_opts)
 end

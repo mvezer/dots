@@ -1,10 +1,7 @@
+local utils = require("utils")
+
 return function()
-  local autocmd = vim.api.nvim_create_autocmd
-  local augroup = vim.api.nvim_create_augroup("lsp.cfg", { clear = true })
-  local map_opts = { silent = true }
-  local map = vim.keymap.set
-  local fzf = require("fzf-lua")
-  map("n", "<leader>ld", vim.diagnostic.open_float, map_opts)
+  utils.map("n", "<leader>ld", vim.diagnostic.open_float, utils.map_opts)
   vim.lsp.enable("ts_ls")
   vim.lsp.config("ts_ls", {
     cmd = { "typescript-language-server", "--stdio" },
@@ -90,7 +87,7 @@ return function()
     table.insert(chars, string.char(i))
   end
   local pumMap = function(insertKmap, pumKmap)
-    map("i", insertKmap, function()
+    utils.map("i", insertKmap, function()
       if vim.fn.pumvisible() == 0 then
         return insertKmap
       else
@@ -98,20 +95,20 @@ return function()
       end
     end, { expr = true })
   end
-  autocmd("LspAttach", {
-    group = augroup,
+  utils.autocmd("LspAttach", {
+    group = utils.augroup,
     callback = function(args)
       local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
       if client:supports_method("textDocument/implementation") then
         local bufopts = { noremap = true, silent = true, buffer = args.buf }
-        map("n", "gd", fzf.lsp_definitions, bufopts)
-        map("n", "gD", fzf.lsp_typedefs, bufopts)
-        map("n", "K", vim.lsp.buf.hover, bufopts)
-        map("n", "gr", fzf.lsp_references, bufopts)
-        map("n", "<leader>lr", vim.lsp.buf.rename, bufopts)
-        map("n", "<leader>o", fzf.lsp_document_symbols, bufopts)
-        map({ "n", "i" }, "<S-Down>", vim.diagnostic.goto_next, bufopts)
-        map({ "n", "i" }, "<S-Up>", vim.diagnostic.goto_prev, bufopts)
+        utils.map("n", "gd", utils.fzf.lsp_definitions, bufopts)
+        utils.map("n", "gD", utils.fzf.lsp_typedefs, bufopts)
+        utils.map("n", "K", vim.lsp.buf.hover, bufopts)
+        utils.map("n", "gr", utils.fzf.lsp_references, bufopts)
+        utils.map("n", "<leader>lr", vim.lsp.buf.rename, bufopts)
+        utils.map("n", "<leader>o", utils.fzf.lsp_document_symbols, bufopts)
+        utils.map({ "n", "i" }, "<S-Down>", vim.diagnostic.goto_next, bufopts)
+        utils.map({ "n", "i" }, "<S-Up>", vim.diagnostic.goto_prev, bufopts)
         pumMap("<Down>", "<C-n>")
         pumMap("<Up>", "<C-p>")
         pumMap("<CR>", "<C-y>")
