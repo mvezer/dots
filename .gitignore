@@ -11,3 +11,4 @@ vifm/.config/vifm/scripts/README
 qutebrowser/.config/qutebrowser/autoconfig.yml
 qutebrowser/.config/qutebrowser/autoconfig.yml.backup
 bin/.local/bin/op
+bin/.local/lib/vivaldi

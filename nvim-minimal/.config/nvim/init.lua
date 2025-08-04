@@ -28,7 +28,7 @@ vim.cmd([[autocmd TermOpen * startinsert]])
 
 -- Plugins
 vim.pack.add({
-  { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
+  "https://github.com/nvim-treesitter/nvim-treesitter",
   "https://github.com/ibhagwan/fzf-lua",
   "https://github.com/EdenEast/nightfox.nvim",
   "https://github.com/tpope/vim-eunuch",
@@ -44,6 +44,7 @@ vim.pack.add({
   "https://github.com/mason-org/mason.nvim",
   "https://github.com/mfussenegger/nvim-dap",
   "https://github.com/igorlfs/nvim-dap-view",
+  "https://github.com/toppair/peek.nvim",
 })
 
 -- Utils
