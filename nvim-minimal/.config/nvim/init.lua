@@ -47,6 +47,7 @@ vim.pack.add({
   "https://github.com/toppair/peek.nvim",
   "https://github.com/nvim-lua/plenary.nvim",
   "https://github.com/olimorris/codecompanion.nvim",
+  "https://github.com/j-hui/fidget.nvim",
 })
 
 -- Utils
@@ -73,6 +74,7 @@ utils.map("n", "<Down>", "gj", utils.map_opts)
 utils.map("n", "<Up>", "gk", utils.map_opts)
 utils.map("n", "<Esc>", ":noh<CR>", utils.map_opts)
 utils.map("t", "<Esc>", "<C-\\><C-n>", utils.map_opts)
+utils.map("n", "<Tab>", ":b#<CR>", utils.map_opts)
 
 -- Highlight on yank
 utils.autocmd("TextYankPost", {
@@ -125,9 +127,10 @@ end
 require("Navigator").setup({})
 require("zk").setup({})
 require("marks").setup({ mappings = { delete_line = "M" } })
-require("render-markdown").setup({})
+require("render-markdown").setup({ file_types = { "markdown", "codecompanion" } })
 require("nightfox").setup({})
 require("mason").setup({})
+require("fidget").setup({})
 vim.cmd([[colorscheme nightfox]])
 
 setup_fzf()
