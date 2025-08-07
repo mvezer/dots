@@ -9,9 +9,8 @@
   "agent": {
     "default_model": {
       "provider": "anthropic",
-      "model": "claude-3-7-sonnet-latest"
-    },
-    "version": "2"
+      "model": "claude-sonnet-4-latest"
+    }
   },
   "ui_font_size": 15,
   "buffer_line_height": { "custom": 1.7 },
@@ -34,7 +33,9 @@
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_size": 13.0,
   "file_types": {
-    "Dockerfile": ["Dockerfile.*"]
+    "Dockerfile": ["Dockerfile.*"],
+    "Helm": ["**/ci/**/*.yaml", "**/argo/**/*.yaml", "**/templates/*.yaml"],
+    "YAML": ["*.yaml", "*.yml"]
   },
   "tabs": {
     "show_diagnostics": "errors",
@@ -65,18 +66,24 @@
       "formatter": "prettier",
       "format_on_save": "on"
     },
+    "Helm": {
+      "formatter": "language_server",
+      "format_on_save": "on",
+      "language_servers": ["helm-language-server"]
+    },
     "YAML": {
+      "language_servers": ["yaml-language-server", "!docker-compose"],
       "formatter": "language_server",
       "tab_size": 2,
       "format_on_save": "off",
       "show_whitespaces": "all"
     }
   },
-  "edit_predictions": {
-    "mode": "subtle"
-  },
+  // "edit_predictions": {
+  //   "mode": "subtle"
+  // },
   "features": {
-    "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "supermaven"
   },
   "experimental.theme_overrides": {
     "players": [{ "cursor": "#ebc634" }]

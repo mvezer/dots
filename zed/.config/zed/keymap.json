@@ -46,7 +46,8 @@
       "space s t": "pane::DeploySearch",
       "space l f": "editor::ToggleInlineDiagnostics",
       "space s r": "projects::OpenRecent",
-      "space b o": "pane::CloseInactiveItems",
+      "space s f": "file_finder::Toggle",
+      "space b o": "pane::CloseOtherItems",
       "cmd-e": "workspace::ToggleLeftDock",
       "space e": "workspace::ToggleLeftDock",
       "space o": "outline::Toggle",
@@ -54,7 +55,24 @@
       "shift-s": "vim::PushSneakBackward",
       "ctrl-v": "pane::SplitRight",
       "ctrl-right": "workspace::ActivatePaneRight",
-      "ctrl-left": "workspace::ActivatePaneLeft"
+      "ctrl-left": "workspace::ActivatePaneLeft",
+      "alt-right": "pane::ActivateNextItem",
+      "alt-left": "pane::ActivatePreviousItem",
+      "tab": "pane::AlternateFile"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert && !VimWaiting && !menu",
+    "bindings": {
+      "shift-tab": "editor::AcceptEditPrediction"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-n": "workspace::NewTerminal",
+      "alt-right": "pane::ActivateNextItem",
+      "alt-left": "pane::ActivatePreviousItem"
     }
   },
   {
@@ -63,12 +81,12 @@
       "space space": "editor::OpenExcerpts"
     }
   },
-  {
-    "context": "Editor",
-    "bindings": {
-      // "j k": ["workspace::SendKeystrokes", "escape"]
-    }
-  },
+  // {
+  //   "context": "Editor",
+  //   "bindings": {
+  //     // "j k": ["workspace::SendKeystrokes", "escape"]
+  //   }
+  // },
   {
     "context": "Editor && edit_prediction_conflict",
     "bindings": {
