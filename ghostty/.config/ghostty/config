@@ -1,7 +1,9 @@
 macos-option-as-alt = true
 font-family = FiraCode Nerd Font Mono
 font-size = 13
-window-decoration = false
+# window-decoration = true
+fullscreen=true
+macos-non-native-fullscreen=visible-menu
 theme = nightfox
 # background-opacity=0.93
 # keybind = global:alt+c=toggle_quick_terminal
