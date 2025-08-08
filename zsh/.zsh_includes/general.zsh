@@ -2,6 +2,8 @@
 
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+export PATH=$PATH:/usr/local/go/bin
+
 
 function draw_line {
   printf %"$COLUMNS"s |tr " " "${1:--}"

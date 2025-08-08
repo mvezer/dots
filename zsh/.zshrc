@@ -7,6 +7,7 @@ export EDITOR="nvim"
 export WORKSPACE="$HOME/workspace"
 export ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 export TERM="xterm-256color"
+export PATH="$PATH:$HOME/.local/bin"
 
 # misc settings
 unsetopt BEEP
@@ -90,3 +91,7 @@ source $ZSH_INCLUDES/tmux.zsh
 source $ZSH_INCLUDES/zk.zsh
 
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
