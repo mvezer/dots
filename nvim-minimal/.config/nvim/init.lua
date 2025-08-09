@@ -48,6 +48,10 @@ vim.pack.add({
   "https://github.com/nvim-lua/plenary.nvim",
   "https://github.com/olimorris/codecompanion.nvim",
   "https://github.com/j-hui/fidget.nvim",
+  "https://github.com/toppair/peek.nvim"
+  -- after installing peek.nvim
+  -- cd /home/mat/.local/share/nvim/site/pack/core/opt/peek.nvim
+  -- deno task --quiet build:fast
 })
 
 -- Utils
@@ -124,6 +128,14 @@ local function setup_flash()
   end, { desc = "Flash" })
 end
 
+-- Peek (markdown preview)
+local function setup_peek()
+  require("peek").setup({
+    app = { "vivaldi", "--new-window" },
+  })
+  utils.map("n", "<leader>m", require("peek").open, utils.map_opts)
+end
+
 require("Navigator").setup({})
 require("zk").setup({})
 require("marks").setup({ mappings = { delete_line = "M" } })
@@ -137,6 +149,7 @@ setup_fzf()
 setup_oil()
 setup_supermaven()
 setup_flash()
+setup_peek()
 require("setup_conform")()
 require("setup_codecompanion")()
 require("setup_dap")()
