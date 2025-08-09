@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/mat/.zsh/completions:"* ]]; then export FPATH="/home/mat/.zsh/completions:$FPATH"; fi
 # starship prompt
 eval "$(starship init zsh)"
 
@@ -89,9 +91,3 @@ source $ZSH_INCLUDES/lua.zsh
 source $ZSH_INCLUDES/nodejs.zsh
 source $ZSH_INCLUDES/tmux.zsh
 source $ZSH_INCLUDES/zk.zsh
-
-
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
