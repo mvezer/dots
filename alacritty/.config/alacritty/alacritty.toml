@@ -1,5 +1,5 @@
 [font]
-size=13.0
+size=14.0
 
 [font.normal]
 family = "JetBrainsMono Nerd Font Mono"
@@ -13,14 +13,15 @@ shape = "Block"
 [general]
 live_config_reload = true
 import = [
-    "~/.config/alacritty/themes/nightfox.toml",
+    "~/.config/alacritty/themes/one_dark.toml",
 ]
 
 [window]
+startup_mode = "Maximized"
 decorations = "none"
 option_as_alt = "Both"
-# opacity = 0.98
-# blur = true
+opacity = 0.8
+blur = false
 
 # [terminal.shell]
 # program = "/bin/zsh"

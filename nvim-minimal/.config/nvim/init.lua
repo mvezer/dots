@@ -30,7 +30,7 @@ vim.cmd([[autocmd TermOpen * startinsert]])
 vim.pack.add({
   "https://github.com/nvim-treesitter/nvim-treesitter",
   "https://github.com/ibhagwan/fzf-lua",
-  "https://github.com/EdenEast/nightfox.nvim",
+  "https://github.com/navarasu/onedark.nvim",
   "https://github.com/tpope/vim-eunuch",
   "https://github.com/tpope/vim-fugitive",
   "https://github.com/chentoast/marks.nvim",
@@ -136,15 +136,22 @@ local function setup_peek()
   utils.map("n", "<leader>m", require("peek").open, utils.map_opts)
 end
 
+-- Setup colorscheme
+local function setup_colorscheme()
+  local onedark = require("onedark")
+  onedark.setup({ style = "deep", transparent = true })
+  onedark.load()
+end
+
 require("Navigator").setup({})
 require("zk").setup({})
 require("marks").setup({ mappings = { delete_line = "M" } })
 require("render-markdown").setup({ file_types = { "markdown", "codecompanion" } })
-require("nightfox").setup({})
 require("mason").setup({})
 require("fidget").setup({})
-vim.cmd([[colorscheme nightfox]])
+-- vim.cmd([[colorscheme onedark]])
 
+setup_colorscheme()
 setup_fzf()
 setup_oil()
 setup_supermaven()
